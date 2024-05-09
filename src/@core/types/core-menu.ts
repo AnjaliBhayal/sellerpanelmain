@@ -9,7 +9,7 @@ export interface CoreMenuItem {
     icon?        : string;
     disabled?    : boolean;
     hidden?      : boolean;
-    classes?     : string;
+    classes?     : string; 
     exactMatch?  : boolean;
     externalUrl? : boolean;
     openInNewTab?: boolean;

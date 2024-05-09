@@ -18,6 +18,9 @@ import { AddOutletComponent } from "./outlet/add-outlet/add-outlet.component";
 import { OrderHistoryComponent } from "./outlet/order-history/order-history.component";
 import { MenuComponent } from "./menu/menu.component";
 import { NewmenuComponent } from "./newmenu/newmenu.component";
+import { AccountComponent } from './account/account/account.component';
+import { BlockUI, BlockUIModule } from "ng-block-ui";
+import { CoreCommonModule } from "@core/common.module";
 
 const routes: Routes = [
   {
@@ -74,6 +77,10 @@ const routes: Routes = [
     path: "newmenu",
     component: NewmenuComponent,
   },
+  {
+    path: "account",
+    component: AccountComponent,
+  },
 ];
 
 @NgModule({
@@ -88,6 +95,7 @@ const routes: Routes = [
     OrderHistoryComponent,
     MenuComponent,
     NewmenuComponent,
+    AccountComponent,
   ],
   imports: [
     FileUploadModule,
@@ -98,6 +106,8 @@ const routes: Routes = [
     Ng2FlatpickrModule,
     NgxDatatableModule,
     RouterModule.forChild(routes),
+    BlockUIModule.forRoot(),
+    CoreCommonModule
   ],
 })
 export class DashboardModule {}

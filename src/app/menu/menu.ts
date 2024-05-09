@@ -2,24 +2,26 @@ import { CoreMenu } from "@core/types";
 
 export const menu: CoreMenu[] = [
   {
-    id: "home",
-    title: "Home",
-    translate: "MENU.HOME",
+    id: "orders",
+    title: "Orders",
+    translate: "MENU.ORDERS",
     type: "item",
-    url: "dashboard/home",
+    icon:"../../assets/images/myimages/Group 40311.svg",
+    url: "dashboard/orders",
   },
-  {
+ /*  {
     id: "orders",
     title: "Orders",
     translate: "MENU.ORDERS",
     type: "item",
     url: "dashboard/orders",
-  },
+  }, */
   {
     id: "allOutlet",
-    title: "All Outlet",
+    title: "AllOutlet",
     translate: "MENU.ALLOUTLET",
     type: "item",
+    icon:"../../assets/images/myimages/Group 40305.svg",
     url: "dashboard/allOutlet",
   },
   {
@@ -27,6 +29,7 @@ export const menu: CoreMenu[] = [
     title: "Ticket",
     translate: "MENU.TICKET",
     type: "item",
+    icon:"../../assets/images/myimages/Group 40309.svg",
     url: "dashboard/ticket",
   },
   {
@@ -34,7 +37,16 @@ export const menu: CoreMenu[] = [
     title: "Promotion",
     translate: "MENU.PROMOTION",
     type: "item",
+    icon:"../../assets/images/myimages/Group 40307.svg",
     url: "dashboard/promotion",
+  },
+  {
+    id: "Account",
+    title: "Account",
+    translate: "MENU.ACCOUNT",
+    type: "item",
+    icon:"../../assets/images/myimages/Group 40306.svg",
+    url: "dashboard/account",
   },
   // {
   //   id: "newmenu",
@@ -43,4 +55,5 @@ export const menu: CoreMenu[] = [
   //   type: "item",
   //   url: "dashboard/newmenu",
   // },
+
 ];

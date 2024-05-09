@@ -7,7 +7,8 @@ export const locale = {
       ALLOUTLET: 'ALLOUTLET',
       PROMOTION: 'PROMOTION',
       TICKET: 'TICKET',
-      // NEWMENU: 'NEWMENU'
+      // NEWMENU: 'NEWMENU',
+      ACCOUNT: 'ACCOUNT',
     }
   }
 }
