@@ -1,33 +1,32 @@
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { FileUploader } from 'ng2-file-upload';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { Router, Navigation } from '@angular/router';
-import { ColumnMode, DatatableComponent, SelectionType } from '@swimlane/ngx-datatable';
-import { OutletServiceService } from 'app/services/outlet-service.service';
-import { ToastrserviceService } from 'app/services/toastrservice.service';
-import { Options } from 'flatpickr/dist/types/options';
-import moment from 'moment';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from "@angular/core";
+import { FileUploader } from "ng2-file-upload";
+import { NgbModal, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
+import { Router, Navigation } from "@angular/router";
+import { ColumnMode, DatatableComponent, SelectionType } from "@swimlane/ngx-datatable";
+import { OutletServiceService } from "app/services/outlet-service.service";
+import { ToastrserviceService } from "app/services/toastrservice.service";
+import { Options } from "flatpickr/dist/types/options";
+import moment from "moment";
 
-const URL = 'https://your-url.com';
+const URL = "https://your-url.com";
 
 @Component({
-  selector: 'app-outlet-details',
-  templateUrl: './outlet-details.component.html',
-  styleUrls: ['./outlet-details.component.scss']
+  selector: "app-outlet-details",
+  templateUrl: "./outlet-details.component.html",
+  styleUrls: ["./outlet-details.component.scss"],
 })
-
 export class OutletDetailsComponent implements OnInit {
   public uploader: FileUploader = new FileUploader({
     url: URL,
-    isHTML5: true
+    isHTML5: true,
   });
 
-// decorator
-@ViewChild(DatatableComponent) table: DatatableComponent;
+  // decorator
+  @ViewChild(DatatableComponent) table: DatatableComponent;
 
   public DateRangeOptions: Options = {
     altInput: true,
-    mode: 'range'
+    mode: "range",
   };
   rows: any;
   rows1: any;
@@ -63,7 +62,7 @@ export class OutletDetailsComponent implements OnInit {
   closingTime: any;
   sellerOfferList: [];
   outletOffer: any;
-  outletOfferList = []
+  outletOfferList = [];
   linkById: any;
   outOfProduct: any;
   productId: any;
@@ -71,6 +70,12 @@ export class OutletDetailsComponent implements OnInit {
   end: any;
   outletEarnings: any;
   cols: any;
+  showNewCard: boolean = false;
+  showNewCard1: boolean = false;
+content: any;
+content3: any;
+content5: any;
+
   constructor(private router: Router, private toastr: ToastrserviceService, private modalService: NgbModal, private outletService: OutletServiceService) {
     let nav: Navigation = this.router.getCurrentNavigation();
     if (nav.extras && nav.extras.state && nav.extras.state.outletDetails) {
@@ -89,9 +94,19 @@ export class OutletDetailsComponent implements OnInit {
     this.outletEarning();
   }
 
-  // redirect to order history page 
+  createNewCard() {
+    this.showNewCard = true;
+  }
+
+  // oredr history
+
+  createNewCard1() {
+    this.showNewCard = false;
+    this.showNewCard1 = true;
+  }
+  // redirect to order history page
   orderHistoryPage() {
-    const outletData = this.outletDetails
+    const outletData = this.outletDetails;
     this.router.navigate(["/dashboard/orderHistory"], { state: { outletData } });
   }
 
@@ -106,37 +121,35 @@ export class OutletDetailsComponent implements OnInit {
     });
   }
 
-  getDate(event:any){
+  getDate(event: any) {
     var date = event.target.value;
     const [from, to] = date.split("to");
     this.start = moment(from).format("MM-DD-YYYY");
     this.end = moment(to).format("MM-DD-YYYY");
-    
+
     this.outletEarning();
   }
 
-  outletEarning(){
-    this.outletService.outletEaring(this.outletDetails.outletId, this.start,this.end).subscribe((data:any)=>{
+  outletEarning() {
+    this.outletService.outletEaring(this.outletDetails.outletId, this.start, this.end).subscribe((data: any) => {
       this.outletEarnings = data.items;
       console.log(this.outletEarnings);
     });
-
-    
   }
   // open out of stock Modal
   openOutofStockModal(data: any) {
     this.modalService.open(data, {
       centered: true,
       scrollable: true,
-      size: 'lg'
+      size: "lg",
     });
     this.outOfStockProduct();
   }
 
   outOfStockProduct() {
     const form = {
-      outletId: this.outletDetails.outletId
-    }
+      outletId: this.outletDetails.outletId,
+    };
     this.outletService.getOutOfStockProduct(form).subscribe((data: any) => {
       this.outOfProduct = data.items;
       this.rows2 = data.items;
@@ -152,7 +165,7 @@ export class OutletDetailsComponent implements OnInit {
     this.modalRef = this.modalService.open(data, {
       centered: true,
       scrollable: true,
-      size: 'lg'
+      size: "lg",
     });
     this.productId = product.productId;
   }
@@ -166,13 +179,13 @@ export class OutletDetailsComponent implements OnInit {
       } else {
         this.toastr.showError(res.message, "error!");
       }
-    })
+    });
   }
 
   modalCuisineAdd(data: any) {
     this.modalService.open(data, {
-      centered: true
-    })
+      centered: true,
+    });
   }
 
   openOfferModal(data: any) {
@@ -180,19 +193,18 @@ export class OutletDetailsComponent implements OnInit {
       centered: true,
       scrollable: true,
       windowClass: "product-detail-modal",
-      size: 'lg'
+      size: "lg",
     });
     this.getSellerOffer();
     this.outletOffers();
   }
 
-
-  openEarningModal(data:any){
-    this.modalRef = this.modalService.open(data,{
-      centered:true,
-      scrollable:true,
-      size:'md'
-    })
+  openEarningModal(data: any) {
+    this.modalRef = this.modalService.open(data, {
+      centered: true,
+      scrollable: true,
+      size: "md",
+    });
   }
   getSellerOffer() {
     this.outletService.getAllOffer().subscribe((data: any) => {
@@ -216,30 +228,28 @@ export class OutletDetailsComponent implements OnInit {
     this.modalService.open(data, {
       centered: true,
       scrollable: true,
-      size: 'md'
+      size: "md",
     });
     this.linkById = offer.discountId;
   }
-
 
   openUnlinkModal(data: any) {
     this.modalService.open(data, {
       centered: true,
       scrollable: true,
-      size: 'lg'
+      size: "lg",
     });
   }
 
   linkOffer() {
     const formData = {
-      "outletId": this.outletDetails.outletId,
-      "discountId": this.linkById
-    }
+      outletId: this.outletDetails.outletId,
+      discountId: this.linkById,
+    };
     this.outletService.addSellertoOutlet(formData).subscribe((data: any) => {
       if (data.status) {
         this.toastr.showSuccess(data.message, "Success!");
         this.outletOffers();
-
       } else {
         this.toastr.showError(data.message, "error!");
         this.outletOffers();
@@ -249,8 +259,8 @@ export class OutletDetailsComponent implements OnInit {
 
   unLinkOffer() {
     const formData = {
-      "outletId": this.outletDetails.outletId
-    }
+      outletId: this.outletDetails.outletId,
+    };
     this.outletService.removeDisount(formData).subscribe((data: any) => {
       if (data.status) {
         this.toastr.showSuccess(data.message, "Success!");
@@ -259,24 +269,42 @@ export class OutletDetailsComponent implements OnInit {
         this.toastr.showError(data.message, "error!");
         this.outletOffers();
       }
-    })
+    });
   }
 
   gotoMenuPage() {
-    const outletData = this.outletDetails
+    const outletData = this.outletDetails;
     this.router.navigate(["/dashboard/menu"], { state: { outletData } });
   }
-  
+
   filterUpdate(event: any) {
-    console.log(event)
+    console.log(event);
     const val = event.target.value.toLowerCase();
-    const temp = this.outOfProduct?.filter(function (d:any) {
+    const temp = this.outOfProduct?.filter(function (d: any) {
       return d.productName.toLowerCase().indexOf(val) !== -1 || !val;
       //return d.discountTitle?.toLowerCase().indexOf(val) !== -1 || d.promoCode?.toLowerCase().indexOf(val) !== -1 || d.isCustom?.toLowerCase().indexOf(val) !== -1 || !val;
     });
     this.kitchenSinkRows2 = temp;
     this.table.offset = 0;
-  }  
+  }
 
-}
-
+  goToNewComponent(): void {
+    this.router.navigate(['/offer']);
+  }
+  newhistory(): void{
+    this.router.navigate(['/orderHistory']);
+  }
+  openMenu(): void{
+    this.router.navigate(['/dashboard/menu']);
+  }
+  OutOfStock(): void{
+    this.router.navigate(['/dashboard/OutOfStock']);
+  }
+  // deleteOutlet(model:any,data:any){
+  //   this.modalRef = this.modalService.open({
+  //     centered:true,
+  //     scrollable:true,
+  //     size:'md'
+  //   });
+  // }
+ }

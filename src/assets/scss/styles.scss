@@ -11,7 +11,7 @@ body {
 }
 
 .main-menu .main-menu-content {
-	padding-top: 3rem;
+    padding-top: 2rem;
 }
 
 .main-menu.menu-light .navigation>li a {
@@ -723,12 +723,12 @@ button.btn.btn-outline-primary.close {
 	margin-bottom: 0.5rem;
 }
 
-.main-menu.menu-light .navigation>li.active>a,
-.main-menu.menu-light .navigation>li ul .active {
-	background: linear-gradient(118deg, #37b685, rgb(55 182 133 / 70%));
-	box-shadow: 0 0 10px 1px rgb(55 182 133 / 70%);
+// .main-menu.menu-light .navigation>li.active>a,
+// .main-menu.menu-light .navigation>li ul .active {
+// 	background: linear-gradient(118deg, #37b685, rgb(55 182 133 / 70%));
+// 	box-shadow: 0 0 10px 1px rgb(55 182 133 / 70%);
 
-}
+// }
 
 .card.admin-img img {
 	height: 500px;
@@ -912,15 +912,23 @@ p.agent-phone-no {
 	box-shadow: 0 4px 18px -4px rgb(68 146 255 / 60%);
 }
 
-.nav-pills .nav-link.active,
-.nav-pills .show>.nav-link {
-	color: #fff;
-	background-color: #4492ff;
+// .nav-pills .nav-link.active,
+// .nav-pills .show>.nav-link {
+// 	color: #fff;
+// 	background-color: #4492ff;
+// }
+.nav-pills .nav-link.active {
+	border-color: #0fab64;
+	box-shadow: 0 4px 18px -4px rgb(68 146 255 / 60%);
 }
 
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #0fab64;
+}
 ul#pills-tab button {
-	border: 2px solid #4492ff;
-	width: 120px;
+    border: 2px solid #0fab64;
+    width: 120px;
 }
 
 .up-in-toggle input:checked+label.offline {
@@ -1626,7 +1634,7 @@ section#home-page .card.card-cancelled {
 }
 
 section#users-page .card {
-	text-align: center;
+	// text-align: center;	
 	border-radius: 15px;
 	border-bottom: 5px solid #77abf1;
 }
@@ -1915,4 +1923,34 @@ section#order-history-page .csv-export {
 }
 button.block-btn.btn.btn-primary {
     margin-top: 22px;
+}
+.main-menu.menu-light .navigation li a {
+    color: #625f6e;
+    padding: 11px 10px 10px 10px;
+    line-height: 1.45;
+}
+.main-menu.menu-light .navigation > li > a {
+    margin: 0px 15px;
+}
+.main-menu.menu-light .navigation > li.active > a {
+    /* background: linear-gradient(118deg, #1a9062, rgba(26, 144, 98, 0.7)); */
+	background: none;
+	box-shadow: none;
+    /* box-shadow: 0 0 10px 1px rgba(26, 144, 98, 0.7); */
+    color: #0fab64;
+    font-weight: 400;
+    border-radius: 4px;
+}
+.main-menu.menu-light .navigation li a > * {
+    transition: transform 0.25s ease;
+    font-weight: 200;
+    font-family: sans-serif;
+}
+.main-menu .navbar-header .navbar-brand {
+	margin-top: 0;
+}
+ul.nav.navbar-nav.flex-row {
+    padding: 10px 0px;
+    display: flex;
+    align-items: center;
 }

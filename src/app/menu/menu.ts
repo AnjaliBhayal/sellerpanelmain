@@ -6,7 +6,7 @@ export const menu: CoreMenu[] = [
     title: "Orders",
     translate: "MENU.ORDERS",
     type: "item",
-    icon:"../../assets/images/myimages/Group 40311.svg",
+    icon:"../../assets/images/myimages/icon-order-1.svg",
     url: "dashboard/orders",
   },
  /*  {
@@ -21,7 +21,7 @@ export const menu: CoreMenu[] = [
     title: "AllOutlet",
     translate: "MENU.ALLOUTLET",
     type: "item",
-    icon:"../../assets/images/myimages/Group 40305.svg",
+    icon:"../../assets/images/myimages/shop-131.svg",
     url: "dashboard/allOutlet",
   },
   {
@@ -29,7 +29,7 @@ export const menu: CoreMenu[] = [
     title: "Ticket",
     translate: "MENU.TICKET",
     type: "item",
-    icon:"../../assets/images/myimages/Group 40309.svg",
+    icon:"../../assets/images/myimages/ticket-44.svg",
     url: "dashboard/ticket",
   },
   {
@@ -37,7 +37,7 @@ export const menu: CoreMenu[] = [
     title: "Promotion",
     translate: "MENU.PROMOTION",
     type: "item",
-    icon:"../../assets/images/myimages/Group 40307.svg",
+    icon:"../../assets/images/myimages/promotion-15.svg",
     url: "dashboard/promotion",
   },
   {
@@ -45,7 +45,7 @@ export const menu: CoreMenu[] = [
     title: "Account",
     translate: "MENU.ACCOUNT",
     type: "item",
-    icon:"../../assets/images/myimages/Group 40306.svg",
+    icon:"../../assets/images/myimages/account-25.svg",
     url: "dashboard/account",
   },
   // {
@@ -55,5 +55,13 @@ export const menu: CoreMenu[] = [
   //   type: "item",
   //   url: "dashboard/newmenu",
   // },
+  {
+    id: "Support",
+    title: "Help & Support",
+    translate: "MENU.SUPPORT",
+    type: "item",
+    icon:"../../assets/images/myimages/support-22.svg",
+    url: "dashboard/support",
+  },
 
 ];

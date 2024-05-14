@@ -21,6 +21,7 @@ import { NewmenuComponent } from "./newmenu/newmenu.component";
 import { AccountComponent } from './account/account/account.component';
 import { BlockUI, BlockUIModule } from "ng-block-ui";
 import { CoreCommonModule } from "@core/common.module";
+import { SupportComponent } from './support/support.component';
 
 const routes: Routes = [
   {
@@ -81,6 +82,10 @@ const routes: Routes = [
     path: "account",
     component: AccountComponent,
   },
+  {
+    path: "support",
+    component: SupportComponent,
+  },
 ];
 
 @NgModule({
@@ -96,6 +101,7 @@ const routes: Routes = [
     MenuComponent,
     NewmenuComponent,
     AccountComponent,
+    SupportComponent,
   ],
   imports: [
     FileUploadModule,
@@ -107,7 +113,8 @@ const routes: Routes = [
     NgxDatatableModule,
     RouterModule.forChild(routes),
     BlockUIModule.forRoot(),
-    CoreCommonModule
+    CoreCommonModule,
+
   ],
 })
 export class DashboardModule {}

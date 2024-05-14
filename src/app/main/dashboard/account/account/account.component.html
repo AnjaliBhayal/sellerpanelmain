@@ -314,9 +314,96 @@
                  </div>
               </div>
             </div>
+
+
+
+            <!-- bank details  section -->
+            <div class="col-12 col-md-12 col-lg-12">
+              <div class="card-body">
+                  <div class="outlet-body">
+                    <div class="heading2">
+                      <h1>Bank Details</h1>
+                    </div>
+                    <div class=" card-transaction">
+                      <div class="card-header">
+                        <h4 class="card-title"></h4>
+                        <!-- <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i> -->                         
+                      </div>
+                      <div class="card-body">
+                        <div class="transaction-item">
+                          <div class="media">
+                            <div class="avatar bg-light-primary rounded">
+                              <div class="avatar-content">
+                                <i data-feather="check-square" class="avatar-icon font-medium-3"></i>
+                              </div>
+                            </div>
+                            <div class="media-body">
+                              <h6 class="transaction-title"> Bank Name: </h6>
+                            
+                            </div>
+                          </div>
+                          <div class="details">{{ sellerData?.licenseDetails?.nameOnlicence }}</div>
+                        </div>
+                        <div class="transaction-item">
+                          <div class="media">
+                            <div class="avatar bg-light-success rounded">
+                              <div class="avatar-content">
+                                <i data-feather="tablet" class="avatar-icon font-medium-3"></i>
+                              </div>
+                            </div>
+                            <div class="media-body">
+                              <h6 class="transaction-title">IFSC Code:</h6>
+                            
+                            </div>
+                          </div>
+                          <div class="details">{{ sellerData?.licenseDetails?.licenceNumber }}</div>
+                        </div>
+                        <div class="transaction-item">
+                          <div class="media">
+                            <div class="avatar bg-light-danger rounded">
+                              <div class="avatar-content">
+                                <i data-feather="check" class="avatar-icon font-medium-3"></i>
+                              </div>
+                            </div>
+                            <div class="media-body">
+                              <h6 class="transaction-title">Account Number:</h6>
+                              
+                            </div>
+                          </div>
+                          <div class="details">{{ sellerData?.licenseDetails?.issuedOn }}</div>
+                        </div>
+                        <div class="transaction-item">
+                          <div class="media">
+                            <div class="avatar bg-light-warning rounded">
+                              <div class="avatar-content">
+                                <i data-feather="calendar" class="avatar-icon font-medium-3"></i>
+                              </div>
+                            </div>
+                            <div class="media-body">
+                              <h6 class="transaction-title">Tenure:</h6>
+                             
+                            </div>
+                          </div>
+                          <div class="details">{{ sellerData?.licenseDetails?.tenure }}</div>
+                        </div>
+                     
+                      </div>
+                    </div>
+                  </div>
+
+              </div>
+             <div class="row  match-height">
+             
+             </div>
+          </div>
         </div>
     </div>
   </div>
+
+
+
+
+  
   <block-ui> </block-ui>
   
   

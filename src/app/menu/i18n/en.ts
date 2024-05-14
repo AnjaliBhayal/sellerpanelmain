@@ -9,6 +9,7 @@ export const locale = {
       TICKET: 'TICKET',
       // NEWMENU: 'NEWMENU',
       ACCOUNT: 'ACCOUNT',
+      SUPPORT: 'SUPPORT',
     }
   }
 }
