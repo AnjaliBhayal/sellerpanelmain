@@ -307,4 +307,12 @@ content5: any;
   //     size:'md'
   //   });
   // }
+  openbankdetials(data: any) {
+    this.modalService.open(data, {
+      centered: true,
+      scrollable: true,
+      size: "lg",
+    });
+  }
+
  }
