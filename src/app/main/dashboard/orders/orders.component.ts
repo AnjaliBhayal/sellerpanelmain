@@ -36,6 +36,7 @@ export class OrdersComponent implements OnInit {
   deliveredTime = [];
   ischecked = false;
   orderDetails: any;
+  AllData:any
 
   orderId: any;
   orderTimes: any[] = [];
@@ -73,7 +74,7 @@ export class OrdersComponent implements OnInit {
         ],
       },
     };
-
+    this.allData();
     this.getOrder(this.status);
 
     // creat ticket form
@@ -165,5 +166,15 @@ export class OrdersComponent implements OnInit {
         }
       });
     }
+  }
+
+  allData(){
+    this.AuthService.allDataHomePage().subscribe((data:any)=>{
+      if (!data.status) {
+        this.AllData = [];
+      }
+      this.AllData = data.items;
+    });
+    
   }
 }

@@ -13,6 +13,7 @@ export class OutletServiceService {
   private sellerApi = environment.sellerApi;
   private userUrl = environment.userUrl;
   private adminUrl=environment.adminUrl;
+  private paymentUrl=environment.paymentUrl
   adminToken: any;
   constructor(private http: HttpClient) {
     this.adminToken = localStorage.getItem('token');
@@ -120,6 +121,15 @@ getSellerInfo(){
     return data;
   }))
 }
+
+// get seller info
+getSellerPaymentInfo(outletId:any){
+  return this.http.get(this.paymentUrl + '/v1/bank/outlet/'+ outletId, this.Header()).pipe(map((data:any)=>{
+    return data;
+  }))
+}
+
+
 
 // get outlet menu category
 getAllCategory(outletId:any){

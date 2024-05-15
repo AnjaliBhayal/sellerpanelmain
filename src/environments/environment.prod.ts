@@ -5,6 +5,7 @@ export const environment = {
   sellerApi:'https://order.fablocdn.com/v1/order/',
   menuUrl:'https://inventory.fablocdn.com/v1/',
   adminUrl:'https://admin.fablocdn.com',
-  userUrl: 'https://user.fablocdn.com'
+  userUrl: 'https://user.fablocdn.com',
+  paymentUrl:'https://payments-v2.fablocdn.com/'
 };
   

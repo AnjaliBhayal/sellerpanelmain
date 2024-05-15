@@ -22,5 +22,11 @@ export class AccountComponent implements OnInit {
       this.sellerData = data.items;
     });
   }
+  // getpaymentdeatils(){
+  //   this.outletService.getSellerPaymentInfo().subscribe((data: any) => {
+  //     this.blockUI.stop();
+  //     this.sellerData = data.items;
+  //   });
+  // }
 
 }

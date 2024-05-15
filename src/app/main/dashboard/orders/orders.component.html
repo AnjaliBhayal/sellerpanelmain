@@ -29,121 +29,151 @@
       </div>
     </ng-container>
 
+
+
+
+
     <!-- Basic Alerts start -->
     <section id="home-page">
       <!--/ Stats Horizontal Card -->
-
       <div class="row">
         <div class="col-md-5">
-          <!-- <div class="order-search-box">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search" aria-label="search"
-                                aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <span class="input-group-text" id="basic-addon2"><i class="fa fa-search"
-                                        aria-hidden="true"></i></span>
-                            </div>
-                        </div>
-                    </div> -->
-        </div>
+         </div>
         <div class="col-md-7 col-sm-12">
           <div class="tab-switch">
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
               <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link active"
-                  id="pills-all-tab"
-                  data-bs-toggle="pill"
-                  data-bs-target="#pills-all"
-                  type="button"
-                  role="tab"
-                  aria-controls="pills-all"
-                  aria-selected="true"
-                  (click)="getOrder('all')"
-                >
+                <button class="nav-link active" id="pills-all-tab" data-bs-toggle="pill" data-bs-target="#pills-all"
+                  type="button" role="tab" aria-controls="pills-all" aria-selected="true" (click)="getOrder('all')">
                   All
                 </button>
               </li>
               <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link"
-                  id="pills-pending-tab"
-                  data-bs-toggle="pill"
-                  data-bs-target="#pills-pending"
-                  type="button"
-                  role="tab"
-                  aria-controls="pills-pending"
-                  aria-selected="false"
-                  (click)="getOrder('pending')"
-                >
+                <button class="nav-link" id="pills-pending-tab" data-bs-toggle="pill" data-bs-target="#pills-pending"
+                  type="button" role="tab" aria-controls="pills-pending" aria-selected="false"
+                  (click)="getOrder('pending')">
                   Pending
                 </button>
               </li>
               <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link"
-                  id="pills-preparing-tab"
-                  data-bs-toggle="pill"
-                  data-bs-target="#pills-preparing"
-                  type="button"
-                  role="tab"
-                  aria-controls="pills-preparing"
-                  aria-selected="false"
-                  (click)="getOrder('preparing')"
-                >
+                <button class="nav-link" id="pills-preparing-tab" data-bs-toggle="pill"
+                  data-bs-target="#pills-preparing" type="button" role="tab" aria-controls="pills-preparing"
+                  aria-selected="false" (click)="getOrder('preparing')">
                   Preparing
                 </button>
               </li>
               <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link"
-                  id="pills-ready-tab"
-                  data-bs-toggle="pill"
-                  data-bs-target="#pills-ready"
-                  type="button"
-                  role="tab"
-                  aria-controls="pills-ready"
-                  aria-selected="false"
-                  (click)="getOrder('ready')"
-                >
+                <button class="nav-link" id="pills-ready-tab" data-bs-toggle="pill" data-bs-target="#pills-ready"
+                  type="button" role="tab" aria-controls="pills-ready" aria-selected="false"
+                  (click)="getOrder('ready')">
                   Ready
                 </button>
               </li>
               <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link"
-                  id="pills-pickedUp-tab"
-                  data-bs-toggle="pill"
-                  data-bs-target="#pills-pickedUp"
-                  type="button"
-                  role="tab"
-                  aria-controls="pills-pickedUp"
-                  aria-selected="false"
-                  (click)="getOrder('dispatched')"
-                >
+                <button class="nav-link" id="pills-pickedUp-tab" data-bs-toggle="pill" data-bs-target="#pills-pickedUp"
+                  type="button" role="tab" aria-controls="pills-pickedUp" aria-selected="false"
+                  (click)="getOrder('dispatched')">
                   Picked up
                 </button>
               </li>
-              <!--  <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-delivered-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-delivered " type="button" role="tab"
-                                    aria-controls="pills-delivered " aria-selected="false" (click)="getOrder('delivered')">Delivered</button>
-                            </li> -->
+           
             </ul>
           </div>
         </div>
       </div>
 
+
+
+    <!-- basic card -->
+ <!-- Basic Alerts start -->
+ <section id="home-page">
+  <!-- Stats Horizontal Card -->
+  <div class="row">
+    <div class="col-lg-3 col-sm-6 col-12">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2 class="font-weight-bolder mb-0">
+              {{ AllData?.totalSale }}
+            </h2>
+            <p class="card-text">Total Sale</p>
+          </div>
+          <div class="avatar bg-light-primary p-50 m-0">
+            <div class="avatar-content">
+              <!-- <i data-feather="cpu" class="font-medium-5"></i> -->
+
+              <!-- <img src="assets/images/icons/users.svg" alt=""> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2 class="font-weight-bolder mb-0">
+              {{ AllData?.orderCount }}
+            </h2>
+            <p class="card-text">Total Order Count</p>
+          </div>
+          <div class="avatar bg-light-success p-50 m-0">
+            <div class="avatar-content">
+              <!-- <img src="assets/images/icons/user-x.svg" alt=""> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2 class="font-weight-bolder mb-0">
+              {{ AllData?.totalDiscount }}
+            </h2>
+            <p class="card-text">Total Discount</p>
+          </div>
+          <div class="avatar bg-light-danger p-50 m-0">
+            <div class="avatar-content">
+              <!-- <img src="assets/images/icons/gift.svg" alt=""> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2 class="font-weight-bolder mb-0">
+              {{ AllData?.netProfit }}
+            </h2>
+            <p class="card-text">Total Net Profit</p>
+          </div>
+          <div class="avatar bg-light-warning p-50 m-0">
+            <div class="avatar-content">
+              <!-- <img src="assets/images/icons/credit-card.svg" alt=""> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/ Stats Horizontal Card -->
+  <!--/ Stats Horizontal Card -->
+ 
+</section>
+<!-- Basic Alerts end -->
+<!-- basic card -->
+
+
+
       <div class="row">
         <div class="col-xl-12 col-md-12 col-sm-12">
           <div class="tab-content" id="pills-tabContent">
             <!----------------------------------------------- all order----------------------------------------->
-            <div
-              class="tab-pane fade show active"
-              id="pills-all"
-              role="tabpanel"
-              aria-labelledby="pills-all-tab"
-            >
+            <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
               <div class="card" *ngFor="let item of orderList">
                 <div class="card-body">
                   <div class="row">
@@ -154,26 +184,15 @@
                           <span>{{ item.outlet?.outletArea }}</span>
                         </h3>
                         <div class="row">
-                          <div
-                            class="col-md-6"
-                            *ngFor="let products of item.productList"
-                          >
+                          <div class="col-md-6" *ngFor="let products of item.productList">
                             <div class="order-list-main">
                               <div class="dishe-price-main">
                                 <div class="dishe-name">
-                                  <img
-                                    *ngIf="products?.isVeg"
-                                    src="assets/images/veg-icon.png"
-                                  />
-                                  <img
-                                    *ngIf="!products?.isVeg"
-                                    src="assets/images/nonveg-icon.png"
-                                    width="20px"
-                                  />
-                                  <span
-                                    >{{ products?.quantity }} x
-                                    {{ products?.productName }}|{{products?.variationName}}|{{products?.addOnName}}</span
-                                  >
+                                  <img *ngIf="products?.isVeg" src="assets/images/veg-icon.png" />
+                                  <img *ngIf="!products?.isVeg" src="assets/images/nonveg-icon.png" width="20px" />
+                                  <span>{{ products?.quantity }} x
+                                    {{ products?.productName
+                                    }}|{{products?.variationName}}|{{products?.addOnName}}</span>
                                 </div>
                                 <div class="dishe-price">
                                   ₹ <span>{{ products?.quantityPrice }}</span>
@@ -205,11 +224,8 @@
                       <div class="order-track">
                         <h3>
                           Order Id <span>{{ item?.orderId }}</span>
-                          <button
-                            type="button"
-                            class="ml-5 btn btn-primary"
-                            (click)="openCreatTicketModal(creatTicket, item)"
-                          >
+                          <button type="button" class="ml-5 btn btn-primary"
+                            (click)="openCreatTicketModal(creatTicket, item)">
                             Create Ticket
                           </button>
                         </h3>
@@ -217,15 +233,10 @@
                           <div class="col-md-6">
                             <div class="order-track-map">
                               <div class="form-check start-track">
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  id="flexCheckDefault"
-                                  disabled
+                                <input class="form-check-input" type="checkbox" id="flexCheckDefault" disabled
                                   [checked]="
                                     timelineData(item.timing, 'pending')
-                                  "
-                                />
+                                  " />
                                 <label class="form-check-label">
                                   <span class="gray-clr">Placed</span>
                                   <p>
@@ -235,15 +246,10 @@
                               </div>
                               <img src="assets/images/line-gray.png" alt="" />
                               <div class="form-check start-track">
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  id="flexCheckDefault"
-                                  disabled
+                                <input class="form-check-input" type="checkbox" id="flexCheckDefault" disabled
                                   [checked]="
                                     timelineData(item.timing, 'preparing')
-                                  "
-                                />
+                                  " />
                                 <label class="form-check-label">
                                   <span class="gray-clr">Accepted</span>
                                   <p>
@@ -253,15 +259,10 @@
                               </div>
                               <img src="assets/images/line-gray.png" alt="" />
                               <div class="form-check start-track">
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  id="flexCheckDefault"
-                                  disabled
+                                <input class="form-check-input" type="checkbox" id="flexCheckDefault" disabled
                                   [checked]="
                                     timelineData(item.timing, 'preparing')
-                                  "
-                                />
+                                  " />
                                 <label class="form-check-label">
                                   <span class="gray-clr">Preparing</span>
                                   <p>
@@ -274,13 +275,8 @@
                           <div class="col-md-6">
                             <div class="order-track-map curve-line-gray">
                               <div class="form-check start-track">
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  id="flexCheckDefault"
-                                  disabled
-                                  [checked]="timelineData(item.timing, 'ready')"
-                                />
+                                <input class="form-check-input" type="checkbox" id="flexCheckDefault" disabled
+                                  [checked]="timelineData(item.timing, 'ready')" />
                                 <label class="form-check-label">
                                   <span class="gray-clr">Ready</span>
                                   <p>
@@ -290,35 +286,25 @@
                               </div>
                               <img src="assets/images/line-gray.png" alt="" />
                               <div class="form-check start-track">
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  id="flexCheckDefault"  
-                                  disabled
+                                <input class="form-check-input" type="checkbox" id="flexCheckDefault" disabled
                                   [checked]="
                                     timelineData(item.timing, 'dispatched')
-                                  "
-                                />
+                                  " />
                                 <label class="form-check-label">
                                   <span class="gray-clr">Picked</span>
                                   <p>
                                     {{
-                                      timelineData(item.timing, "dispatched")
+                                    timelineData(item.timing, "dispatched")
                                     }}
                                   </p>
                                 </label>
                               </div>
                               <img src="assets/images/line-gray.png" alt="" />
                               <div class="form-check start-track">
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  id="flexCheckDefault"
-                                  disabled
+                                <input class="form-check-input" type="checkbox" id="flexCheckDefault" disabled
                                   [checked]="
                                     timelineData(item.timing, 'delivered')
-                                  "
-                                />
+                                  " />
                                 <label class="form-check-label">
                                   <span class="gray-clr">Delivered</span>
                                   <p>
@@ -337,58 +323,38 @@
                           <div class="delivery-agent-img">
                             <h3>Delivery <span>Agent</span></h3>
 
-                            <img
-                              src="{{ item.partner?.image }}"
-                              alt=""
-                              style="width: 50%"
-                            />
+                            <img src="{{ item.partner?.image }}" alt="" style="width: 50%" />
                           </div>
                           <p class="agent-phone-no">
-                            <!-- <img src="assets/images/marker.png"> --><img
-                              src="assets/images/call.png"
-                            /><span>{{ item.partner?.phone }}</span>
+                            <!-- <img src="assets/images/marker.png"> --><img src="assets/images/call.png" /><span>{{
+                              item.partner?.phone }}</span>
                           </p>
                           <div class="track">
                             <img src="assets/images/track.png" alt="" />
                             <p>
                               <b style="text-transform: uppercase">{{
                                 item.partner?.partnerName
-                              }}</b>
+                                }}</b>
                               is on the way
                             </p>
                           </div>
                         </div>
 
-                        <div
-                          class="agent-btn"
-                          *ngIf="
+                        <div class="agent-btn" *ngIf="
                             item.status == 'pending' ||
                             item.status == 'preparing'
-                          "
-                        >
+                          ">
                           <h3>Delivery <span>Action</span></h3>
-                          <button
-                            *ngIf="item?.status == 'pending'"
-                            type="button"
-                            class="btn btn-accept"
-                            (click)="changeStatus(item.orderId, 'accepted')"
-                          >
+                          <button *ngIf="item?.status == 'pending'" type="button" class="btn btn-accept"
+                            (click)="changeStatus(item.orderId, 'accepted')">
                             Accept
                           </button>
-                          <button
-                            *ngIf="item?.status == 'pending'"
-                            type="button"
-                            class="btn btn-reject"
-                            (click)="changeStatus(item.orderId, 'cancelled')"
-                          >
+                          <button *ngIf="item?.status == 'pending'" type="button" class="btn btn-reject"
+                            (click)="changeStatus(item.orderId, 'cancelled')">
                             Reject
                           </button>
-                          <button
-                            *ngIf="item?.status == 'preparing'"
-                            type="button"
-                            class="btn btn-accept"
-                            (click)="changeStatus(item.orderId, 'ready')"
-                          >
+                          <button *ngIf="item?.status == 'preparing'" type="button" class="btn btn-accept"
+                            (click)="changeStatus(item.orderId, 'ready')">
                             Ready
                           </button>
                         </div>
@@ -401,55 +367,7 @@
 
 
 
-            <div class="content-wrapper container-fluid p-0">
-              <div class="content-body">
-                  <!-- content-header component -->
-          
-                  <!-- home page content start -->
-                  <section id="users-page">
-          
-          
-                      <div class="row">
-                          <!-- Dynamic data Card -->
-                          <div class="col-lg-4 col-sm-4 col-12 text-start">
-                              <div class="card">
-                                  <div class="card-body">
-                                  <div class="heading">
-                                      <h1>DEDiCATED MANAGER</h1>
-                                  </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-lg-4 col-sm-4 col-12 text-start">
-                              <div class="card">
-                                  <div class="card-body">
-                                      <div class="heading">
-                                          <h1>COSTUMER SUPPORT</h1>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-lg-4 col-sm-4 col-12 text-start">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="heading">
-                                        <h1>COSTUMER SUPPORT</h1>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
-          
-          
-                          <!--/ Dynamic data Card -->
-                      </div>
-          
-                  </section>
-                  <!-- home page contentend -->
-              </div>
-          </div>
+
 
             <!----------------------------------------------- pending order----------------------------------------->
             <!-- <div class="tab-pane fade" id="pills-pending" role="tabpanel" aria-labelledby="pills-pending-tab">
@@ -948,6 +866,10 @@
       </div>
     </section>
     <!-- Basic Alerts end -->
+
+
+
+
   </div>
 </div>
 
@@ -955,38 +877,19 @@
 <ng-template #creatTicket let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="myModalLabel1">Create Ticket</h4>
-    <button
-      type="button"
-      class="close"
-      (click)="modal.dismiss('Cross click')"
-      aria-label="Close"
-    >
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body" tabindex="0" ngbAutofocus>
-    <form
-      [formGroup]="creatTicketForm"
-      class="form form-vertical"
-      (ngSubmit)="creatTicketFormSubmit()"
-    >
+    <form [formGroup]="creatTicketForm" class="form form-vertical" (ngSubmit)="creatTicketFormSubmit()">
       <div class="row">
         <div class="col-lg-12">
           <div class="form-group">
             <label for="first-name-column">Issue</label>
-            <input
-              type="text"
-              id="productName"
-              class="form-control"
-              placeholder="Issue"
-              formControlName="issue"
-              name="issue"
-              [ngClass]="{ 'is-invalid': Submitted && ticket.issue.errors }"
-            />
-            <div
-              *ngIf="Submitted && ticket.issue.errors"
-              class="invalid-feedback"
-            >
+            <input type="text" id="productName" class="form-control" placeholder="Issue" formControlName="issue"
+              name="issue" [ngClass]="{ 'is-invalid': Submitted && ticket.issue.errors }" />
+            <div *ngIf="Submitted && ticket.issue.errors" class="invalid-feedback">
               <div *ngIf="ticket.issue.errors.required">Issue is required</div>
             </div>
           </div>
@@ -994,21 +897,11 @@
         <div class="col-lg-12">
           <div class="form-group">
             <label for="first-name-column">Description</label>
-            <input
-              type="text"
-              id="productPrice"
-              class="form-control"
-              placeholder="Description"
-              formControlName="description"
-              name="description"
-              [ngClass]="{
+            <input type="text" id="productPrice" class="form-control" placeholder="Description"
+              formControlName="description" name="description" [ngClass]="{
                 'is-invalid': Submitted && ticket.description.errors
-              }"
-            />
-            <div
-              *ngIf="Submitted && ticket.description.errors"
-              class="invalid-feedback"
-            >
+              }" />
+            <div *ngIf="Submitted && ticket.description.errors" class="invalid-feedback">
               <div *ngIf="ticket.description.errors.required">
                 Description is required
               </div>
@@ -1030,12 +923,7 @@
 <ng-template #content let-modal>
   <div class="modal-header">
     <h5 class="modal-title" id="myModalLabel160">New Order Recived</h5>
-    <button
-      type="button"
-      class="close"
-      (click)="modal.dismiss('Cross click')"
-      aria-label="Close"
-    >
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -1043,11 +931,7 @@
     {{ NewNotification }}
   </div>
   <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-primary"
-      (click)="modal.dismiss('Cross click')"
-    >
+    <button type="button" class="btn btn-primary" (click)="modal.dismiss('Cross click')">
       Ok
     </button>
   </div>
