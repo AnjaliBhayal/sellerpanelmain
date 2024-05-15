@@ -518,7 +518,7 @@
                     <h6 class="transaction-title">Account Holder:</h6>
                   </div>
                 </div>
-                <div class="details">{{ openingTime }}</div>
+                <div class="details">{{ this.bankdetails?.accountHolder }}</div>
               </div>
               <div class="transaction-item">
                 <div class="media">
@@ -526,7 +526,7 @@
                     <h6 class="transaction-title">Account Number :</h6>
                   </div>
                 </div>
-                <div class="details">{{ closingTime }}</div>
+                <div class="details">{{ this.bankdetails?.accountNumber }}</div>
               </div>
 
               <div class="transaction-item">
@@ -535,7 +535,7 @@
                     <h6 class="transaction-title">IFSC Code :</h6>
                   </div>
                 </div>
-                <div class="details">{{ closingTime }}</div>
+                <div class="details">{{ this.bankdetails?.ifsc }}</div>
               </div>
 
               <div class="transaction-item">
@@ -544,7 +544,7 @@
                     <h6 class="transaction-title">Branch Name :</h6>
                   </div>
                 </div>
-                <div class="details">{{ closingTime }}</div>
+                <div class="details">{{ this.bankdetails?.branchName }}</div>
               </div>
 
               <div class="transaction-item">
@@ -553,7 +553,7 @@
                     <h6 class="transaction-title">Bank Name :</h6>
                   </div>
                 </div>
-                <div class="details">{{ closingTime }}</div>
+                <div class="details">{{ this.bankdetails?.bankName }}</div>
               </div>
             </div>
           </div>
@@ -641,7 +641,7 @@
             </button>
             <button
               class="btn btn-primary btn-add"
-              (click)="openEarningModal(content6)"
+              (click)="openbankDetailsModal(content6)"
             >
               <span>Bank Details</span>
             </button>

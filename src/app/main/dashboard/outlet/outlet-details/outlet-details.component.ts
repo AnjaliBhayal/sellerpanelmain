@@ -75,6 +75,7 @@ export class OutletDetailsComponent implements OnInit {
 content: any;
 content3: any;
 content5: any;
+  bankdetails: any;
 
   constructor(private router: Router, private toastr: ToastrserviceService, private modalService: NgbModal, private outletService: OutletServiceService) {
     let nav: Navigation = this.router.getCurrentNavigation();
@@ -92,8 +93,10 @@ content5: any;
     this.end = moment(new Date()).format("MM-DD-YYYY");
     this.getOutletDetails();
     this.outletEarning();
+   
   }
 
+  
   createNewCard() {
     this.showNewCard = true;
   }
@@ -309,11 +312,27 @@ content5: any;
   //     size:'md'
   //   });
   // }
-  open(data: any) {
+  openbankDetailsModal(data: any) {
     this.modalService.open(data, {
       centered: true,
       scrollable: true,
       size: "lg",
+    });
+    this.getpaymentdeatils();
+  }
+
+  getpaymentdeatils(){
+    console.log(this.outletDetails.outletId);
+    this.outletService.getSellerPaymentInfo(this.outletDetails.outletId).subscribe((res: any) => {
+      if (res.status) {
+         this.bankdetails = res.items;  
+         console.log(this.bankdetails);
+        this.toastr.showSuccess(res.message, "Success!");
+        this.modalRef.close();
+      } else {
+        this.toastr.showError(res.message, "error!");
+      }
+     
     });
   }
 
