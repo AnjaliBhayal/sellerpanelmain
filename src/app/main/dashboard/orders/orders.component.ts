@@ -40,6 +40,7 @@ export class OrdersComponent implements OnInit {
 
   orderId: any;
   orderTimes: any[] = [];
+outletEarnings: any;
  
   // orderArray: any[] = []
   // default: string;
@@ -170,9 +171,13 @@ export class OrdersComponent implements OnInit {
 
   allData(){
     this.AuthService.allDataHomePage().subscribe((data:any)=>{
+      console.log(data);
+      
       if (!data.status) {
+        
         this.AllData = [];
       }
+
       this.AllData = data.items;
     });
     

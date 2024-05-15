@@ -113,6 +113,8 @@ content5: any;
   getOutletDetails() {
     this.outletService.getOutletDetailsByID(this.outletDetails.outletId).subscribe((data: any) => {
       this.outletData = data.items;
+      console.log(this.outletData);
+      
       this.shopTime = this.outletData.openingHours;
       this.openingHoursValue = this.shopTime["0"][0];
       const [startTime, endTime] = this.openingHoursValue.split(" - ");
@@ -307,7 +309,7 @@ content5: any;
   //     size:'md'
   //   });
   // }
-  openbankdetials(data: any) {
+  open(data: any) {
     this.modalService.open(data, {
       centered: true,
       scrollable: true,
