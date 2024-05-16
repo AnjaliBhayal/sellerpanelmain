@@ -1,221 +1,93 @@
-<div class="content-wrapper container-fluid p-0">
-  <div class="content-body">
-    <section id="ngx-datatable-kitchen-sink">
-      <div class="card">
-        <div class="card-body">
-          <div class="d-flex justify-content-between pb-2">
-            <h4 class="card-title">All Outlet</h4>
-            <!--  <button type="button" class="btn btn-primary mr-1" routerLink="/dashboard/addOutlet">
-                            Add Outlet +
-                        </button> -->
-            <button class="btn btn-primary btn-add" (click)="openAddOutletModal(content2)">
-              Add Outlet <i class="fa-regular fa-plus"></i>
-            </button>
+
+
+<ng-container *ngIf="contentHeader">
+  <div class="content-header row">
+    <div class="content-header-left col-md-12 col-12 mb-2">
+      <div class="row breadcrumbs-top">
+        <div class="col-md-12">
+          <div class="breadcrumbs-top-heading">
+            <h2 class="content-header-title float-left mb-0">
+              {{ contentHeader.headerTitle }}
+            </h2>
+            <!-- <div class="switch-online">
+                            <div class="columns">
+                                <div class="column is-12">
+                                    <div class="up-in-toggle" id="main-toggle">
+                                        <input type="radio" id="switch_left" name="switch_2" value="yes" />
+                                        <label for="switch_left" class="online" onclick="outletStatus()">Online</label>
+                                        <input type="radio" id="switch_right" name="switch_2" value="no" checked/>
+                                        <label for="switch_right" class="offline" onclick="outletStatus()">Offline</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
           </div>
-          <!-- <div class="row">
-            <div class="col-12 mb-50"></div>
-            <div class="col-md-6 col-12">
-              <div
-                class="d-flex justify-content-between align-items-center m-1"
-              >
-                <label class="d-flex align-items-center"
-                  >Show
-                  <select
-                    class="form-control mx-25"
-                    [(ngModel)]="basicSelectedOption"
-                  >
-                    <option value="1">1</option>
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="15">15</option>
-                  </select>
-                  entries</label
-                >
-              </div>
-            </div>
-            <div class="col-md-6 col-12 d-flex justify-content-md-end">
-              <div
-                class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0"
-              >
-                <label class="d-flex align-items-center"
-                  >Search<input
-                    type="search"
-                    placeholder="Search"
-                    class="form-control ml-25"
-                    (keyup)="filterUpdate($event)"
-                    (search)="filterUpdate($event)"
-                /></label>
-                <button
-                  csvLink
-                  (click)="downloadCSV($event)"
-                  class="btn btn-outline-secondary float-right csv-export"
-                  rippleEffect
-                >
-                  <img src="assets/images/excel-icon.png" alt="" />
-                </button>
-              </div>
-            </div>
-          </div> -->
-          <ngx-datatable class="material container striped" [columns]="cols" [rows]="kitchenSinkRows" [rowHeight]="58"
-            rowHeight="auto" class="bootstrap core-bootstrap" [limit]="5" [columnMode]="ColumnMode.force"
-            [headerHeight]="40" [footerHeight]="50" [scrollbarH]="true" [selectionType]="SelectionType.checkbox"
-            [limit]="basicSelectedOption" (activate)="onActivate($event)" (select)="onSelect($event)">
-            <ngx-datatable-column name="S.No." [width]="50" [sortable]="false">
-              <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row">
-                {{ rowIndex + 1 }}
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="Outlet Name" prop="outletName" [width]="150"></ngx-datatable-column>
-            <ngx-datatable-column name="Phone" prop="phone" [width]="150"></ngx-datatable-column>
-            <ngx-datatable-column name="Area" prop="area" [width]="150"></ngx-datatable-column>
-            <ngx-datatable-column name="Closed" prop="isClosed" [width]="150">
-              <ng-template let-closeStatus="value" let-row="row" ngx-datatable-cell-template>
-                <div class="form-check form-switch custom-control-success ml-3">
-                  <input class="form-check-input" [checked]="!closeStatus" [ngClass]="selectButtonClass(closeStatus)"
-                    (change)="statusChange($event, content, row)" type="checkbox" role="switch"
-                    id="flexSwitchCheckChecked" />
-                  <label class="form-check-label" for="flexSwitchCheckChecked"></label>
-                </div>
-              </ng-template>
-            </ngx-datatable-column>
-
-            <ngx-datatable-column name="Shop Address" type="textarea" prop="shopAddress"
-              [width]="300"></ngx-datatable-column>
-            <ngx-datatable-column name="Pending" prop="pendingCount" [width]="100"></ngx-datatable-column>
-            <ngx-datatable-column name="Prepering" prop="preparingCount" [width]="100"></ngx-datatable-column>
-            <ngx-datatable-column name="Ready" prop="readyCount" [width]="100"></ngx-datatable-column>
-
-            <ngx-datatable-column name="Action" [width]="120" [sortable]="false">
-              <ng-template let-row="row" ngx-datatable-cell-template>
-                <div class="d-flex align-items-center">
-                  <div ngbDropdown container="body">
-                    <a ngbDropdownToggle href="javascript:void(0);" class="hide-arrow" id="dropdownBrowserState"
-                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fa-solid fa-ellipsis-vertical"></i>
-                    </a>
-                    <div ngbDropdownMenu class="dropdown-menu-right" aria-labelledby="dropdownBrowserState">
-                      <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center"
-                        (click)="showOutletDetail(row)"><i data-feather="file-text" class="mr-50"></i>Details</a>
-                      <!-- <a
-                        href="javascript:void(0)"
-                        ngbDropdownItem
-                        class="d-flex align-items-center"
-                        (click)="statusChange(content, row)"
-                        >Change Status</a
-                      > -->
-                      <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center"
-                        (click)="deleteOutlet(row)"><i class="fa-solid fa-trash" class="mr-50"></i>Delete</a>
-                    </div>
-                  </div>
-                  <div class="edit-icon">
-                    <a href="javascript:void(0)">
-                      <i class="fa-regular fa-pen-to-square" (click)="openEditOutletModal(content1, row)"></i>
-                    </a>
-                  </div>
-                </div>
-              </ng-template>
-            </ngx-datatable-column>
-          </ngx-datatable>
-
-
-
-
-        <!---------------------------------------------------- my all outlet design ------------------------------------------------>
-
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</ng-container>
+
+<!-- outlet cards -->
+<div class="order">
+  <div class="card card-congratulation-medal">
+    <div class="card-body">
+      <!-- <h1>All Outlet</h1> -->
+      <div class="row match-height">
+        <div class="col-12 col-md-6 col-lg-4" *ngFor="let outletdata of allOutletList">
+          <div class="card-body">
+            <div class="order-body">
+              <div class="parent">
+                <div class="area-parent">
+                  <h5>{{outletdata.outletName}}</h5>
+                  <p class="card-details-text font-small-3">{{outletdata.area}}</p>
+                </div>
+                <div class="detail-card">
+                  <p class="detail-card-text1">{{outletdata.outletId}}</p>
+                  <p class="detail-card-text">{{outletdata.phone}}</p>
+                </div>
+              </div>
+              <div class="details-btn">
+                <button class="btn1"  (click)="viewdetails(outletdata)">View Details</button>
+                <!-- routerLink="/dashboard/outletDetails" -->
+                <button [ngClass]="{'btn3': outletdata.isClosed, 'btn2': !outletdata.isClosed}"
+                  (click)="statusChange($event, content, outletdata)">{{
+                  outletdata.isClosed
+                  ? 'Close' : 'Open' }}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+<!-- outlet cards -->
 
 <!--open change outlet status Modal -->
 <ng-template #content let-modal>
-  <div class="modal-header">
+  <!-- <div class="modal-header">
     <h5 class="modal-title" id="myModalLabel160">
       Change OUtlet Status Status
     </h5>
     <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
+  </div> -->
+  <div class="modal-body p-2" tabindex="0">
+    Are You Sure You Want to Change Status ?
   </div>
-  <div class="modal-body" tabindex="0">
-    Are You Sure You Want to Change Status
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="modal.dismiss('Cross click')">
+  <div class="modal-footer p-2">
+    <button type="button" class="model-btn" (click)="modal.dismiss('Cross click')">
       Cancel
     </button>
-    <button type="button" class="btn btn-primary" (click)="outletStatusChange()">
+    <button type="button" class="model-btn1" (click)="outletStatusChange()">
       Confirm
     </button>
   </div>
 </ng-template>
+
+
 <!-- open edit outlet Modal -->
 <ng-template #content1 let-modal>
   <div class="modal-header">
@@ -466,10 +338,8 @@
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" (click)="onCuisineSelect(cuisine)"
               [checked]="cuisineCheck(cuisine.cuisineId)" />
-            <label class="form-check-label" for="inlineCheckbox2">{{
-              cuisine.cuisineName
-              }}</label>
-          </div>
+            <label class="form-check-label" for="inlineCheckbox2">{{cuisine.cuisineName}}</label>
+          </div>  
         </div>
       </div>
     </div>
@@ -480,3 +350,5 @@
     </button>
   </div>
 </ng-template>
+
+<block-ui> </block-ui>
