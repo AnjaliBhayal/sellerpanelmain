@@ -1968,8 +1968,15 @@ ul.nav.navbar-nav.flex-row {
 }
 .heading2 {
     color: #0fab64;
-    padding-bottom: 18px;
+    // padding-bottom: 18px;
 }
 .heading2 h1{
     color: #0fab64;
+}
+.card-transaction.support {
+	box-shadow: 4px 8px 15px -3px rgba(201, 199, 199, 0.75);
+	
+}
+.card-header:first-child {
+	background-color: #f8f8f8;
 }
