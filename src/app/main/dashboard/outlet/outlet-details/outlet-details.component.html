@@ -1,14 +1,8 @@
-
 <!-- opne offer list Modal -->
 <ng-template #content let-modal>
   <div class="modal-header">
     <h5 class="modal-title" id="myModalLabel160"></h5>
-    <button
-      type="button"
-      class="close"
-      (click)="modal.dismiss('Cross click')"
-      aria-label="Close"
-    >
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -19,21 +13,11 @@
         <div class="mt-5 card offer-box">
           <div class="card-body">
             <h3>{{ outletOffer.discountTitle }}</h3>
-            <div
-              class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0"
-            >
-              <button
-                class="btn btn-offer-edit"
-                (click)="openEditOfferModal(content1, offer)"
-                rippleEffect
-              > 
+            <div class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
+              <button class="btn btn-offer-edit" (click)="openEditOfferModal(content1, offer)" rippleEffect>
                 <i class="fa-regular fa-pen-to-square"></i>
               </button>
-              <button
-                class="btn btn-offer-delete"
-                (click)="openUnlinkModal(content2)"
-                rippleEffect
-              >
+              <button class="btn btn-offer-delete" (click)="openUnlinkModal(content2)" rippleEffect>
                 <i class="fa-solid fa-trash"></i>
               </button>
             </div>
@@ -61,116 +45,46 @@
               <div class="row">
                 <div class="col-12 mb-50"></div>
                 <div class="col-md-6 col-12">
-                  <div
-                    class="d-flex justify-content-between align-items-center m-1"
-                  >
-                    <label class="d-flex align-items-center"
-                      >Show
-                      <select
-                        class="form-control mx-25"
-                        [(ngModel)]="basicSelectedOption"
-                      >
+                  <div class="d-flex justify-content-between align-items-center m-1">
+                    <label class="d-flex align-items-center">Show
+                      <select class="form-control mx-25" [(ngModel)]="basicSelectedOption">
                         <option value="5">5</option>
                         <option value="10">10</option>
                         <option value="15">15</option>
                       </select>
-                      entries</label
-                    >
+                      entries</label>
                   </div>
                 </div>
                 <div class="col-md-6 col-12 d-flex justify-content-md-end">
-                  <div
-                    class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0"
-                  >
-                    <label class="d-flex align-items-center"
-                      >Search<input
-                        type="search"
-                        placeholder="Search"
-                        class="form-control ml-25"
-                        (keyup)="filterUpdate($event)"
-                        (search)="filterUpdate($event)"
-                      />
+                  <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0">
+                    <label class="d-flex align-items-center">Search<input type="search" placeholder="Search"
+                        class="form-control ml-25" (keyup)="filterUpdate($event)" (search)="filterUpdate($event)" />
                     </label>
                   </div>
                 </div>
               </div>
-              <ngx-datatable
-                class="material container striped"
-                [columns]="cols"
-                [rows]="kitchenSinkRows"
-                [rowHeight]="58"
-                rowHeight="auto"
-                class="bootstrap core-bootstrap"
-                [columnMode]="ColumnMode.force"
-                [headerHeight]="40"
-                [footerHeight]="50"
-                [scrollbarH]="true"
-                [selectionType]="SelectionType.checkbox"
-                [limit]="basicSelectedOption"
-                (select)="onSelect($event)"
-              >
-                <ngx-datatable-column
-                  name="S.No."
-                  [width]="50"
-                  [sortable]="false"
-                >
-                  <ng-template
-                    ngx-datatable-cell-template
-                    let-rowIndex="rowIndex"
-                    let-row="row"
-                  >
+              <ngx-datatable class="material container striped" [columns]="cols" [rows]="kitchenSinkRows"
+                [rowHeight]="58" rowHeight="auto" class="bootstrap core-bootstrap" [columnMode]="ColumnMode.force"
+                [headerHeight]="40" [footerHeight]="50" [scrollbarH]="true" [selectionType]="SelectionType.checkbox"
+                [limit]="basicSelectedOption" (select)="onSelect($event)">
+                <ngx-datatable-column name="S.No." [width]="50" [sortable]="false">
+                  <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row">
                     {{ rowIndex + 1 }}
                   </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column
-                  name="Discount Title"
-                  prop="discountTitle"
-                  [width]="100"
-                ></ngx-datatable-column>
-                <ngx-datatable-column
-                  name="Promo Code"
-                  prop="promoCode"
-                  [width]="100"
-                ></ngx-datatable-column>
-                <ngx-datatable-column
-                  name="Discount %"
-                  prop="discountPercent"
-                  [width]="100"
-                ></ngx-datatable-column>
-                <ngx-datatable-column
-                  name="Max Discount"
-                  prop="maxDiscount"
-                  [width]="100"
-                  [sortable]="false"
-                ></ngx-datatable-column>
-                <ngx-datatable-column
-                  name="Min Amount"
-                  prop="minAmount"
-                  [width]="100"
-                  [sortable]="false"
-                ></ngx-datatable-column>
-                <ngx-datatable-column
-                  name="Flat Discount"
-                  prop="isFlatDiscount"
-                  [width]="100"
-                  [sortable]="false"
-                ></ngx-datatable-column>
-                <ngx-datatable-column
-                  name="Action"
-                  prop="Action"
-                  [width]="50"
-                  [sortable]="false"
-                  class="badge badge-light-success badge-pill"
-                >
-                  <ng-template
-                    let-value="value"
-                    let-row="row"
-                    ngx-datatable-cell-template
-                  >
-                    <button
-                      class="btn btn-primary"
-                      (click)="openLinkOfferModal(content1, row)"
-                    >
+                <ngx-datatable-column name="Discount Title" prop="discountTitle" [width]="100"></ngx-datatable-column>
+                <ngx-datatable-column name="Promo Code" prop="promoCode" [width]="100"></ngx-datatable-column>
+                <ngx-datatable-column name="Discount %" prop="discountPercent" [width]="100"></ngx-datatable-column>
+                <ngx-datatable-column name="Max Discount" prop="maxDiscount" [width]="100"
+                  [sortable]="false"></ngx-datatable-column>
+                <ngx-datatable-column name="Min Amount" prop="minAmount" [width]="100"
+                  [sortable]="false"></ngx-datatable-column>
+                <ngx-datatable-column name="Flat Discount" prop="isFlatDiscount" [width]="100"
+                  [sortable]="false"></ngx-datatable-column>
+                <ngx-datatable-column name="Action" prop="Action" [width]="50" [sortable]="false"
+                  class="badge badge-light-success badge-pill">
+                  <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                    <button class="btn btn-primary" (click)="openLinkOfferModal(content1, row)">
                       APPLY
                     </button>
                   </ng-template>
@@ -188,29 +102,16 @@
 <ng-template #content1 let-modal>
   <div class="modal-header">
     <h5 class="modal-title" id="myModalLabel160">Link Offer to Outlet</h5>
-    <button
-      type="button"
-      class="close"
-      (click)="modal.dismiss('Cross click')"
-      aria-label="Close"
-    >
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body" tabindex="0">Are You Sure You Want to Apply this offer to the current outlet.</div>
   <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-primary"
-      (click)="modal.dismiss('Cross click')"
-    >
+    <button type="button" class="btn btn-primary" (click)="modal.dismiss('Cross click')">
       Cancel
     </button>
-    <button
-      type="button"
-      class="btn btn-primary"
-      (click)="linkOffer(); modal.close()"
-    >
+    <button type="button" class="btn btn-primary" (click)="linkOffer(); modal.close()">
       Confirm
     </button>
   </div>
@@ -220,29 +121,16 @@
 <ng-template #content2 let-modal>
   <div class="modal-header">
     <h5 class="modal-title" id="myModalLabel160">Unlink Offer From Outlet</h5>
-    <button
-      type="button"
-      class="close"
-      (click)="modal.dismiss('Cross click')"
-      aria-label="Close"
-    >
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body" tabindex="0">Are You Sure You Want to Unlink</div>
   <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-primary"
-      (click)="modal.dismiss('Cross click')"
-    >
+    <button type="button" class="btn btn-primary" (click)="modal.dismiss('Cross click')">
       Cancel
     </button>
-    <button
-      type="button"
-      class="btn btn-primary"
-      (click)="unLinkOffer(); modal.close()"
-    >
+    <button type="button" class="btn btn-primary" (click)="unLinkOffer(); modal.close()">
       Confirm
     </button>
   </div>
@@ -252,12 +140,7 @@
 <ng-template #content3 let-modal>
   <div class="modal-header">
     <h5 class="modal-title" id="myModalLabel160"></h5>
-    <button
-      type="button"
-      class="close"
-      (click)="modal.dismiss('Cross click')"
-      aria-label="Close"
-    >
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -271,86 +154,40 @@
           <div class="row">
             <div class="col-12 mb-50"></div>
             <div class="col-md-6 col-12">
-              <div
-                class="d-flex justify-content-between align-items-center m-1"
-              >
-                <label class="d-flex align-items-center"
-                  >Show
-                  <select
-                    class="form-control mx-25"
-                    [(ngModel)]="basicSelectedOption"
-                  >
+              <div class="d-flex justify-content-between align-items-center m-1">
+                <label class="d-flex align-items-center">Show
+                  <select class="form-control mx-25" [(ngModel)]="basicSelectedOption">
                     <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="15">15</option>
                   </select>
-                  entries</label
-                >
+                  entries</label>
               </div>
             </div>
             <div class="col-md-6 col-12 d-flex justify-content-md-end">
-              <div
-                class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0"
-              >
-                <label class="d-flex align-items-center"
-                  >Search
-                  <input
-                    type="search"
-                    placeholder="Search"
-                    class="form-control ml-25"
-                    (keyup)="filterUpdate($event)"
-                    (search)="filterUpdate($event)"
-                  />
+              <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0">
+                <label class="d-flex align-items-center">Search
+                  <input type="search" placeholder="Search" class="form-control ml-25" (keyup)="filterUpdate($event)"
+                    (search)="filterUpdate($event)" />
                 </label>
               </div>
             </div>
           </div>
-          <ngx-datatable
-            class="material container striped"
-            [columns]="cols"
-            [rows]="kitchenSinkRows2"
-            [rowHeight]="58"
-            rowHeight="auto"
-            class="bootstrap core-bootstrap"
-            [columnMode]="ColumnMode.force"
-            [headerHeight]="40"
-            [footerHeight]="50"
-            [scrollbarH]="true"
-            [selectionType]="SelectionType.checkbox"
-            [limit]="basicSelectedOption"
-            (select)="onSelect($event)"
-          >
+          <ngx-datatable class="material container striped" [columns]="cols" [rows]="kitchenSinkRows2" [rowHeight]="58"
+            rowHeight="auto" class="bootstrap core-bootstrap" [columnMode]="ColumnMode.force" [headerHeight]="40"
+            [footerHeight]="50" [scrollbarH]="true" [selectionType]="SelectionType.checkbox"
+            [limit]="basicSelectedOption" (select)="onSelect($event)">
             <ngx-datatable-column name="S.No." [width]="50" [sortable]="false">
-              <ng-template
-                ngx-datatable-cell-template
-                let-rowIndex="rowIndex"
-                let-row="row"
-              >
+              <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row">
                 {{ rowIndex + 1 }}
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column
-              name="Product Name"
-              prop="productName"
-              [width]="150"
-            ></ngx-datatable-column>
+            <ngx-datatable-column name="Product Name" prop="productName" [width]="150"></ngx-datatable-column>
             <!--   <ngx-datatable-column name="In Stock" prop="inStock" [width]="100"></ngx-datatable-column> -->
-            <ngx-datatable-column
-              name="Action"
-              prop="Action"
-              [width]="50"
-              [sortable]="false"
-              class="badge badge-light-success badge-pill"
-            >
-              <ng-template
-                let-value="value"
-                let-row="row"
-                ngx-datatable-cell-template
-              >
-                <button
-                  class="btn btn-primary"
-                  (click)="openChangStockModal(content4, row)"
-                >
+            <ngx-datatable-column name="Action" prop="Action" [width]="50" [sortable]="false"
+              class="badge badge-light-success badge-pill">
+              <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                <button class="btn btn-primary" (click)="openChangStockModal(content4, row)">
                   In Stock
                 </button>
               </ng-template>
@@ -370,22 +207,13 @@
 <ng-template #content4 let-modal>
   <div class="modal-header">
     <h5 class="modal-title" id="myModalLabel160">Update Stock</h5>
-    <button
-      type="button"
-      class="close"
-      (click)="modal.dismiss('Cross click')"
-      aria-label="Close"
-    >
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body" tabindex="0">Are You Sure You Want to Update</div>
   <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-primary"
-      (click)="modal.dismiss('Cross click')"
-    >
+    <button type="button" class="btn btn-primary" (click)="modal.dismiss('Cross click')">
       Cancel
     </button>
     <button type="button" class="btn btn-primary" (click)="chnageStockStatus()">
@@ -397,12 +225,7 @@
 <ng-template #content5 let-modal>
   <div class="modal-header">
     <h5 class="modal-title" id="myModalLabel160">Outlet Earning</h5>
-    <button
-      type="button"
-      class="close"
-      (click)="modal.dismiss('Cross click')"
-      aria-label="Close"
-    >
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -411,12 +234,8 @@
     <div class="row">
       <div class="align-items-center date-range mr-1">
         <div class="col-lg-12 col-md-12 col-sm-12">
-          <ng2-flatpickr
-            [config]="DateRangeOptions"
-            name="DateRange"
-            placeholder="Date"
-            (change)="getDate($event)"
-          ></ng2-flatpickr>
+          <ng2-flatpickr [config]="DateRangeOptions" name="DateRange" placeholder="Date"
+            (change)="getDate($event)"></ng2-flatpickr>
         </div>
       </div>
       <div class="earning col-lg-5 col-md-5 col-sm-12">
@@ -459,12 +278,7 @@
 <ng-template #content6 let-modal>
   <div class="modal-header">
     <h5 class="modal-title" id="myModalLabel160">Bank Details</h5>
-    <button
-      type="button"
-      class="close"
-      (click)="modal.dismiss('Cross click')"
-      aria-label="Close"
-    >
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -509,7 +323,7 @@
         
       </div> -->
       <div class="details-parent col-md-12">
-        <div class="card-body11">
+        <div class="card-body11" *ngIf="this.bankdetails && this.bankdetails.length > 0; else elseNotDone">
           <div class=" card-transaction pt-0">
             <div class="card-body1">
               <div class="transaction-item">
@@ -518,7 +332,7 @@
                     <h6 class="transaction-title">Account Holder:</h6>
                   </div>
                 </div>
-                <div class="details">{{ openingTime }}</div>
+                <div class="details">{{ this.bankdetails?.accountHolder }}</div>
               </div>
               <div class="transaction-item">
                 <div class="media">
@@ -526,7 +340,7 @@
                     <h6 class="transaction-title">Account Number :</h6>
                   </div>
                 </div>
-                <div class="details">{{ closingTime }}</div>
+                <div class="details">{{ this.bankdetails?.accountNumber }}</div>
               </div>
 
               <div class="transaction-item">
@@ -535,7 +349,7 @@
                     <h6 class="transaction-title">IFSC Code :</h6>
                   </div>
                 </div>
-                <div class="details">{{ closingTime }}</div>
+                <div class="details">{{ this.bankdetails?.ifsc }}</div>
               </div>
 
               <div class="transaction-item">
@@ -544,7 +358,7 @@
                     <h6 class="transaction-title">Branch Name :</h6>
                   </div>
                 </div>
-                <div class="details">{{ closingTime }}</div>
+                <div class="details">{{ this.bankdetails?.branchName }}</div>
               </div>
 
               <div class="transaction-item">
@@ -553,15 +367,18 @@
                     <h6 class="transaction-title">Bank Name :</h6>
                   </div>
                 </div>
-                <div class="details">{{ closingTime }}</div>
+                <div class="details">{{ this.bankdetails?.bankName }}</div>
               </div>
             </div>
           </div>
         </div>
+        <ng-template #elseNotDone>
+          Bank accounts not found 
+        </ng-template>
       </div>
 
 
-   
+
     </div>
   </div>
 </ng-template>
@@ -612,39 +429,24 @@
                     <button class="btn btn-outline-primary" (click)="newhistory()"><span>Order History</span></button>
                     <button class="btn btn-outline-primary" (click)="openMenu()"><span>Menu</span></button>
                     <button class="btn btn-outline-primary" (click)="OutOfStock()"><span>Out of Stock</span></button> -->
-                    <button
-              class="btn btn-primary btn-add"
-              (click)="openOfferModal(content)"
-            >
-              <span>Offers</span>
-            </button>
-            <button
-              class="btn btn-primary btn-add"
-              (click)="orderHistoryPage()"
-            >
-              <span>Order History</span>
-            </button>
-            <button class="btn btn-primary btn-add" (click)="gotoMenuPage()">
-              <span>Menu</span>
-            </button>
-            <button
-              class="btn btn-primary btn-add"
-              (click)="openOutofStockModal(content3)"
-            >
-              <span>Out of Stock</span>
-            </button>
-            <button
-              class="btn btn-primary btn-add"
-              (click)="openEarningModal(content5)"
-            >
-              <span>Earning</span>
-            </button>
-            <button
-              class="btn btn-primary btn-add"
-              (click)="openEarningModal(content6)"
-            >
-              <span>Bank Details</span>
-            </button>
+                    <button class="btn btn-primary btn-add" (click)="openOfferModal(content)">
+                      <span>Offers</span>
+                    </button>
+                    <button class="btn btn-primary btn-add" (click)="orderHistoryPage()">
+                      <span>Order History</span>
+                    </button>
+                    <button class="btn btn-primary btn-add" (click)="gotoMenuPage()">
+                      <span>Menu</span>
+                    </button>
+                    <button class="btn btn-primary btn-add" (click)="openOutofStockModal(content3)">
+                      <span>Out of Stock</span>
+                    </button>
+                    <button class="btn btn-primary btn-add" (click)="openEarningModal(content5)">
+                      <span>Earning</span>
+                    </button>
+                    <button class="btn btn-primary btn-add" (click)="openbankDetailsModal(content6)">
+                      <span>Bank Details</span>
+                    </button>
                   </div>
                 </div>
                 <div class="row">
@@ -710,9 +512,9 @@
                                   <div class="heading1">
                                     <h3>Outlet Timing</h3>
                                   </div>
-                              
+
                                   <!-- <div class="icon" (click)="deleteOutlet(delete1)"> -->
-                                    <i class="fas fa-edit" ></i>
+                                  <i class="fas fa-edit"></i>
                                   <!-- </div> -->
                                 </div>
                                 <hr>
@@ -766,7 +568,8 @@
                                         </div>
                                       </div>
                                       <div class="details"> @gmail.com</div>
-                                    </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               </div>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                             </div>

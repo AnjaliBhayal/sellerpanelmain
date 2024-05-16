@@ -124,7 +124,7 @@ getSellerInfo(){
 
 // get seller info
 getSellerPaymentInfo(outletId:any){
-  return this.http.get(this.paymentUrl + '/v1/bank/outlet/'+ outletId, this.Header()).pipe(map((data:any)=>{
+  return this.http.get(this.paymentUrl + 'v1/bank/outlet/'+ outletId, this.Header()).pipe(map((data:any)=>{
     return data;
   }))
 }
