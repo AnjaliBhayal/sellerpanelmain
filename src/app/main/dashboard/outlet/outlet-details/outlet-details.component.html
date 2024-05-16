@@ -323,8 +323,9 @@
         
       </div> -->
       <div class="details-parent col-md-12">
-        <div class="card-body11" *ngIf="this.bankdetails && this.bankdetails.length > 0; else elseNotDone">
-          <div class=" card-transaction pt-0">
+        <div class="card-body11">
+          {{noDataFound}}
+          <div class=" card-transaction pt-0" *ngIf="!this.bankdetails.length">
             <div class="card-body1">
               <div class="transaction-item">
                 <div class="media">
@@ -372,9 +373,7 @@
             </div>
           </div>
         </div>
-        <ng-template #elseNotDone>
-          Bank accounts not found 
-        </ng-template>
+       
       </div>
 
 
