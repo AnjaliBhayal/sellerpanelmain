@@ -1,59 +1,34 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import {
-  ColumnMode,
-  DatatableComponent,
-  SelectionType,
-} from "@swimlane/ngx-datatable";
-import { ngxCsv } from "ngx-csv/ngx-csv";
+import { ColumnMode, DatatableComponent, SelectionType, } from "@swimlane/ngx-datatable";
 import { NgbModal, NgbModalConfig } from "@ng-bootstrap/ng-bootstrap";
-import {
-  FormGroup,
-  FormBuilder,
-  Validators,
-  FormControl,
-} from "@angular/forms";
+import { FormGroup, FormBuilder, Validators, FormControl, } from "@angular/forms";
 import { OutletServiceService } from "app/services/outlet-service.service";
 import { Router } from "@angular/router";
 import { ToastrserviceService } from "app/services/toastrservice.service";
 import * as FileSaver from "file-saver";
 import * as XLSX from "xlsx";
+import { BlockUI, NgBlockUI } from "ng-block-ui";
+
 @Component({
   selector: "app-all-outlet",
   templateUrl: "./all-outlet.component.html",
   styleUrls: ["./all-outlet.component.scss"],
 })
+
 export class AllOutletComponent implements OnInit {
-  private tempData = [];
-  public kitchenSinkRows: any;
-  public basicSelectedOption: number = 5;
-  public ColumnMode = ColumnMode;
+
+  @BlockUI() blockUI: NgBlockUI;
+  @ViewChild(DatatableComponent) table: DatatableComponent | any;
+  @ViewChild("tableRowDetails") tableRowDetails: any;
   public expanded = {};
   public chkBoxSelected = [];
   public SelectionType = SelectionType;
-  private exportCSVData: [] | any;
-
   public openingHourdata = { hour: 13, minute: 30 };
   public closingHourdata = { hour: 13, minute: 30 };
   public meridianTP = true;
-  @ViewChild(DatatableComponent) table: DatatableComponent | any;
-  @ViewChild("tableRowDetails") tableRowDetails: any;
-  cols = [
-    { name: "ID" },
-    { name: "outletId" },
-    { name: "outletName" },
-    { name: "outletImage" },
-    { name: "area" },
-    { name: "shopAddress" },
-    { name: "longitude" },
-    { name: "latitude" },
-    { name: "isClosed" },
-    { name: "phone" },
-    { name: "pending Count" },
-    { name: "isClosed" },
-  ];
-  rows: any;
-  data = [];
-  filteredData = [];
+
+
+
   formula: string = "All Outlet";
   editOutletForm: FormGroup;
   Submitted: Boolean = false;
@@ -70,16 +45,17 @@ export class AllOutletComponent implements OnInit {
   cuisineArray = [];
   selectedImage: any;
   imageURL = [];
-  loading: Boolean = false;
+  public contentHeader: object;
+
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private toastr: ToastrserviceService,
     private modalService: NgbModal,
     private outletService: OutletServiceService
-  ) {}
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void  {
     this.allOutlet();
     // edit outlet form
     this.editOutletForm = this.fb.group({
@@ -89,6 +65,20 @@ export class AllOutletComponent implements OnInit {
       shopAddress: new FormControl("", Validators.required),
       phone: new FormControl("", [Validators.required]),
     });
+    this.contentHeader = {
+      headerTitle: "All Outlets",
+      actionButton: true,
+      breadcrumb: {
+        type: "",
+        links: [
+          {
+            name: "Orders",
+            isLink: true,
+            link: "dashboard/allOutlet",
+          },
+        ],
+      },
+    };
 
     // add outlet form
     this.addOutletForm = this.fb.group({
@@ -151,9 +141,9 @@ export class AllOutletComponent implements OnInit {
 
   addOutletFormSubmit() {
     this.Submitted = true;
-    this.loading = true;
+
     if (this.addOutletForm.invalid) {
-      this.loading = false;
+
       console.log("Failed");
 
       return;
@@ -193,7 +183,7 @@ export class AllOutletComponent implements OnInit {
       this.outletService.addOutlet(formData).subscribe((res: any) => {
         if (res.status) {
           this.toastr.showSuccess(res.message, "Success!");
-          this.loading = false;
+
           this.addOutletForm.reset();
           this.modalService.dismissAll();
           this.allOutlet();
@@ -228,66 +218,48 @@ export class AllOutletComponent implements OnInit {
   }
 
   allOutlet() {
+    this.blockUI.start()
     this.outletService.getAllOutlet(this.mode).subscribe((res: any) => {
       this.allOutletList = res.items;
-      this.rows = res.items;
-      this.tempData = this.rows;
-      this.kitchenSinkRows = this.rows;
-      this.data = this.allOutletList;
-      this.filteredData = this.allOutletList;
+      this.blockUI.stop()
+      console.log(this.allOutletList);
     });
   }
 
   // redirected to outlet details
-  showOutletDetail(outletDetails: any) {
-    this.router.navigate(["/dashboard/outletDetails"], {
-      state: { outletDetails },
-    });
-  }
+  // showOutletDetail(outletDetails: any) {
+  //   this.router.navigate(["/dashboard/outletDetails"], {
+  //     state: { outletDetails },
+  //   });
+  // }
 
-  selectButtonClass(isClosed: boolean): any {
-    switch (isClosed) {
-      case true:
-        return "";
-      case false:
-        return "btn-success";
-    }
-  }
 
-  statusChange(event: any, data: any, outlet: any, checked: any) {
+
+  statusChange(event: any, data: any, outlet: any) {
     this.modalService.open(data, {
       centered: true,
       scrollable: true,
       size: "md",
     });
-    event.target.checked = !event.target.checked;
-
-    // event.target.checked
-    //   ? (event.currentTarget.className += " btn-success")
-    //   : (event.currentTarget.className = event.currentTarget.className.replace(
-    //       "btn-success",
-    //       " "
-    //     ));
-    console.log("event=>", event.currentTarget.className);
 
     this.outletId = outlet.outletId;
   }
 
   // change outlet status Modal
   outletStatusChange() {
-    this.outletService
-      .chageOutletStatus(this.outletId)
-      .subscribe((res: any) => {
-        if (res.status) {
-          this.toastr.showSuccess(res.message, "Suceess!");
-          this.allOutlet();
-          this.modalService.dismissAll();
-        } else {
-          this.toastr.showError(res.message, "error!");
-          this.allOutlet();
-          this.modalService.dismissAll();
-        }
-      });
+    this.blockUI.start("Please Wait....")
+    this.outletService.chageOutletStatus(this.outletId).subscribe((res: any) => {
+      this.blockUI.stop()
+      if (res.status) {
+        this.toastr.showSuccess(res.message, "Suceess!");
+        this.allOutlet();
+        this.modalService.dismissAll();
+      } else {
+        this.toastr.showError(res.message, "error!");
+        this.allOutlet();
+        this.modalService.dismissAll();
+      }
+    });
   }
 
   // edit outlet image
@@ -346,91 +318,7 @@ export class AllOutletComponent implements OnInit {
     }
   }
 
-  filterUpdate(event: any) {
-    let val = event.target.value.toLowerCase();
-    let colsAmt = this.cols.length;
-    let keys = Object.keys(this.allOutletList[0]);
-    this.data = this.filteredData.filter(function (item: any): any {
-      for (let i = 0; i < colsAmt; i++) {
-        if (
-          item[keys[i]].toString().toLowerCase().indexOf(val) !== -1 ||
-          !val
-        ) {
-          return true;
-        }
-      }
-    });
 
-    this.kitchenSinkRows = this.data;
-    this.table.offset = 0;
-  }
-  onSelect({ selected }: any) {
-    this.exportCSVData = selected;
-  }
-
-  downloadCSV(event: any) {
-    // var options = {
-    //   fieldSeparator: ',',
-    //   quoteStrings: '"',
-    //   decimalseparator: '.',
-    //   showLabels: true,
-    //   showTitle: true,
-    //   title: '',
-    //   useBom: true,
-    //   noDownload: false,
-    //   headers: ['outletId', 'Outlet Name', 'Outlet Image', 'Area', 'Is Discounted', "Discount Id", 'Shop Address', 'Longitude', 'Latitude', 'Is Closed', 'Phone', 'discountData', 'Pending Count', 'Prepering Count', 'Ready Count', 'Dispatched Count', 'Delivered Count', 'Cancelled Count'],
-    // }
-
-    // if (this.exportCSVData == undefined) {
-    //   const newData = this.tempData.map(item => {
-    //     item.discountData = JSON.stringify(item.discountData);
-    //     return item;
-    //   });
-
-    //   const fileInfo = new ngxCsv(newData, this.formula, options);
-
-    // } else {
-    //  const newData = this.exportCSVData.map(item => {
-
-    //   item.discountData = JSON.stringify(item.discountData);
-    //   return item;
-    // });
-    // const fileInfo = new ngxCsv(newData, this.formula, options);
-    // this.exportCSVData = undefined;
-    // }
-
-    // const data = this.tempData;
-
-    const modifiedData = this.tempData.map((item) => {
-      item.discountData = JSON.stringify(item.discountData);
-      item.outletImage = JSON.stringify(item.outletImage);
-
-      const modifiedItem = {};
-      for (const key in item) {
-        // console.log(key);
-        const modifiedKey = key.toUpperCase();
-        modifiedItem[modifiedKey] = item[key];
-      }
-      return modifiedItem;
-    });
-
-    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(modifiedData);
-    const workbook: XLSX.WorkBook = {
-      Sheets: { data: worksheet },
-      SheetNames: ["data"],
-    };
-    const excelBuffer: any = XLSX.write(workbook, {
-      bookType: "xlsx",
-      type: "array",
-    });
-    const excelData: Blob = new Blob([excelBuffer], {
-      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    });
-    FileSaver.saveAs(excelData, "All Outlet.xlsx");
-  }
-  onActivate(event: any) {
-    // console.log('Activate Event', event.type);
-  }
   openAddOutletModal(data: any) {
     this.modalService.open(data, {
       centered: true,
@@ -446,8 +334,11 @@ export class AllOutletComponent implements OnInit {
         if (!res.status) {
           this.toastr.showError(res.message, "Error");
         }
-        this.toastr.showSuccess(res.message,"Succes")
+        this.toastr.showSuccess(res.message, "Succes")
         this.allOutlet()
       });
+  }
+  viewdetails(outletDetails:any) {
+    this.router.navigate(["/outletDetails"],{ state: { outletDetails } });
   }
 }

@@ -76,6 +76,7 @@ content: any;
 content3: any;
 content5: any;
   bankdetails: any;
+  noDataFound: any;
 
   constructor(private router: Router, private toastr: ToastrserviceService, private modalService: NgbModal, private outletService: OutletServiceService) {
     let nav: Navigation = this.router.getCurrentNavigation();
@@ -330,6 +331,7 @@ content5: any;
         this.toastr.showSuccess(res.message, "Success!");
         this.modalRef.close();
       } else {
+        this.noDataFound=res.message;
         this.toastr.showError(res.message, "error!");
       }
      

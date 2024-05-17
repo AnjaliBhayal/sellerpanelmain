@@ -26,6 +26,7 @@ export class PromotionComponent implements OnInit {
   submitted: Boolean = false;
   isFlat: Boolean = false;
   offerDetail: any;
+  contentHeader: { headerTitle: string; actionButton: boolean; breadcrumb: { type: string; links: { name: string; isLink: boolean; link: string; }[]; }; };
 
   constructor(
     private toastr: ToastrserviceService,
@@ -44,7 +45,22 @@ export class PromotionComponent implements OnInit {
       minAmount: new FormControl("", [Validators.required]),
       isFlatDiscount: new FormControl("", [Validators.required]),
     });
+    this.contentHeader = {
+      headerTitle: "Promotion",
+      actionButton: true,
+      breadcrumb: {
+        type: "",
+        links: [
+          {
+            name: "Orders",
+            isLink: true,
+            link: "dashboard/promotion",
+          },
+        ],
+      },
+    };
   }
+
   
   flatDiscountProperty(data: any) {
     console.log(data.target.checked);
