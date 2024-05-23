@@ -214,13 +214,13 @@ content5: any;
       size: "md",
     });
   }
-  openSettlementModal(data:any){
-    this.modalRef = this.modalService.open(data, {
-      centered: true,
-      scrollable: true,
-      size: "lg",
-    });
-  }
+  // openSettlementModal(data:any){
+  //   this.modalRef = this.modalService.open(data, {
+  //     centered: true,
+  //     scrollable: true,
+  //     size: "lg",
+  //   });
+  // }
   getSellerOffer() {
     this.outletService.getAllOffer().subscribe((data: any) => {
       this.sellerOfferList = data.items;
@@ -290,6 +290,10 @@ content5: any;
   gotoMenuPage() {
     const outletData = this.outletDetails;
     this.router.navigate(["/dashboard/menu"], { state: { outletData } });
+  }
+  openSettlementModal() {
+    const outletData = this.outletDetails;
+    this.router.navigate(["/dashboard/settlement"], { state: { outletData } });
   }
 
   filterUpdate(event: any) {
