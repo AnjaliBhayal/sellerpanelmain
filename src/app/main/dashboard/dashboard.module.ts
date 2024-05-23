@@ -23,6 +23,7 @@ import { BlockUI, BlockUIModule } from "ng-block-ui";
 import { CoreCommonModule } from "@core/common.module";
 import { SupportComponent } from './support/support.component';
 import { SettlementComponent } from './outlet/settlement/settlement.component';
+import { OutletOfferComponent } from './outlet/outlet-offer/outlet-offer.component';
 
 const routes: Routes = [
   {
@@ -91,6 +92,10 @@ const routes: Routes = [
     path: "settlement",
     component: SettlementComponent,
   },
+  {
+    path: "outletoffer",
+    component: OutletOfferComponent,
+  },
 ];
 
 @NgModule({
@@ -108,6 +113,7 @@ const routes: Routes = [
     AccountComponent,
     SupportComponent,
     SettlementComponent,
+    OutletOfferComponent,
   ],
   imports: [
     FileUploadModule,
