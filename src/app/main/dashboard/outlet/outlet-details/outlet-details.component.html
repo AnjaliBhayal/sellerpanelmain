@@ -8,12 +8,12 @@
   </div>
   <div class="modal-body" tabindex="0">
     <div class="row">
-      <div class="col-2" *ngIf="outletOffer">
+      <div class="col-12" *ngIf="outletOffer">
         <h4 class="card-title">Outlet Offer</h4>
-        <div class="mt-5 card offer-box">
+        <div class=" card offer-box">
           <div class="card-body">
             <h3>{{ outletOffer.discountTitle }}</h3>
-            <div class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
+            <div class="d-flex align-items-baseline justify-content-between ">
               <button class="btn btn-offer-edit" (click)="openEditOfferModal(content1, offer)" rippleEffect>
                 <i class="fa-regular fa-pen-to-square"></i>
               </button>
@@ -95,7 +95,107 @@
         </section>
       </div>
     </div>
+
+    <div class="row">
+      <!-- Dynamic data Card -->
+      <div class="col-12 col-md-12 col-lg-12">
+        <div class="card-body">
+          <div class="outlet-body">
+            <div class="card-transaction support">
+              <div class="card-header">
+                <div class="card-body">
+                  <div class="heading2">
+                    <h1>Customer Support</h1>
+                  </div>
+                  <hr />
+                  <div class="transaction-item pt-1">
+                    <div class="media">
+                      <div class="avatar bg-light-primary rounded">
+                        <div class="avatar-content">
+                          <i
+                            data-feather="check-square"
+                            class="avatar-icon font-medium-3"
+                          ></i>
+                        </div>
+                      </div>
+                      <div class="media-body">
+                        <h6 class="transaction-title">Name:</h6>
+                      </div>
+                    </div>
+                    <div class="details">Anjali Bhayal</div>
+                  </div>
+                  <div class="transaction-item">
+                    <div class="media">
+                      <div class="avatar bg-light-success rounded">
+                        <div class="avatar-content">
+                          <i
+                            data-feather="tablet"
+                            class="avatar-icon font-medium-3"
+                          ></i>
+                        </div>
+                      </div>
+                      <div class="media-body">
+                        <h6 class="transaction-title">Phone Number:</h6>
+                      </div>
+                    </div>
+                    <div class="details">9123456789</div>
+                  </div>
+                  <div class="transaction-item">
+                    <div class="media">
+                      <div class="avatar bg-light-danger rounded">
+                        <div class="avatar-content">
+                          <i
+                            data-feather="check"
+                            class="avatar-icon font-medium-3"
+                          ></i>
+                        </div>
+                      </div>
+                      <div class="media-body">
+                        <h6 class="transaction-title">Email ID:</h6>
+                      </div>
+                    </div>
+                    <div class="details">Demo@gmail.com</div>
+                  </div>
+                  <div class="transaction-item">
+                    <div class="media">
+                      <div class="avatar bg-light-warning rounded">
+                        <div class="avatar-content">
+                          <i
+                            data-feather="calendar"
+                            class="avatar-icon font-medium-3"
+                          ></i>
+                        </div>
+                      </div>
+                      <div class="media-body">
+                        <h6 class="transaction-title">Password:</h6>
+                      </div>
+                    </div>
+                    <div class="details">Blank</div>
+                  </div>
+
+                  
+                    <div class="parent d-flex justify-content-between align-items-center">
+                      <button class="btn btn-primary" (click)="openLinkOfferModal(content1, row)">
+                        APPLY
+                      </button>
+                      <button class="btn btn-primary">
+                        OPEN
+                      </button>
+                    </div>
+                
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!--/ Dynamic data Card -->
+    </div>
   </div>
+
+
 </ng-template>
 
 <!-- open link offer to outlet Modal -->
@@ -472,7 +572,7 @@
                     <button class="btn btn-outline-primary" (click)="newhistory()"><span>Order History</span></button>
                     <button class="btn btn-outline-primary" (click)="openMenu()"><span>Menu</span></button>
                     <button class="btn btn-outline-primary" (click)="OutOfStock()"><span>Out of Stock</span></button> -->
-                    <button class="btn btn-primary btn-add" (click)="openOfferModal(content)">
+                    <button class="btn btn-primary btn-add" (click)="openOfferModal()">
                       <span>Offers</span>
                     </button>
                     <button class="btn btn-primary btn-add" (click)="orderHistoryPage()">
@@ -654,3 +754,30 @@
       </button>
   </div>
 </ng-template> -->
+
+
+
+
+
+<!-- active and inactive -->
+<ng-template #content let-modal>
+  <!-- <div class="modal-header">
+    <h5 class="modal-title" id="myModalLabel160">
+      Change OUtlet Status Status
+    </h5>
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div> -->
+  <div class="modal-body p-2" tabindex="0">
+    Are You Sure You Want to Change Status ?
+  </div>
+  <div class="modal-footer p-2">
+    <button type="button" class="model-btn" (click)="modal.dismiss('Cross click')">
+      Cancel
+    </button>
+    <button type="button" class="model-btn1" (click)="outletStatusChange()">
+      Confirm
+    </button>
+  </div>
+</ng-template>

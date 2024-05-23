@@ -8,6 +8,7 @@ import { ToastrserviceService } from "app/services/toastrservice.service";
 import { Options } from "flatpickr/dist/types/options";
 import moment from "moment";
 
+
 const URL = "https://your-url.com";
 
 @Component({
@@ -16,6 +17,7 @@ const URL = "https://your-url.com";
   styleUrls: ["./outlet-details.component.scss"],
 })
 export class OutletDetailsComponent implements OnInit {
+  
   public uploader: FileUploader = new FileUploader({
     url: URL,
     isHTML5: true,
@@ -77,6 +79,8 @@ content3: any;
 content5: any;
   bankdetails: any;
   noDataFound: any;
+  outletId: any;
+  blockUI: any;
 
   constructor(private router: Router, private toastr: ToastrserviceService, private modalService: NgbModal, private outletService: OutletServiceService) {
     let nav: Navigation = this.router.getCurrentNavigation();
@@ -196,16 +200,16 @@ content5: any;
     });
   }
 
-  openOfferModal(data: any) {
-    this.modalService.open(data, {
-      centered: true,
-      scrollable: true,
-      windowClass: "product-detail-modal",
-      size: "lg",
-    });
-    this.getSellerOffer();
-    this.outletOffers();
-  }
+  // openOfferModal(data: any) {
+  //   this.modalService.open(data, {
+  //     centered: true,
+  //     scrollable: true,
+  //     windowClass: "product-detail-modal",
+  //     size: "lg",
+  //   });
+  //   this.getSellerOffer();
+  //   this.outletOffers();
+  // }
 
   openEarningModal(data: any) {
     this.modalRef = this.modalService.open(data, {
@@ -295,6 +299,10 @@ content5: any;
     const outletData = this.outletDetails;
     this.router.navigate(["/dashboard/settlement"], { state: { outletData } });
   }
+  openOfferModal() {
+    const outletData = this.outletDetails;
+    this.router.navigate(["/dashboard/outletoffer"], { state: { outletData } });
+  }
 
   filterUpdate(event: any) {
     console.log(event);
@@ -349,6 +357,37 @@ content5: any;
       }
      
     });
+  }
+
+
+
+
+  statusChange(event: any, data: any, outlet: any) {
+    this.modalService.open(data, {
+      centered: true,
+      scrollable: true,
+      size: "md",
+    });
+
+    this.outletId = outlet.outletId;
+  }
+  outletStatusChange() {
+    this.blockUI.start("Please Wait....")
+    this.outletService.chageOutletStatus(this.outletId).subscribe((res: any) => {
+      this.blockUI.stop()
+      if (res.status) {
+        this.toastr.showSuccess(res.message, "Suceess!");
+        this.allOutlet();
+        this.modalService.dismissAll();
+      } else {
+        this.toastr.showError(res.message, "error!");
+        this.allOutlet();
+        this.modalService.dismissAll();
+      }
+    });
+  }
+  allOutlet() {
+    throw new Error("Method not implemented.");
   }
 
  } 
