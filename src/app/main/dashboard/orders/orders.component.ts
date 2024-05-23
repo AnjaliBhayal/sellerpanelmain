@@ -113,6 +113,8 @@ outletEarnings: any;
     this.status = status;
     this.AuthService.getAllOrderofSeller(this.status).subscribe((data: any) => {
       this.orderList = data.items.orderList;
+      console.log(this.orderList);
+      
     });
   }
 

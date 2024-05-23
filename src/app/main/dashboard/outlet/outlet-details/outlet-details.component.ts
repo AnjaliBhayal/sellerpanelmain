@@ -158,6 +158,8 @@ content5: any;
     };
     this.outletService.getOutOfStockProduct(form).subscribe((data: any) => {
       this.outOfProduct = data.items;
+      console.log(this.outOfProduct);
+      
       this.rows2 = data.items;
       this.tempData2 = this.rows2;
       this.kitchenSinkRows2 = this.rows2;
@@ -210,6 +212,13 @@ content5: any;
       centered: true,
       scrollable: true,
       size: "md",
+    });
+  }
+  openSettlementModal(data:any){
+    this.modalRef = this.modalService.open(data, {
+      centered: true,
+      scrollable: true,
+      size: "lg",
     });
   }
   getSellerOffer() {

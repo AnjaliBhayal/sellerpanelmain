@@ -15,6 +15,7 @@ import {
 import { Router, Navigation } from "@angular/router";
 import { OutletServiceService } from "app/services/outlet-service.service";
 import { ToastrserviceService } from "app/services/toastrservice.service";
+import { ThisReceiver } from "@angular/compiler";
 
 @Component({
   selector: "app-menu",
@@ -425,6 +426,8 @@ export class MenuComponent implements OnInit {
       .getProductById(this.productbyId.categoryId)
       .subscribe((data: any) => {
         this.productList = data.items;
+        console.log(this.productList);
+        
       });
   }
 
@@ -524,7 +527,9 @@ export class MenuComponent implements OnInit {
       .subscribe((res: any) => {
         if (res.status) {
           this.toastr.showSuccess(res.message, "Success!");
-          this.getProductByCategory(this.productbyId);
+         // this.getProductByCategory(this.productbyId);
+          console.log(this.productbyId);
+          
         } else {
           this.toastr.showError(res.message, "error!");
         }
