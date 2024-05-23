@@ -2,7 +2,7 @@
     <div class="card">
       <div class="card-body">
         <div class="d-flex justify-content-between">
-          <h4 class="card-title">Seller Offer List</h4>
+          <!-- <h4 class="card-title">Seller Offer List</h4> -->
         </div>
         <div class="row">
             <!-- Dynamic data Card -->
@@ -15,18 +15,18 @@
                         <div class="card-header">
                             <div class="card-body">
                               <div class="heading2">
-                                <h1>Customer Support</h1>
+                                <h1>Settlement Amount</h1>
                               </div>
-                              <!-- <hr> -->
-                             <div class="row">
-                                <div class="col-6 col-md-6 col-lg-6">
-                                    <div class="card-body">
+                              <hr>
+                             <div class="row" *ngFor="let data of SettlementAmountData">
+                                <div class="col-6 col-md-6 col-lg-6" style="border-right: 1px solid #d6d5d9;">
+                                    <div class="">
                                         <div class="outlet-body">
                                           
                                           <div class=" card-transaction support1">
                                             
-                                            <div class="card-header">
-                                                <div class="card-body">
+                                            <div class="">
+                                                <div class="">
                                                   <!-- <div class="heading2"> -->
                                                     <!-- <h1>Customer Support</h1> -->
                                                   <!-- </div> -->
@@ -40,11 +40,11 @@
                                                         </div>
                                                         
                                                         <div class="media-body">
-                                                          <h6 class="transaction-title">Name: </h6>
+                                                          <h6 class="transaction-title">orderDate: </h6>
                                                         
                                                         </div>
                                                       </div>
-                                                      <div class="details">Anjali Bhayal</div>
+                                                      <div class="details">{{data?.orderDate}}</div>
                                                     </div>
                                                     <div class="transaction-item">
                                                       <div class="media">
@@ -54,11 +54,11 @@
                                                           </div>
                                                         </div>
                                                         <div class="media-body">
-                                                          <h6 class="transaction-title">Phone Number:</h6>
+                                                          <h6 class="transaction-title">settleDate:</h6>
                                                         
                                                         </div>
                                                       </div>
-                                                      <div class="details">9123456789</div>
+                                                      <div class="details">{{data?.settleDate}}</div>
                                                     </div>
                                                     <div class="transaction-item">
                                                       <div class="media">
@@ -68,26 +68,13 @@
                                                           </div>
                                                         </div>
                                                         <div class="media-body">
-                                                          <h6 class="transaction-title">Email ID:</h6>
+                                                          <h6 class="transaction-title">outletId:</h6>
                                                           
                                                         </div>
                                                       </div>
-                                                      <div class="details">Demo@gmail.com</div>
+                                                      <div class="details">{{data?.outletId}}</div>
                                                     </div>
-                                                    <div class="transaction-item">
-                                                      <div class="media">
-                                                        <div class="avatar bg-light-warning rounded">
-                                                          <div class="avatar-content">
-                                                            <i data-feather="calendar" class="avatar-icon font-medium-3"></i>
-                                                          </div>
-                                                        </div>
-                                                        <div class="media-body">
-                                                          <h6 class="transaction-title">Password:</h6>
-                                                         
-                                                        </div>
-                                                      </div>
-                                                      <div class="details">Blank</div>
-                                                    </div>
+                                                   
                                                  
                                                   </div>                        
                                             </div>
@@ -97,14 +84,14 @@
                     
                                     </div>
                                 </div>
-                                <div class="col-6 col-md-6 col-lg-6">
-                                    <div class="card-body">
+                                <div class="col-6 col-md-6 col-lg-6" >
+                                    <div class="">
                                         <div class="outlet-body">
                                           
                                           <div class=" card-transaction support1">
                                             
-                                            <div class="card-header">
-                                                <div class="card-body">
+                                            <div class="">
+                                                <div class="">
                                                   <!-- <div class="heading2"> -->
                                                     <!-- <h1>Customer Support</h1> -->
                                                   <!-- </div> -->
@@ -118,11 +105,11 @@
                                                         </div>
                                                         
                                                         <div class="media-body">
-                                                          <h6 class="transaction-title">Name: </h6>
+                                                          <h6 class="transaction-title">amount: </h6>
                                                         
                                                         </div>
                                                       </div>
-                                                      <div class="details">Anjali Bhayal</div>
+                                                      <div class="details">{{data?.amount}}</div>
                                                     </div>
                                                     <div class="transaction-item">
                                                       <div class="media">
@@ -132,11 +119,11 @@
                                                           </div>
                                                         </div>
                                                         <div class="media-body">
-                                                          <h6 class="transaction-title">Phone Number:</h6>
+                                                          <h6 class="transaction-title">sellerId:</h6>
                                                         
                                                         </div>
                                                       </div>
-                                                      <div class="details">9123456789</div>
+                                                      <div class="details">{{data?.sellerId}}</div>
                                                     </div>
                                                     <div class="transaction-item">
                                                       <div class="media">
@@ -146,26 +133,13 @@
                                                           </div>
                                                         </div>
                                                         <div class="media-body">
-                                                          <h6 class="transaction-title">Email ID:</h6>
+                                                          <h6 class="transaction-title">status:</h6>
                                                           
                                                         </div>
                                                       </div>
-                                                      <div class="details">Demo@gmail.com</div>
+                                                      <div class="details">{{data?.status}}</div>
                                                     </div>
-                                                    <div class="transaction-item">
-                                                      <div class="media">
-                                                        <div class="avatar bg-light-warning rounded">
-                                                          <div class="avatar-content">
-                                                            <i data-feather="calendar" class="avatar-icon font-medium-3"></i>
-                                                          </div>
-                                                        </div>
-                                                        <div class="media-body">
-                                                          <h6 class="transaction-title">Password:</h6>
-                                                         
-                                                        </div>
-                                                      </div>
-                                                      <div class="details">Blank</div>
-                                                    </div>
+                                                   
                                                  
                                                   </div>                        
                                             </div>
@@ -176,7 +150,7 @@
                                     </div>
                                 </div>
                              </div>
-                              </div>                        
+                            </div>                        
                         </div>
                         
                       </div>
@@ -193,34 +167,59 @@
         </div>
 
 
+
         
-        <ngx-datatable class="material container striped" [columns]="cols" [rows]="kitchenSinkRows"
-          [rowHeight]="58" rowHeight="auto" class="bootstrap core-bootstrap" [columnMode]="ColumnMode.force"
-          [headerHeight]="40" [footerHeight]="50" [scrollbarH]="true" [selectionType]="SelectionType.checkbox"
-          [limit]="basicSelectedOption" (select)="onSelect($event)">
-          <ngx-datatable-column name="S.No." [width]="50" [sortable]="false">
-            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row">
-              {{ rowIndex + 1 }}
-            </ng-template>
-          </ngx-datatable-column>
-          <ngx-datatable-column name="Order ID" prop="discountTitle" [width]="100"></ngx-datatable-column>
-          <ngx-datatable-column name="Order Value" prop="promoCode" [width]="100"></ngx-datatable-column>
-          <ngx-datatable-column name="Discount %" prop="discountPercent" [width]="100"></ngx-datatable-column>
-          <ngx-datatable-column name="Deduction" prop="maxDiscount" [width]="100"
-            [sortable]="false"></ngx-datatable-column>
-          <ngx-datatable-column name="Deduction Reason" prop="minAmount" [width]="100"
-            [sortable]="false"></ngx-datatable-column>
-          <ngx-datatable-column name="Settlement Amount" prop="isFlatDiscount" [width]="100"
-            [sortable]="false"></ngx-datatable-column>
-          <ngx-datatable-column name="Customer Name" prop="Action" [width]="50" [sortable]="false"
-            class="badge badge-light-success badge-pill">
-            <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
-              <!-- <button class="btn btn-primary" (click)="openLinkOfferModal(content1, row)">
-                APPLY
-              </button> -->
-            </ng-template>
-          </ngx-datatable-column>
-        </ngx-datatable>
+  <div class="card-body collapse-icon p-0 pt-1">
+   <div class="collapse-default">
+      <ngb-accordion [destroyOnHide]="false" [closeOthers]="true" activeIds="panelBorderBottom1">
+        <ngb-panel id="panelBorderBottom1">
+          <ng-template ngbPanelTitle>
+            <span>Settletment Orders </span>
+          </ng-template>
+          <ng-template ngbPanelContent>
+
+            <div *ngFor="let item of SettlementAmountData">
+             <ngx-datatable
+                class="bootstrap"
+                [rows]="item.orders"
+                [columns]="orderColumns"
+                columnMode="force"
+                headerHeight="50"
+                footerHeight="50"
+                [rowHeight]="58" 
+                rowHeight="auto"
+                [scrollbarV]="true">
+              </ngx-datatable>
+            </div>
+         <!-- <ngx-datatable class="material container striped" [columns]="cols" [rows]="kitchenSinkRows"
+            [rowHeight]="58" rowHeight="auto" class="bootstrap core-bootstrap" 
+            [headerHeight]="40" [footerHeight]="50" [scrollbarH]="true" 
+            [limit]="basicSelectedOption" (select)="onSelect($event)">
+          
+            <ngx-datatable-column name="Order ID" prop="orderId" [width]="150"></ngx-datatable-column>
+            <ngx-datatable-column name="Order Value" prop="orderValue" [width]="150"></ngx-datatable-column>
+            <ngx-datatable-column name="Discount %" prop="discount" [width]="150"></ngx-datatable-column>
+            <ngx-datatable-column name="Deduction" prop="deducation" [width]="180"
+              ></ngx-datatable-column>
+            <ngx-datatable-column name="Deduction Reason" prop="deducationReason" [width]="180"
+              ></ngx-datatable-column>
+            <ngx-datatable-column name="Settlement Amount" prop="settlementAmount" [width]="180"
+              ></ngx-datatable-column>
+            <ngx-datatable-column name="Customer Name" prop="customerName" [width]="150" >
+            
+            </ngx-datatable-column>
+          </ngx-datatable> 
+ -->
+
+          </ng-template>
+        </ngb-panel>
+    
+      </ngb-accordion>
+    </div>
+  </div>
+    
+        
+      <!--  -->
       </div>
     </div>
   </section>

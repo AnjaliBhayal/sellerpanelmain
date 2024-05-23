@@ -296,6 +296,13 @@ deletData(body:any){
     return res;
   }))
 }
+//getsettlementAmount
+
+getsettlementAmount(){
+  return this.http.get(this.paymentUrl + 'v1/settlements/outlet/56c9bac6e2b2'  , this.Header()).pipe(map((res:any)=>{
+    return res;
+  }))
+}
 }
 
  
