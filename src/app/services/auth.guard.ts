@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate {
 
 
   public isLoggedIn(): boolean {
-
+ console.log("fsdsffdf"+ localStorage.getItem('token'))
     return !!localStorage.getItem('token');
   }
 }

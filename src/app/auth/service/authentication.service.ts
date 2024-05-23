@@ -90,5 +90,6 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
     // notify
     this.currentUserSubject.next(null);
+    
   }
 }

@@ -31,6 +31,7 @@ export class AuthService {
   loginWithMobileNumber(body: any) {
     return this.http.post<any>(this.apiUrl + "login", body).pipe(
       map((user: any) => {
+        console.log(user);
         if (user.status) {
           /*   localStorage.setItem('info', user.items?.user_type)
         localStorage.setItem('token', user.items?.token) */
@@ -44,6 +45,8 @@ export class AuthService {
     return this.http.post(this.apiUrl + "verify", body).pipe(
       map((user: any) => {
         if (user.status) {
+          console.log(user);
+          
           localStorage.setItem("token", user.items?.token);
         }
         return user;
