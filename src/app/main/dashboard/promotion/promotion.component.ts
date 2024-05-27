@@ -193,7 +193,6 @@ export class PromotionComponent implements OnInit {
       centered:true
     });
   }
-
   
 
   
