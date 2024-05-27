@@ -33,7 +33,7 @@ export class PromotionComponent implements OnInit {
     private fb: FormBuilder,
     private outletService: OutletServiceService,
     private modalService: NgbModal
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getAllPromotion();
@@ -61,7 +61,7 @@ export class PromotionComponent implements OnInit {
     };
   }
 
-  
+
   flatDiscountProperty(data: any) {
     console.log(data.target.checked);
   }
@@ -70,12 +70,12 @@ export class PromotionComponent implements OnInit {
     return this.addDiscountForm.controls;
   }
 
-  
+
 
   addDiscountFormSubmit() {
     this.submitted = true;
     if (this.isFlat) {
-    
+
       this.addDiscount.maxDiscount.setValue(0);
     }
     if (this.addDiscountForm.invalid) {
@@ -106,7 +106,10 @@ export class PromotionComponent implements OnInit {
   // get all promotion
   getAllPromotion() {
     this.outletService.getAllOffer().subscribe((data: any) => {
-      this.promotionList = data.items;
+     ;
+ this.promotionList = data.items;
+
+ console.log( this.promotionList )
     });
   }
 
@@ -140,31 +143,31 @@ export class PromotionComponent implements OnInit {
     });
   }
 
- /*  editDiscountFormSubmit() {
-    this.submitted = true;
-    if (this.isFlat) {
-      console.log("==============______");
-      this.addDiscount.maxDiscount.setValue(0);
-    }
-    if (this.addDiscountForm.invalid) {
-      return;
-    } else {
-      const formData = {
-        discountTitle: this.editDiscountForm.value.discountTitle,
-        promoCode: this.editDiscountForm.value.promoCode,
-        discountPercent: this.editDiscountForm.value.discountPercent,
-        maxDiscount: this.editDiscountForm.value.maxDiscount,
-        minAmount: this.editDiscountForm.value.minAmount,
-      };
-    }
-  } */
+  /*  editDiscountFormSubmit() {
+     this.submitted = true;
+     if (this.isFlat) {
+       console.log("==============______");
+       this.addDiscount.maxDiscount.setValue(0);
+     }
+     if (this.addDiscountForm.invalid) {
+       return;
+     } else {
+       const formData = {
+         discountTitle: this.editDiscountForm.value.discountTitle,
+         promoCode: this.editDiscountForm.value.promoCode,
+         discountPercent: this.editDiscountForm.value.discountPercent,
+         maxDiscount: this.editDiscountForm.value.maxDiscount,
+         minAmount: this.editDiscountForm.value.minAmount,
+       };
+     }
+   } */
 
   modalOfferDelete(modalData: any, Offer: any) {
     this.offerDetail = Offer;
     this.modalService.open(modalData, {
       centered: true,
       size: "md",
-  
+
     });
   }
 
@@ -184,16 +187,16 @@ export class PromotionComponent implements OnInit {
   modalOpen(modalBasic) {
     this.modalService.open(modalBasic, {
       windowClass: "modal",
-      centered:true
+      centered: true
     });
   }
-  addOffer(addOfferModal){
+  addOffer(addOfferModal) {
     this.modalService.open(addOfferModal, {
       windowClass: "modal",
-      centered:true
+      centered: true
     });
   }
-  
 
-  
+
+
 }

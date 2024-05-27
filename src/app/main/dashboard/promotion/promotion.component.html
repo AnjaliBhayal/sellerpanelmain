@@ -14,7 +14,6 @@
   </div>
 </ng-container>
 
-
 <div class="order">
   <div class="card card-congratulation-medal">
     <div class="card-body">
@@ -24,34 +23,39 @@
         <button class="Add-btn" (click)="addOffer(addOfferModal)">Add Offer + </button>
       </div>
       <div class="row pt-2">
-        <div class="col-md-4 col-sm-6 col-xs-12 "*ngFor="let promo of promotionList">
+        <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let promo of promotionList">
           <div class="dealwrapper purple">
             <div class="ribbon-wrapper">
-              <div class="ribbon-tag">50% OFF</div>
+              <div class="ribbon-tag"> OFFER</div>
             </div>
             <div class="list-group">
-              <a href="#" class="list-group-item">
-                <h1 class="list-group-item-text text-align-start">Welcome Offer</h1>
+              <a class="list-group-item">
+                <h1 class="list-group-item-text text-align-start">{{ promo?.discountPercent }}% OFF</h1>
               </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text"> Apply this Offer and get Upto 20% off on this order , order above No Upper limit</p>
+              <!-- <p *ngIf="true">isFlatDiscount: {{ promo.isFlatDiscount }}</p> -->
+              <a class="list-group-item" *ngIf="promo.isFlatDiscount === false">
+                <p class="list-group-item-text"> Customers Will Get  {{ promo?.discountPercent }}% off on all Order above {{ promo?.minAmount }} Maximum Discount {{promo?.maxDiscount}} </p>
               </a>
-             <div class="schb d-flex justify-content-between" >
-              <button type="button" (click)="modalOpen(modalBasic)" class="btn1" rippleEffect>
-                EDIT
-              </button>
-              <!-- <a class="btn2" href="">Delete</a> -->
-              <button type="button" (click)="modalOpen(modalDelete)" class="btn2" rippleEffect>
-                Delete
-              </button>
-             </div>
+              <a class="list-group-item" *ngIf="promo.isFlatDiscount === true">
+                <p class="list-group-item-text">Customers Will Get {{ promo?.discountPercent }}% off on this order above {{promo?.minAmount}}. no upper limit</p>
+              </a>
+              <div class="schb d-flex justify-content-between">
+                <button type="button" (click)="modalOpen(modalBasic)" class="btn1" rippleEffect>
+                  EDIT
+                </button>
+                <!-- <a class="btn2" href="">Delete</a> -->
+                <button type="button" (click)="modalOpen(modalDelete)" class="btn2" rippleEffect>
+                  Delete
+                </button>
+              </div>
             </div>
-          </div>​
-        </div>    
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
 
 <ng-template #addOfferModal let-modal>
   <div class="modal-header">
