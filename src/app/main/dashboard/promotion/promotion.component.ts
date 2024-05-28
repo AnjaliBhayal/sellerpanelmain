@@ -103,13 +103,13 @@ export class PromotionComponent implements OnInit {
       });
     }
   }
+
+
   // get all promotion
   getAllPromotion() {
     this.outletService.getAllOffer().subscribe((data: any) => {
-     ;
- this.promotionList = data.items;
-
- console.log( this.promotionList )
+      this.promotionList = data.items;
+      console.log(this.promotionList)
     });
   }
 
@@ -117,6 +117,7 @@ export class PromotionComponent implements OnInit {
     this.isFlat = event.target.checked;
     console.log("this.isFlat", this.isFlat ? [] : [Validators.required]);
   }
+
   // modal add offers
   openAddPromotionModal(data: any) {
     this.modalService.open(data, {
@@ -143,7 +144,7 @@ export class PromotionComponent implements OnInit {
     });
   }
 
-  /*  editDiscountFormSubmit() {
+   editDiscountFormSubmit() {
      this.submitted = true;
      if (this.isFlat) {
        console.log("==============______");
@@ -160,9 +161,12 @@ export class PromotionComponent implements OnInit {
          minAmount: this.editDiscountForm.value.minAmount,
        };
      }
-   } */
+   }
+
 
   modalOfferDelete(modalData: any, Offer: any) {
+    console.log(Offer);
+
     this.offerDetail = Offer;
     this.modalService.open(modalData, {
       centered: true,
@@ -172,6 +176,8 @@ export class PromotionComponent implements OnInit {
   }
 
   deletePromotion() {
+    console.log(this.offerDetail);
+
     this.outletService
       .deletData({ discountId: this.offerDetail.discountId })
       .subscribe((res: any) => {
@@ -184,13 +190,8 @@ export class PromotionComponent implements OnInit {
         this.modalService.dismissAll();
       });
   }
-  modalOpen(modalBasic) {
-    this.modalService.open(modalBasic, {
-      windowClass: "modal",
-      centered: true
-    });
-  }
-  addOffer(addOfferModal) {
+
+  addOffer(addOfferModal:any,add:any) {
     this.modalService.open(addOfferModal, {
       windowClass: "modal",
       centered: true
