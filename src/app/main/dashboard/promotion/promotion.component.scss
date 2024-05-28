@@ -118,3 +118,11 @@ h1 {
   .schb.d-flex.justify-content-between {
     padding: 15px;
 }
+.list-group {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  margin-top: 25px;
+  border-radius: 0.358rem;
+}

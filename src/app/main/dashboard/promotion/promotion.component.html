@@ -271,13 +271,16 @@
 </ng-template>
 
 <ng-template #modalDelete let-modal>  
-  <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalCenterTitle">Delete Offers</h5>
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
   <div class="modal-body p-2" tabindex="0">
     <p>Are you sure you want to Delete ?</p>
   </div>
-  <div class="modal-footer p-2">'4'
+  <div class="modal-footer p-2">
     <button type="button" class="model-btn" (click)="modal.close('Accept click')" >
       Cancel
     </button>
