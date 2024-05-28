@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild } from "@angular/core";
+import { ChangeDetectorRef, Component, OnInit, TemplateRef, ViewChild } from "@angular/core";
 import { AuthService } from "app/services/auth.service";
 import { ToastrService } from "ngx-toastr";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
@@ -41,6 +41,7 @@ export class OrdersComponent implements OnInit {
   orderId: any;
   orderTimes: any[] = [];
 outletEarnings: any;
+  orderCount: any;
  
   // orderArray: any[] = []
   // default: string;
@@ -51,7 +52,8 @@ outletEarnings: any;
     private outletService: OutletServiceService,
     private fb: FormBuilder,
     private modalService: NgbModal,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private cdr: ChangeDetectorRef
   ) {
    
     
@@ -113,9 +115,11 @@ outletEarnings: any;
     this.status = status;
     this.AuthService.getAllOrderofSeller(this.status).subscribe((data: any) => {
       this.orderList = data.items.orderList;
-      console.log(this.orderList);
+      this.orderCount=data.items
+      console.log(this.orderList.length);
       
     });
+    // this.cdr.detectChanges();
   }
 
   // Helper function to get the time for a specific status of an order
