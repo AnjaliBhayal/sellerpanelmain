@@ -7,7 +7,7 @@
           <div class="row breadcrumbs-top">
             <div class="col-md-12">
               <div class="breadcrumbs-top-heading">
-                <h2 class="content-header-title float-left mb-0 ">
+                <h2 class="content-header-title float-left mb-0">
                   {{ contentHeader.headerTitle }}
                 </h2>
                 <!-- <div class="switch-online">
@@ -29,17 +29,12 @@
       </div>
     </ng-container>
 
-
-
-
-
     <!-- Basic Alerts start -->
     <section id="home-page">
       <!--/ Stats Horizontal Card -->
       <div class="row">
-        <div class="col-md-5">
-         </div>
-        <div class="col-md-7 col-sm-12">
+        <!-- <div class="col-md-5"></div> -->
+        <div class="">
           <div class="tab-switch">
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
               <li class="nav-item" role="presentation">
@@ -76,104 +71,105 @@
                   Picked up
                 </button>
               </li>
-           
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-cancelled-tab" data-bs-toggle="pill" data-bs-target="#pills-cancelled"
+                  type="button" role="tab" aria-controls="pills-cancelled" aria-selected="false"
+                  (click)="getOrder('cancelled')">
+                  Cancelled
+                </button>
+              </li>
             </ul>
           </div>
         </div>
       </div>
 
+      <!-- basic card -->
+      <!-- Basic Alerts start -->
+      <section id="home-page">
+        <!-- Stats Horizontal Card -->
+        <div class="row">
+          <div class="col-lg-3 col-sm-6 col-12">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h2 class="font-weight-bolder mb-0">
+                    {{ AllData?.totalSale }}
+                  </h2>
+                  <p class="card-text">Total Sale</p>
+                </div>
+                <div class="avatar bg-light-primary p-50 m-0">
+                  <div class="avatar-content">
+                    <i data-feather="type" class="font-medium-5"></i>
 
-
-    <!-- basic card -->
- <!-- Basic Alerts start -->
- <section id="home-page">
-  <!-- Stats Horizontal Card -->
-  <div class="row">
-    <div class="col-lg-3 col-sm-6 col-12">
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <h2 class="font-weight-bolder mb-0">
-              {{ AllData?.totalSale }}
-            </h2>
-            <p class="card-text">Total Sale</p>
+                    <!-- <img src="assets/images/icons/users.svg" alt=""> -->
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="avatar bg-light-primary p-50 m-0">
-            <div class="avatar-content">
-              <i data-feather="type" class="font-medium-5"></i>
+          <div class="col-lg-3 col-sm-6 col-12">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h2 class="font-weight-bolder mb-0">
+                    {{ AllData?.orderCount }}
+                  </h2>
+                  <p class="card-text">Total Order Count</p>
+                </div>
+                <div class="avatar bg-light-success p-50 m-0">
+                  <div class="avatar-content">
+                    <i data-feather="plus" class="font-medium-5"></i>
 
-              <!-- <img src="assets/images/icons/users.svg" alt=""> -->
+                    <!-- <img src="assets/images/icons/user-x.svg" alt=""> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 col-12">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h2 class="font-weight-bolder mb-0">
+                    {{ AllData?.totalDiscount }}
+                  </h2>
+                  <p class="card-text">Total Discount</p>
+                </div>
+                <div class="avatar bg-light-danger p-50 m-0">
+                  <div class="avatar-content">
+                    <i data-feather="percent" class="font-medium-5"></i>
+
+                    <!-- <img src="assets/images/icons/gift.svg" alt=""> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 col-12">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h2 class="font-weight-bolder mb-0">
+                    {{ AllData?.netProfit }}
+                  </h2>
+                  <p class="card-text">Total Net Profit</p>
+                </div>
+                <div class="avatar bg-light-warning p-50 m-0">
+                  <div class="avatar-content">
+                    <i data-feather="trending-up" class="font-medium-5"></i>
+
+                    <!-- <img src="assets/images/icons/credit-card.svg" alt=""> -->
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-sm-6 col-12">
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <h2 class="font-weight-bolder mb-0">
-              {{ AllData?.orderCount }}
-            </h2>
-            <p class="card-text">Total Order Count</p>
-          </div>
-          <div class="avatar bg-light-success p-50 m-0">
-            <div class="avatar-content">
-              <i data-feather="plus" class="font-medium-5"></i>
-
-              <!-- <img src="assets/images/icons/user-x.svg" alt=""> -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-sm-6 col-12">
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <h2 class="font-weight-bolder mb-0">
-              {{ AllData?.totalDiscount }}
-            </h2>
-            <p class="card-text">Total Discount</p>
-          </div>
-          <div class="avatar bg-light-danger p-50 m-0">
-            <div class="avatar-content">
-              <i data-feather="percent" class="font-medium-5"></i>
-
-              <!-- <img src="assets/images/icons/gift.svg" alt=""> -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-sm-6 col-12">
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <h2 class="font-weight-bolder mb-0">
-              {{ AllData?.netProfit }}
-            </h2>
-            <p class="card-text">Total Net Profit</p>
-          </div>
-          <div class="avatar bg-light-warning p-50 m-0">
-            <div class="avatar-content">
-              <i data-feather="trending-up" class="font-medium-5"></i>
-
-              <!-- <img src="assets/images/icons/credit-card.svg" alt=""> -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--/ Stats Horizontal Card -->
-  <!--/ Stats Horizontal Card -->
- 
-</section>
-<!-- Basic Alerts end -->
-<!-- basic card -->
-
-
+        <!--/ Stats Horizontal Card -->
+        <!--/ Stats Horizontal Card -->
+      </section>
+      <!-- Basic Alerts end -->
+      <!-- basic card -->
 
       <div class="row">
         <div class="col-xl-12 col-md-12 col-sm-12">
@@ -197,8 +193,9 @@
                                   <img *ngIf="products?.isVeg" src="assets/images/veg-icon.png" />
                                   <img *ngIf="!products?.isVeg" src="assets/images/nonveg-icon.png" width="20px" />
                                   <span>{{ products?.quantity }} x
-                                    {{ products?.productName
-                                    }}|{{products?.variationName}}|{{products?.addOnName}}</span>
+                                    {{ products?.productName }}|{{
+                                    products?.variationName
+                                    }}|{{ products?.addOnName }}</span>
                                 </div>
                                 <div class="dishe-price">
                                   ₹ <span>{{ products?.quantityPrice }}</span>
@@ -370,10 +367,6 @@
                 </div>
               </div>
             </div>
-
-
-
-
 
             <!----------------------------------------------- pending order----------------------------------------->
             <!-- <div class="tab-pane fade" id="pills-pending" role="tabpanel" aria-labelledby="pills-pending-tab">
@@ -872,10 +865,6 @@
       </div>
     </section>
     <!-- Basic Alerts end -->
-
-
-
-
   </div>
 </div>
 
