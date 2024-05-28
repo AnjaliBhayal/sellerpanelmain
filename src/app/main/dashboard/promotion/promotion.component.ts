@@ -73,13 +73,14 @@ export class PromotionComponent implements OnInit {
 
 
   addDiscountFormSubmit() {
+    //console.log(this.isFlat);
+    
     this.submitted = true;
     if (this.isFlat) {
-
-      this.addDiscount.maxDiscount.setValue(0);
+    this.addDiscount.maxDiscount.setValue(0);
     }
     if (this.addDiscountForm.invalid) {
-      console.log("this.addDiscountForm.invalid", this.addDiscountForm);
+      //console.log("this.addDiscountForm.invalid", this.addDiscountForm);
       return;
     } else {
       const formData = {
@@ -88,35 +89,38 @@ export class PromotionComponent implements OnInit {
         discountPercent: this.addDiscountForm.value.discountPercent,
         maxDiscount: this.addDiscountForm.value.maxDiscount,
         minAmount: this.addDiscountForm.value.minAmount,
-        isFlatDiscount: this.addDiscountForm.value.isFlatDiscount,
+        isFlatDiscount: this.isFlat,
       };
       this.outletService.addNewDiscount(formData).subscribe((res: any) => {
         if (res.status) {
           this.toastr.showSuccess(res.message, "Success!");
           this.getAllPromotion();
+          this.submitted = false;
           this.addDiscountForm.reset();
           this.modalService.dismissAll();
         } else {
           this.toastr.showError(res.message, "error!");
           this.getAllPromotion();
+          this.submitted = false;
         }
       });
     }
   }
+
+
   // get all promotion
   getAllPromotion() {
     this.outletService.getAllOffer().subscribe((data: any) => {
-     ;
- this.promotionList = data.items;
-
- console.log( this.promotionList )
+      this.promotionList = data.items;
+     // console.log(this.promotionList)
     });
   }
 
   flatValue(event: any) {
     this.isFlat = event.target.checked;
-    console.log("this.isFlat", this.isFlat ? [] : [Validators.required]);
+   // console.log("this.isFlat", this.isFlat ? [] : [Validators.required]);
   }
+
   // modal add offers
   openAddPromotionModal(data: any) {
     this.modalService.open(data, {
@@ -143,10 +147,10 @@ export class PromotionComponent implements OnInit {
     });
   }
 
-  /*  editDiscountFormSubmit() {
+   editDiscountFormSubmit() {
      this.submitted = true;
      if (this.isFlat) {
-       console.log("==============______");
+       //console.log("==============______");
        this.addDiscount.maxDiscount.setValue(0);
      }
      if (this.addDiscountForm.invalid) {
@@ -160,9 +164,12 @@ export class PromotionComponent implements OnInit {
          minAmount: this.editDiscountForm.value.minAmount,
        };
      }
-   } */
+   }
+
 
   modalOfferDelete(modalData: any, Offer: any) {
+    console.log(Offer);
+
     this.offerDetail = Offer;
     this.modalService.open(modalData, {
       centered: true,
@@ -172,6 +179,8 @@ export class PromotionComponent implements OnInit {
   }
 
   deletePromotion() {
+    console.log(this.offerDetail);
+
     this.outletService
       .deletData({ discountId: this.offerDetail.discountId })
       .subscribe((res: any) => {
@@ -184,13 +193,10 @@ export class PromotionComponent implements OnInit {
         this.modalService.dismissAll();
       });
   }
-  modalOpen(modalBasic) {
-    this.modalService.open(modalBasic, {
-      windowClass: "modal",
-      centered: true
-    });
-  }
-  addOffer(addOfferModal) {
+
+  addOffer(addOfferModal:any,add:any) {
+    //this.submitted = false;
+    
     this.modalService.open(addOfferModal, {
       windowClass: "modal",
       centered: true
