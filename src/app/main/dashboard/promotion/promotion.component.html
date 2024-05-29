@@ -33,7 +33,7 @@
                 <h1 class="list-group-item-text text-align-start">{{ promo?.discountPercent }}% OFF</h1>
               </a>
               <!-- <p *ngIf="true">isFlatDiscount: {{ promo.isFlatDiscount }}</p> -->
-              <a class="list-group-item" *ngIf="promo.isFlatDiscount === false">
+              <a class="list-group-item" *ngIf="promo.isFlatDiscount === false" >
                 <p class="list-group-item-text"> Customers will get  <b>{{ promo?.discountPercent }}% </b>off on all Order above {{ promo?.minAmount }} Maximum Discount {{promo?.maxDiscount}} </p>
               </a>
               <a class="list-group-item" *ngIf="promo.isFlatDiscount === true">
