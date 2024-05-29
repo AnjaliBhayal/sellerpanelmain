@@ -237,6 +237,14 @@
                 <!-- <hr> -->
                 <div class="row pt-2">
                   <div class="col-md-6 he">
+                    <div class="transaction-item">
+                      <div class="media">
+                        <div class="media-body">
+                          <h6 class="transaction-title">AssignedTo:</h6>
+                        </div>
+                      </div>
+                      <div class="details">{{ticket?.assignedTo}}</div>
+                    </div>
                     <div class="transaction-item ">
                       <div class="media">
                         <div class="media-body">
@@ -255,6 +263,16 @@
                     </div>
                   </div>
                   <div class="col-md-6">
+                    <!-- "assignedTo": null,
+                    "createdAt": "Today 3:25 PM" -->
+                    <div class="transaction-item">
+                      <div class="media">
+                        <div class="media-body">
+                          <h6 class="transaction-title">DateTime:</h6>
+                        </div>
+                      </div>
+                      <div class="details">{{ticket?.createdAt}}</div>
+                    </div>
                     <div class="transaction-item">
                       <div class="media">
                         <div class="media-body">
