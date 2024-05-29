@@ -1,0 +1,32 @@
+// .avatar.img {
+//     height: 100px;
+//     width: 100px;
+//     background-color: #69c99e;
+// }
+.btn1{
+    background-color: #0fab64;
+    color: #fff !important;
+    padding: 9px 30px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+  button.btn1 {
+    margin-top: 20px;
+}  
+.avatar.img{
+    height: 100px;
+    width: 100px;
+    background-color: #ffffff;
+    box-shadow: 4px 8px 15px -3px rgba(201, 199, 199, 0.75);
+}
+.avatar.img img {
+    height: 100%;
+    width: 100%;
+    max-width: 67%;
+    margin: 0 auto;
+}

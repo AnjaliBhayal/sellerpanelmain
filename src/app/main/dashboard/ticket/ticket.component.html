@@ -1,14 +1,13 @@
-
 <ng-container *ngIf="contentHeader">
-    <div class="content-header row">
-      <div class="content-header-left col-md-12 col-12 mb-2">
-        <div class="row breadcrumbs-top">
-          <div class="col-md-12">
-            <div class="breadcrumbs-top-heading">
-              <h2 class="content-header-title float-left mb-0">
-                {{ contentHeader.headerTitle }}
-              </h2>
-              <!-- <div class="switch-online">
+  <div class="content-header row">
+    <div class="content-header-left col-md-12 col-12 mb-2">
+      <div class="row breadcrumbs-top">
+        <div class="col-md-12">
+          <div class="breadcrumbs-top-heading">
+            <h2 class="content-header-title float-left mb-0">
+              {{ contentHeader.headerTitle }}
+            </h2>
+            <!-- <div class="switch-online">
                               <div class="columns">
                                   <div class="column is-12">
                                       <div class="up-in-toggle" id="main-toggle">
@@ -20,36 +19,33 @@
                                   </div>
                               </div>
                           </div> -->
-            </div>
           </div>
         </div>
       </div>
     </div>
-  </ng-container>
-
-
-
+  </div>
+</ng-container>
 
 <div class="content-wrapper container-fluid p-0">
-    <div class="content-body">
-        <section class="ticket-page">
-            <div class="d-flex align-items-baseline justify-content-between">
-                <div class="d-flex justify-content-evenly">
-                    <!--  <div class="form-group">
+  <div class="content-body">
+    <section class="ticket-page">
+      <div class="d-flex align-items-baseline justify-content-between">
+        <div class="d-flex justify-content-evenly">
+          <!--  <div class="form-group">
                         <select class="form-control" id="basicSelect">
                             <option>Customer</option>
                             <option>Merchant</option>
                         </select>
                     </div> -->
-                    <div class=" form-group">
-                        <select class="form-control" id="basicSelect" (change)="selcectStatus($event)">
-                            <option value="All">All</option>
-                            <option value="Open">Pending</option>
-                            <option value="completed">Completed</option>
-                        </select>
-                    </div>
-                </div>
-                <!--  <div class="date-range d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
+          <div class="form-group">
+            <select class="form-control" id="basicSelect" (change)="selcectStatus($event)">
+              <option value="All">All</option>
+              <option value="Open">Pending</option>
+              <option value="completed">Completed</option>
+            </select>
+          </div>
+        </div>
+        <!--  <div class="date-range d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0">
                     <div class="input-group mb-1 search-table mr-1">
                         <input type="search" placeholder="Search" class="form-control ml-25"
                             (keyup)="filterUpdate($event)" (search)="filterUpdate($event)" />
@@ -58,91 +54,91 @@
                         class="btn btn-outline-secondary float-right csv-export m" rippleEffect>
                         <img src="assets/images/icons/csv.png" alt=""> </button>
                 </div> -->
-            </div>
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="card" *ngFor="let ticket of allTicket">
-                        <div class="card-body">
-                            <h4 class="card-title">{{ticket.issue}}</h4>
-                            <div class="card-subtitle text-muted mb-1"><strong>Description:</strong> <span>
-                                    {{ticket.description}} </span></div>
-                            <hr>
-                            <p class="card-text">
-                                <strong>Ticket Id :</strong> <span> {{ticket.ticketId}}</span>
-                            </p>
-                            <!--  <p class="card-text">
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+          <div class="card" *ngFor="let ticket of allTicket">
+            <div class="card-body">
+              <h4 class="card-title">{{ ticket.issue }}</h4>
+              <div class="card-subtitle text-muted mb-1">
+                <strong>Description:</strong>
+                <span> {{ ticket.description }} </span>
+              </div>
+              <hr />
+              <p class="card-text">
+                <strong>Ticket Id :</strong> <span> {{ ticket.ticketId }}</span>
+              </p>
+              <!--  <p class="card-text">
                                 <strong>Order Items :</strong> <span> chicken roll X1</span>
                             </p> -->
-                            <button class="btn btn-outline-primary"
-                                (click)="modalProductView(productView,ticket.ticketId)">View
-                                Details</button>
-                        </div>
-                    </div>
-                </div>
+              <button class="btn btn-outline-primary" (click)="modalProductView(productView, ticket.ticketId)">
+                View Details
+              </button>
+            </div>
+          </div>
+        </div>
 
-
-                <!-- open view product details -->
-                <ng-template #productView let-modal>
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="myModalLabel6">Ticket Details</h5>
-                        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+        <!-- open view product details -->
+        <ng-template #productView let-modal>
+          <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel6">Ticket Details</h5>
+            <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" tabindex="0" ngbAutofocus>
+            <div class="row">
+              <div class="col-md-12">
+                <h3></h3>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="product-view-box">
+                      <div><strong>Product Name</strong></div>
+                      <div>
+                        <p>{{ ticketDetails?.productNameList }}</p>
+                      </div>
                     </div>
-                    <div class="modal-body" tabindex="0" ngbAutofocus>
-                        <div class="row">
-                            
-                            <div class="col-md-12">
-                                <h3></h3>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="product-view-box">
-                                            <div><strong>Product Name</strong></div>
-                                            <div>
-                                                <p>{{ticketDetails?.productNameList}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-2">
-                                        <div class="product-view-box">
-                                            <div><strong>Customer Name</strong></div>
-                                            <div>
-                                            <p>
-                                                {{ticketDetails?.orderDetails?.client?.clientName}}
-                                            </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="product-view-box">
-                                            <div><strong>Issue</strong></div>
-                                            <div>
-                                                <p>{{ticketDetails?.issue}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-2">
-                                        <div class="product-view-box">
-                                            <div><strong>Description</strong></div>
-                                            <div>
-                                            <p>
-                                                {{ticketDetails?.description}}
-                                            </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-2">
-                                        <div class="product-view-box">
-                                            <div><strong>status</strong></div>
-                                            <div>
-                                            <p>
-                                                {{ticketDetails?.status}}
-                                            </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-2">
-                                       <!--  <div class="product-view-box">
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <div class="product-view-box">
+                      <div><strong>Customer Name</strong></div>
+                      <div>
+                        <p>
+                          {{ ticketDetails?.orderDetails?.client?.clientName }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="product-view-box">
+                      <div><strong>Issue</strong></div>
+                      <div>
+                        <p>{{ ticketDetails?.issue }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <div class="product-view-box">
+                      <div><strong>Description</strong></div>
+                      <div>
+                        <p>
+                          {{ ticketDetails?.description }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <div class="product-view-box">
+                      <div><strong>status</strong></div>
+                      <div>
+                        <p>
+                          {{ ticketDetails?.status }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <!--  <div class="product-view-box">
                                             <div class="custom-control custom-control-primary custom-switch">
                                                 <div class="mb-50"><strong>In Stock</strong></div>
                                                 <input type="checkbox" [checked]="inStock(product)"
@@ -151,9 +147,9 @@
                                                 <label class="custom-control-label" for="customSwitch3"></label>
                                             </div>
                                         </div> -->
-                                    </div>
+                  </div>
 
-                                    <!-- <div class="col-md-12">
+                  <!-- <div class="col-md-12">
                                         <div class="product-view-box">
                                             <button class="btn btn-outline-primary mr-1"
                                                 (click)="openViewCustomizationModal(customizationList,product)"
@@ -162,14 +158,13 @@
                                                 (click)="openViewAddonModal(addOn,product)" rippleEffect>Addons</button>
                                         </div>
                                     </div> -->
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </ng-template>
-                <!-- view order details section -->
-                <!-- <ng-container *ngIf="isShow">
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <!-- view order details section -->
+        <!-- <ng-container *ngIf="isShow">
                     <div class="col-md-7">
                         <div class="card view-details">
                             <div class="Cross-btn mr-1">
@@ -204,142 +199,118 @@
                         </div>
                     </div>
                 </ng-container> -->
-            </div>
-        </section>
-    </div>
+      </div>
+    </section>
+  </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="">
-    <div class="tab-switch">
-      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="pills-all-tab" data-bs-toggle="pill" data-bs-target="#pills-all"
-            type="button" role="tab" aria-controls="pills-all" aria-selected="true" (click)="getOrder('all')">
-            All
-          </button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="pills-pending-tab" data-bs-toggle="pill" data-bs-target="#pills-pending"
-            type="button" role="tab" aria-controls="pills-pending" aria-selected="false"
-            (click)="getOrder('pending')">
-            Pending
-          </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-completed-tab" data-bs-toggle="pill" data-bs-target="#pills-completed"
-              type="button" role="tab" aria-controls="pills-completed" aria-selected="false"
-              (click)="getOrder('completed')">
-              Completed
-            </button>
-          </li>
-      </ul>
-    </div>
+  <div class="tab-switch">
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="pills-all-tab" data-bs-toggle="pill" data-bs-target="#pills-all"
+          type="button" role="tab" aria-controls="pills-all" aria-selected="true" (click)="getOrder('all')">
+          All
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-pending-tab" data-bs-toggle="pill" data-bs-target="#pills-pending"
+          type="button" role="tab" aria-controls="pills-pending" aria-selected="false" (click)="getOrder('pending')">
+          Pending
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-completed-tab" data-bs-toggle="pill" data-bs-target="#pills-completed"
+          type="button" role="tab" aria-controls="pills-completed" aria-selected="false"
+          (click)="getOrder('completed')">
+          Completed
+        </button>
+      </li>
+    </ul>
   </div>
+</div>
+
+<section id="users-page">
+  <div class="row">
+    <!-- Dynamic data Card -->
 
 
-  <section id="users-page">
-    <div class="row" >
-      <!-- Dynamic data Card -->
-      <div class="col-6 col-md-6 col-lg-6" *ngFor="let ticket of allTicket">
-        <div class="card-body">
-          <div class="outlet-body">
-            <div class="card-transaction support">
-              <div class="card-header1" >
-                <div class="card-body">
+    <div class="col-6 col-md-6 col-lg-6">
+      <div class="card-body">
+        <div class="outlet-body">
+          <div class="card-transaction support">
+            <div class="card-header1" *ngFor="let ticket of allTicket">
+              <div class="card-body">
+                <div class="h d-flex align-items-center">
+                  <div class="avatar img">
+                    <img class="round" src="../../../../assets/images/myimages/cinema-tickets.svg">
+                    {{
+                    sellerData?.basicDetails?.tradeName
+                    .charAt(0)
+                    .toUpperCase()
+                    }}
+                  </div>
                   <div class="heading2">
-                    <h1> {{ticket?.issue}}</h1>
-                    <p>Description: {{ticket?.description}}</p>
+                    <h1>issue{{ ticket?.issue }}</h1>
+                    <!-- <p>description {{ticket?.description}}</p> -->
                   </div>
-                  <hr />
+                </div>
+                <!-- <div class="heading2">
+                  <h1>issue{{ ticketDetails?.issue }}</h1>
+                  <p>description {{ ticketDetails?.description }}</p>
+                </div> -->
+                <hr />
+                <p>description {{ticket?.description}}</p>
                 <div class="row">
-                  <div class="col-md-6" >
-                    <div class="transaction-item pt-1">
-                      <div class="media">
-                        
-                        <div class="media-body">
-                          <h6 class="transaction-title">Customer Name:</h6>
-                        </div>
-                      </div>
-                      <div class="details">{{ticket?.orderDetails?.client?.clientName}}</div>
-                    </div>
-                    <div class="transaction-item">
-                      <div class="media">
-                        
-                        <div class="media-body">
-                          <h6 class="transaction-title">Product Name:</h6>
-                        </div>
-                      </div>
-                      <div class="details">{{ticket?.productNameList}}</div>
-                    </div>
-                   
-                  </div>
                   <div class="col-md-6">
                     <div class="transaction-item pt-1">
                       <div class="media">
-                        
                         <div class="media-body">
                           <h6 class="transaction-title">User Id:</h6>
                         </div>
                       </div>
-                      <div class="details">{{ticket?.userId }}</div>
+                      <div class="details">Blank</div>
                     </div>
                     <div class="transaction-item">
                       <div class="media">
-                        
                         <div class="media-body">
                           <h6 class="transaction-title">Role:</h6>
                         </div>
                       </div>
-                      <div class="details">{{ticket?.role }}</div>
+                      <div class="details">Blank</div>
                     </div>
-                    <div class="transaction-item">
+                  </div>
+                  <div class="col-md-6">
+                    <div class="transaction-item pt-1">
                       <div class="media">
-                        
                         <div class="media-body">
                           <h6 class="transaction-title">Priority:</h6>
                         </div>
                       </div>
-                      <div class="details"> {{ticket?.priority }}</div>
+                      <div class="details">Blank</div>
                     </div>
                     <div class="transaction-item">
                       <div class="media">
-                        
                         <div class="media-body">
                           <h6 class="transaction-title">Status:</h6>
                         </div>
                       </div>
-                      <div class="details">{{ticket?.status }}</div>
+                      <div class="details">Blank</div>
                     </div>
                   </div>
+                </div>
+                <div class="details-parent d-flex justify-content-end">
+                  <button class="btn1" (click)="modalProductView(productView, ticket.ticketId)">
+                    View Details
+                  </button>
+                </div>
                 
-                </div>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      
-      <!--/ Dynamic data Card -->
     </div>
-  </section>
+    <!--/ Dynamic data Card -->
+  </div>
+</section>

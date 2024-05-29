@@ -10,6 +10,7 @@ import { AuthService } from 'app/services/auth.service';
   styleUrls: ['./ticket.component.scss']
 })
 export class TicketComponent implements OnInit {
+ticket: any;
 getOrder(arg0: string) {
 throw new Error('Method not implemented.');
 }
