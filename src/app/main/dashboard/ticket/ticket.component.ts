@@ -63,13 +63,7 @@ throw new Error('Method not implemented.');
     this.allTicketList();
   }
 
-  viewDetails(ticket:any){
-    // this.viewById = ticket
-    // this.isShow = true;
-    this.AuthService.ViewTicketDetails(this.viewById).subscribe((data:any)=>{
-      this.ticketDetails = data.items;
-    });
-   }
+
   
    closeDetails(){
     this.isShow= false;
@@ -125,6 +119,8 @@ throw new Error('Method not implemented.');
     modalProductView(data: any, ticketId: any) {
       this.AuthService.ViewTicketDetails(ticketId).subscribe((data:any)=>{
         this.ticketDetails = data.items;
+        console.log(this.ticketDetails);
+        
         this.ticketDetails.productNameList =  data.items?.orderDetails?.productList.reduce(
           (accumulator, currentValue) => accumulator==""?currentValue.productName:accumulator +","+ currentValue.productName,
           ""

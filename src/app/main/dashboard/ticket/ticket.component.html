@@ -260,19 +260,19 @@
   <section id="users-page">
     <div class="row" >
       <!-- Dynamic data Card -->
-      <div class="col-6 col-md-6 col-lg-6">
+      <div class="col-6 col-md-6 col-lg-6" *ngFor="let ticket of allTicket">
         <div class="card-body">
           <div class="outlet-body">
             <div class="card-transaction support">
-              <div class="card-header1" *ngFor="let ticket of allTicket">
+              <div class="card-header1" >
                 <div class="card-body">
                   <div class="heading2">
-                    <h1> issue{{ticketDetails?.issue}}</h1>
-                    <p>description {{ticketDetails?.description}}</p>
+                    <h1> {{ticket?.issue}}</h1>
+                    <p>Description: {{ticket?.description}}</p>
                   </div>
                   <hr />
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-6" >
                     <div class="transaction-item pt-1">
                       <div class="media">
                         
@@ -280,7 +280,7 @@
                           <h6 class="transaction-title">Customer Name:</h6>
                         </div>
                       </div>
-                      <div class="details">Blank{{ticketDetails?.orderDetails?.client?.clientName}}</div>
+                      <div class="details">{{ticket?.orderDetails?.client?.clientName}}</div>
                     </div>
                     <div class="transaction-item">
                       <div class="media">
@@ -289,25 +289,9 @@
                           <h6 class="transaction-title">Product Name:</h6>
                         </div>
                       </div>
-                      <div class="details">Blank{{ticketDetails?.productNameList}}</div>
+                      <div class="details">{{ticket?.productNameList}}</div>
                     </div>
-                    <div class="transaction-item">
-                      <div class="media">
-                        <div class="media-body">
-                          <h6 class="transaction-title">Issue:</h6>
-                        </div>
-                      </div>
-                      <div class="details">Blank{{ticketDetails?.issue}}</div>
-                    </div>
-                    <div class="transaction-item">
-                      <div class="media">
-                       
-                        <div class="media-body">
-                          <h6 class="transaction-title">Description:</h6>
-                        </div>
-                      </div>
-                      <div class="details"> Blank {{ticketDetails?.description}}</div>
-                    </div>
+                   
                   </div>
                   <div class="col-md-6">
                     <div class="transaction-item pt-1">
@@ -317,7 +301,7 @@
                           <h6 class="transaction-title">User Id:</h6>
                         </div>
                       </div>
-                      <div class="details">Blank</div>
+                      <div class="details">{{ticket?.userId }}</div>
                     </div>
                     <div class="transaction-item">
                       <div class="media">
@@ -326,7 +310,7 @@
                           <h6 class="transaction-title">Role:</h6>
                         </div>
                       </div>
-                      <div class="details">Blank</div>
+                      <div class="details">{{ticket?.role }}</div>
                     </div>
                     <div class="transaction-item">
                       <div class="media">
@@ -335,7 +319,7 @@
                           <h6 class="transaction-title">Priority:</h6>
                         </div>
                       </div>
-                      <div class="details">Blank</div>
+                      <div class="details"> {{ticket?.priority }}</div>
                     </div>
                     <div class="transaction-item">
                       <div class="media">
@@ -344,7 +328,7 @@
                           <h6 class="transaction-title">Status:</h6>
                         </div>
                       </div>
-                      <div class="details">Blank</div>
+                      <div class="details">{{ticket?.status }}</div>
                     </div>
                   </div>
                 
