@@ -99,13 +99,15 @@ export class TicketComponent implements OnInit {
       this.ticketDetails = data.items;
       console.log(this.ticketDetails);
 
-      this.ticketDetails.productNameList = data.items?.orderDetails?.productList.reduce(
+     /*  this.ticketDetails.productNameList = data.items?.orderDetails?.productList.reduce(
         (accumulator, currentValue) => accumulator == "" ? currentValue.productName : accumulator + "," + currentValue.productName,
         ""
-      );
+      ); */
     });
     this.modalService.open(data, {
-      windowClass: 'modal right'
+      windowClass: 'model',
+      centered:true,
+      size:'lg'
     });
 
     // this.product = viewDetails;
