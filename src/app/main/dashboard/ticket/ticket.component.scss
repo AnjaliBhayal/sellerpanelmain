@@ -40,3 +40,29 @@
     display: flex;
     align-items: center;
 }
+.details-parent1 h3 {
+    color: #148a57;
+    // font-size: 26px;
+}   
+.text1{
+    color: #148a57;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  .details-parent1 {
+    border: 1px solid #dbdade;
+    padding: 16px;
+}
