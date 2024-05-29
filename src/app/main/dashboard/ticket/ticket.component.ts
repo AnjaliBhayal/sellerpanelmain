@@ -1,8 +1,9 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ngxCsv } from 'ngx-csv/ngx-csv';
 import { ColumnMode, DatatableComponent, SelectionType } from '@swimlane/ngx-datatable';
 import { AuthService } from 'app/services/auth.service';
+import { ToastrserviceService } from 'app/services/toastrservice.service';
 
 @Component({
   selector: 'app-ticket',
@@ -10,12 +11,12 @@ import { AuthService } from 'app/services/auth.service';
   styleUrls: ['./ticket.component.scss']
 })
 export class TicketComponent implements OnInit {
-ticket: any;
-getOrder(arg0: string) {
-throw new Error('Method not implemented.');
-}
+  ticket: any;
+  getOrder(arg0: string) {
+    throw new Error('Method not implemented.');
+  }
 
-  private tempData = []; 
+  private tempData = [];
   public kitchenSinkRows: any;
   public basicSelectedOption: number = 10;
   public ColumnMode = ColumnMode;
@@ -31,13 +32,14 @@ throw new Error('Method not implemented.');
   data = [];
   filteredData = [];
   formula: string = 'All Tickets';
-  isShow:Boolean=false;
-  status= 'All'
-  allTicket:any;
-  viewById:any;
-  ticketDetails:any;
-  ticketList:any;
-  constructor(private AuthService:AuthService,private modalService: NgbModal){}
+  isShow: Boolean = false;
+  status = 'All'
+  allTicket: any[] = [];
+
+  viewById: any;
+  ticketDetails: any;
+  ticketList: any;
+  constructor(private AuthService: AuthService, private modalService: NgbModal,private toastr: ToastrserviceService) { }
 
   public contentHeader: object
 
@@ -59,80 +61,55 @@ throw new Error('Method not implemented.');
     }
   }
 
- selcectStatus(event:any){
-    this.status = event.target.value;
+  selcectStatus(event: any) {
+    this.status = event;
+    console.log(event);
+
     this.allTicketList();
   }
 
 
-  
-   closeDetails(){
-    this.isShow= false;
-   }
+
+  closeDetails() {
+    this.isShow = false;
+  }
 
   // get all ticket
-  allTicketList(){
-    this.AuthService.getAllTicket(this.status).subscribe((data:any) => {
-      this.allTicket = data.items;
-      this.ticketList  = this.allTicket
-    });
-  }
-
-  filterUpdate(event: any) {
-    const val = event.target.value.toLowerCase();
-    const temp = this.ticketList.filter(function (d) {
-      return d.issue?.toLowerCase().indexOf(val) !== -1 || d.ticketId?.toLowerCase().indexOf(val) !== -1 || !val;
-    });
-    this.allTicket = temp;
-  }
-
-  onSelect({ selected }: any) {
-    this.exportCSVData = selected;
-  }
-
-  downloadCSV(event: any) {
-    var options = {
-      fieldSeparator: ',',
-      quoteStrings: '"',
-      decimalseparator: '.',
-      showLabels: true,
-      showTitle: true,
-      title: '',
-      useBom: true,
-      noDownload: false,
-      headers: ['Ticket Id', 'User Id', 'Order Id' ,'Role','Issue' , 'Description', 'Priority' , 'Status' ,'Assigned To'],
-    }
-
-    if (this.exportCSVData == undefined) {
-      const fileInfo = new ngxCsv(this.ticketList, this.formula, options);
-
-    } else {
-      const fileInfo = new ngxCsv(this.exportCSVData, this.formula, options);
-      this.exportCSVData = undefined;
-    }
-
-  }
-  onActivate(event: any) {
-    // console.log('Activate Event', event.type);
-  }
-
-    // open view product details Modal
-    modalProductView(data: any, ticketId: any) {
-      this.AuthService.ViewTicketDetails(ticketId).subscribe((data:any)=>{
-        this.ticketDetails = data.items;
-        console.log(this.ticketDetails);
-        
-        this.ticketDetails.productNameList =  data.items?.orderDetails?.productList.reduce(
-          (accumulator, currentValue) => accumulator==""?currentValue.productName:accumulator +","+ currentValue.productName,
-          ""
-        );
-      });
-      this.modalService.open(data, {
-        windowClass: 'modal right'
-      });
+  allTicketList() {
+    this.AuthService.getAllTicket(this.status).subscribe((data: any) => {
+      if (data.status) {
+        console.log(data.status)
+        this.allTicket = data.items;
+        this.ticketList = this.allTicket
+        this.toastr.showSuccess(data.message, "Success!");
+      }
+      else {
+        console.log(data.status)
+        this.toastr.showError(data.message, "error!");
+        this.allTicket = []; 
+      }
      
-      // this.product = viewDetails;
-    }
+    });
+  }
+
+
+  // open view product details Modal
+  modalProductView(data: any, ticketId: any) {
+    this.AuthService.ViewTicketDetails(ticketId).subscribe((data: any) => {
+      this.ticketDetails = data.items;
+      console.log(this.ticketDetails);
+
+      this.ticketDetails.productNameList = data.items?.orderDetails?.productList.reduce(
+        (accumulator, currentValue) => accumulator == "" ? currentValue.productName : accumulator + "," + currentValue.productName,
+        ""
+      );
+    });
+    this.modalService.open(data, {
+      windowClass: 'modal right'
+    });
+
+    // this.product = viewDetails;
+  }
 
 
 }
