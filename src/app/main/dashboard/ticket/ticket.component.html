@@ -212,7 +212,7 @@
           <div class="card-transaction support">
             <div class="" >
               <div class="card-body hh">
-                <div class="row anjali">
+                <div class="row anjali">  
                   <div class="col-md-3">
                     <div class="avatar img">
                       <img class="round" src="../../../../assets/images/myimages/cinema-tickets.svg">
@@ -222,7 +222,7 @@
                  <div class="col-md-9">
                   <div class="heading2">
                     <h1 style="font-size: 20px;">issue{{ ticket?.issue }}</h1>
-                    <!-- <p>description {{ticket?.description}}</p> -->
+                    <!-- <p>{{ticket?.description}}</p> -->
                   </div>
                  </div>
                 </div>
@@ -278,7 +278,6 @@
                     View Details
                   </button>
                 </div>
-                
               </div>
             </div>
           </div>
@@ -286,7 +285,7 @@
       </div>
     </div>
     <!--/ Dynamic data Card -->
-  </div>
+  </div> 
 </section>
 
 
@@ -311,7 +310,6 @@
           <p><strong>Phone : </strong> {{ ticketDetails?.orderDetails.client?.clientPhone }}</p>
           <p><strong>Address : </strong> {{ ticketDetails?.orderDetails.client?.clientAddress }}</p>
         </div>
-
       </div>
       <div class="col-md-6">
         <div class="details-parent1">
@@ -344,9 +342,6 @@
           </tbody>
         </table>
       </div>
-      
     </div>
-    
   </div>
-
 </ng-template>

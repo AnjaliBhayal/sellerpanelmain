@@ -28,7 +28,95 @@
         </div>
       </div>
     </ng-container>
+     
 
+    
+
+    <!-- Basic Alerts start -->
+    <section id="home-page">
+      <!-- Stats Horizontal Card -->
+      <div class="row">
+        <div class="col-lg-3 col-sm-6 col-12">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="font-weight-bolder mb-0">
+                  {{ AllData?.totalSale }}
+                </h2>
+                <p class="card-text">Total Sale</p>
+              </div>
+              <div class="avatar bg-light-primary p-50 m-0">
+                <div class="avatar-content">
+                  <i data-feather="type" class="font-medium-5"></i>
+
+                  <!-- <img src="assets/images/icons/users.svg" alt=""> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 col-12">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="font-weight-bolder mb-0">
+                  {{ this.orderList.length }}
+                </h2>
+                <p class="card-text">Total Order Count</p>
+              </div>
+              <div class="avatar bg-light-success p-50 m-0">
+                <div class="avatar-content">
+                  <i data-feather="plus" class="font-medium-5"></i>
+
+                  <!-- <img src="assets/images/icons/user-x.svg" alt=""> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 col-12">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="font-weight-bolder mb-0">
+                  {{ AllData?.totalDiscount }}
+                </h2>
+                <p class="card-text">Total Discount</p>
+              </div>
+              <div class="avatar bg-light-danger p-50 m-0">
+                <div class="avatar-content">
+                  <i data-feather="percent" class="font-medium-5"></i>
+
+                  <!-- <img src="assets/images/icons/gift.svg" alt=""> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 col-12">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="font-weight-bolder mb-0">
+                  {{ AllData?.netProfit }}
+                </h2>
+                <p class="card-text">Total Net Profit</p>
+              </div>
+              <div class="avatar bg-light-warning p-50 m-0">
+                <div class="avatar-content">
+                  <i data-feather="trending-up" class="font-medium-5"></i>
+
+                  <!-- <img src="assets/images/icons/credit-card.svg" alt=""> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/ Stats Horizontal Card -->
+      <!--/ Stats Horizontal Card -->
+    </section>
+    <!-- Basic Alerts end -->
     <!-- Basic Alerts start -->
     <section id="home-page">
       <!--/ Stats Horizontal Card -->
@@ -84,91 +172,7 @@
       </div>
 
       <!-- basic card -->
-      <!-- Basic Alerts start -->
-      <section id="home-page">
-        <!-- Stats Horizontal Card -->
-        <div class="row">
-          <div class="col-lg-3 col-sm-6 col-12">
-            <div class="card">
-              <div class="card-header">
-                <div>
-                  <h2 class="font-weight-bolder mb-0">
-                    {{ AllData?.totalSale }}
-                  </h2>
-                  <p class="card-text">Total Sale</p>
-                </div>
-                <div class="avatar bg-light-primary p-50 m-0">
-                  <div class="avatar-content">
-                    <i data-feather="type" class="font-medium-5"></i>
-
-                    <!-- <img src="assets/images/icons/users.svg" alt=""> -->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6 col-12">
-            <div class="card">
-              <div class="card-header">
-                <div>
-                  <h2 class="font-weight-bolder mb-0">
-                    {{ this.orderList.length }}
-                  </h2>
-                  <p class="card-text">Total Order Count</p>
-                </div>
-                <div class="avatar bg-light-success p-50 m-0">
-                  <div class="avatar-content">
-                    <i data-feather="plus" class="font-medium-5"></i>
-
-                    <!-- <img src="assets/images/icons/user-x.svg" alt=""> -->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6 col-12">
-            <div class="card">
-              <div class="card-header">
-                <div>
-                  <h2 class="font-weight-bolder mb-0">
-                    {{ AllData?.totalDiscount }}
-                  </h2>
-                  <p class="card-text">Total Discount</p>
-                </div>
-                <div class="avatar bg-light-danger p-50 m-0">
-                  <div class="avatar-content">
-                    <i data-feather="percent" class="font-medium-5"></i>
-
-                    <!-- <img src="assets/images/icons/gift.svg" alt=""> -->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6 col-12">
-            <div class="card">
-              <div class="card-header">
-                <div>
-                  <h2 class="font-weight-bolder mb-0">
-                    {{ AllData?.netProfit }}
-                  </h2>
-                  <p class="card-text">Total Net Profit</p>
-                </div>
-                <div class="avatar bg-light-warning p-50 m-0">
-                  <div class="avatar-content">
-                    <i data-feather="trending-up" class="font-medium-5"></i>
-
-                    <!-- <img src="assets/images/icons/credit-card.svg" alt=""> -->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--/ Stats Horizontal Card -->
-        <!--/ Stats Horizontal Card -->
-      </section>
-      <!-- Basic Alerts end -->
+      
       <!-- basic card -->
 
       <div class="row">

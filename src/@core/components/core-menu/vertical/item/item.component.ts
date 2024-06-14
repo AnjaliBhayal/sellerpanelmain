@@ -9,4 +9,6 @@ import { CoreMenuItem } from '@core/types';
 export class CoreMenuVerticalItemComponent {
   @Input()
   item: CoreMenuItem;
+  
+  
 }

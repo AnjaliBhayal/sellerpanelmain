@@ -16,6 +16,9 @@ import { OutletServiceService } from "app/services/outlet-service.service";
   styleUrls: ["./orders.component.scss"],
 })
 export class OrdersComponent implements OnInit {
+updateImage() {
+throw new Error('Method not implemented.');
+}
   @ViewChild("content", { static: true }) content: TemplateRef<any>;
   creatTicketForm: FormGroup;
   Submitted: Boolean = false;
@@ -42,6 +45,7 @@ export class OrdersComponent implements OnInit {
   orderTimes: any[] = [];
 outletEarnings: any;
   orderCount: any;
+value: any;
  
   // orderArray: any[] = []
   // default: string;
@@ -188,4 +192,17 @@ outletEarnings: any;
     });
     
   }
+
+
+
+
+
+  // icon1: string = "../../assets/images/myimages/account_inactive.svg";
+  // icon2: string = "../../assets/images/myimages/promote_inactive.svg";
+  // currentIcon: string = this.icon1;
+
+  // toggleIcon() {
+  //   this.currentIcon = this.currentIcon === this.icon1 ? this.icon2 : this.icon1;
+  // }
+ 
 }

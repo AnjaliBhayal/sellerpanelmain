@@ -6,7 +6,7 @@ export const menu: CoreMenu[] = [
     title: "Orders",
     translate: "MENU.ORDERS",
     type: "item",
-    icon:"../../assets/images/myimages/icon-order-1.svg",
+    icon:"../../assets/images/myimages/order_inactive.svg",
     url: "dashboard/orders",
   },
  /*  {
@@ -21,7 +21,7 @@ export const menu: CoreMenu[] = [
     title: "AllOutlet",
     translate: "MENU.ALLOUTLET",
     type: "item",
-    icon:"../../assets/images/myimages/shop-131.svg",
+    icon:"../../assets/images/myimages/home_inactive.svg",
     url: "dashboard/allOutlet",
   },
   {
@@ -37,7 +37,7 @@ export const menu: CoreMenu[] = [
     title: "Promotion",
     translate: "MENU.PROMOTION",
     type: "item",
-    icon:"../../assets/images/myimages/promotion-15.svg",
+    icon:"../../assets/images/myimages/promote_inactive.svg",
     url: "dashboard/promotion",
   },
   {
@@ -45,7 +45,7 @@ export const menu: CoreMenu[] = [
     title: "Account",
     translate: "MENU.ACCOUNT",
     type: "item",
-    icon:"../../assets/images/myimages/account-25.svg",
+    icon:"../../assets/images/myimages/account_inactive.svg",
     url: "dashboard/account",
   },
   // {
@@ -60,7 +60,7 @@ export const menu: CoreMenu[] = [
     title: "Help & Support",
     translate: "MENU.SUPPORT",
     type: "item",
-    icon:"../../assets/images/myimages/support-22.svg",
+    icon:"../../assets/images/myimages/support_inactive.svg",
     url: "dashboard/support",
   },
 

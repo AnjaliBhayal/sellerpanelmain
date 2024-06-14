@@ -7,17 +7,20 @@ export interface CoreMenuItem {
     role?        : Array<string>;
     translate?   : string;
     icon?        : string;
+    activeIcon?  : string;
     disabled?    : boolean;
     hidden?      : boolean;
     classes?     : string; 
     exactMatch?  : boolean;
     externalUrl? : boolean;
     openInNewTab?: boolean;
+
     badge?       : {
         title?    : string;
         translate?: string;
         classes?    : string;
     };
+
     children?: CoreMenuItem[];
 }
 
