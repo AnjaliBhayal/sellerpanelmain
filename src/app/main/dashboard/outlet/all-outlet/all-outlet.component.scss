@@ -142,3 +142,49 @@ button.model-btn1 {
 .order {
   padding-top: 25px;
 }
+.text1{
+  color: #148a57;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+.details-parent1 {
+  border: 1px solid #dbdade;
+  padding: 16px;
+}
+.details-parent.pt-2{
+  box-shadow: 0 4px 24px 0 rgba(34, 41, 47, 0.1);
+}
+
+
+
+
+
+
+p.detail-card-text1 span {
+  color: black;
+  font-size: 18px;
+  font-weight: 500;
+}
+p.detail-card-text span {
+  color: black;
+  font-size: 18px;
+  font-weight: 500;
+}
+.avatar-parent img {
+  height: 100%;
+  width: 100%;
+  max-width: 35px;
+}

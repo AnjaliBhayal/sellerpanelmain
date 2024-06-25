@@ -25,4 +25,20 @@
       {{ item.badge.title }}
     </span>
   </ng-template>
+
+  <!-- new html -->
+  <!-- <ng-template #itemContent>
+    <div *ngFor="let item of menuItems" (click)="setActiveItem(item.id)"
+      style="display: flex; align-items: center; cursor: pointer;">
+      <img [src]="getIcon(item.id, item.icon, item.activeIcon)" *ngIf="item.icon"
+        style="height: 30px; width: 30px; font-size: 1.45rem; margin-right: 1.1rem; flex-shrink: 0;">
+      <span class="menu-title text-truncate" [translate]="item.translate">{{ item.title }}</span>
+      <span class="badge ml-auto mr-1" *ngIf="item.badge" [translate]="item.badge.translate"
+        [ngClass]="item.badge.classes">
+        {{ item.badge.title }}
+      </span>
+    </div>
+  </ng-template> -->
+  <!-- new html -->
+
 </ng-container>

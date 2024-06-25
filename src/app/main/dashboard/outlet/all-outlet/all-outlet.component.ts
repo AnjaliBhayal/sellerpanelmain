@@ -46,6 +46,7 @@ export class AllOutletComponent implements OnInit {
   selectedImage: any;
   imageURL = [];
   public contentHeader: object;
+ticketDetails: any;
 
   constructor(
     private router: Router,
