@@ -7,10 +7,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SupportComponent implements OnInit {
 sellerData: any;
-
+public contentHeader: object;
   constructor() { }
 
   ngOnInit(): void {
+    this.contentHeader = {
+      headerTitle: "support",
+      actionButton: true,
+      breadcrumb: {
+        type: "",
+        links: [
+          {
+            name: "Orders",
+            isLink: true,
+            link: "/dashboard/orders",
+          },
+          {
+            name: "support",
+            isLink: false,
+            link: "dashboard/account",
+          }
+        ],
+      },
+    };
   }
 
 }

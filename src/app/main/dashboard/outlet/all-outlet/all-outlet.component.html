@@ -1,78 +1,75 @@
-<ng-container *ngIf="contentHeader">
-  <div class="content-header row">
-    <div class="content-header-left col-md-12 col-12 mb-2">
-      <div class="row breadcrumbs-top">
-        <div class="col-md-12">
-          <div class="breadcrumbs-top-heading">
-            <h2 class="content-header-title float-left mb-0">
-              {{ contentHeader.headerTitle }}
-            </h2>
+<div class="content-wrapper container-fluid p-0">
+  <div class="content-body">
+    <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+
+    <div class="order">
+      <div class="card card-congratulation-medal">
+        <div class="card-body">
+          <!-- <h1>All Outlet</h1> -->
+          <div class="row match-height">
+            <div class="col-12 col-md-6 col-lg-6" *ngFor="let outletdata of allOutletList">
+              <div class="card-body">
+                <div class="order-body">
+                  <div class="parent">
+                    <div class="area-parent">
+                      <h5>{{outletdata.outletName}}</h5>
+                      <p class="card-details-text font-small-3">{{outletdata.area}}</p>
+                    </div>
+                    <div class="detail-card"> 
+                      <p class="detail-card-text1">{{outletdata.outletId}}</p>
+                      <p class="detail-card-text">{{outletdata.phone}}</p>
+                    </div>
+                  </div>
+                  <div class="details-btn">
+                    <button class="btn1"  (click)="viewdetails(outletdata)">View Details</button>
+                    <button [ngClass]="{'btn3': outletdata.isClosed, 'btn2': !outletdata.isClosed}"
+                      (click)="statusChange($event, content, outletdata)">{{
+                      outletdata.isClosed
+                      ? 'Close' : 'Open' }}</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <di00v class="col-12 col-md-6 col-lg-6" *ngFor="let outletdata of allOutletList">
+              <div class="card-body">
+                <div class="order-body">
+                  <div class="anj d-flex align-items-center">
+                    <div class="avatar-parent">
+                      <img src="../../../../../assets/images/myimages/account-25.svg" alt="">
+                    </div>
+                    <div class="area-parent">
+                      <h5>{{outletdata.outletName}}</h5>
+                      <p class="card-details-text font-small-3">{{outletdata.area}}</p>
+                    </div>
+                  </div>
+                  <div class="area-parent1">
+                    <p class="detail-card-text1"><span>Outlet Id :</span> {{outletdata.outletId}}</p>
+                    <p class="detail-card-text"><span>Phone : </span>{{outletdata.phone}}</p>
+                  </div>
+                  <div class="details-btn">
+                    <button class="btn1" (click)="viewdetails(outletdata)">View Details</button>
+                    <button [ngClass]="{'btn3': outletdata.isClosed, 'btn2': !outletdata.isClosed}"
+                      (click)="statusChange($event, content, outletdata)">{{
+                      outletdata.isClosed
+                      ? 'Close' : 'Open' }}</button>
+                  </div>
+                </div>
+              </div>
+            </di00v> -->
           </div>
         </div>
       </div>
     </div>
-  </div>
-</ng-container>
+    </div>
+    </div>
+
+
+
+
 
 <!-- outlet cards -->
-<div class="order">
-  <div class="card card-congratulation-medal">
-    <div class="card-body">
-      <!-- <h1>All Outlet</h1> -->
-      <div class="row match-height">
-        <div class="col-12 col-md-6 col-lg-6" *ngFor="let outletdata of allOutletList">
-          <div class="card-body">v 
-            <div class="order-body">
-              <div class="parent">
-                <div class="area-parent">
-                  <h5>{{outletdata.outletName}}</h5>
-                  <p class="card-details-text font-small-3">{{outletdata.area}}</p>
-                </div>
-                <div class="detail-card"> 
-                  <p class="detail-card-text1">{{outletdata.outletId}}</p>
-                  <p class="detail-card-text">{{outletdata.phone}}</p>
-                </div>
-              </div>
-              <div class="details-btn">
-                <button class="btn1"  (click)="viewdetails(outletdata)">View Details</button>
-                <button [ngClass]="{'btn3': outletdata.isClosed, 'btn2': !outletdata.isClosed}"
-                  (click)="statusChange($event, content, outletdata)">{{
-                  outletdata.isClosed
-                  ? 'Close' : 'Open' }}</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- <di00v class="col-12 col-md-6 col-lg-6" *ngFor="let outletdata of allOutletList">
-          <div class="card-body">
-            <div class="order-body">
-              <div class="anj d-flex align-items-center">
-                <div class="avatar-parent">
-                  <img src="../../../../../assets/images/myimages/account-25.svg" alt="">
-                </div>
-                <div class="area-parent">
-                  <h5>{{outletdata.outletName}}</h5>
-                  <p class="card-details-text font-small-3">{{outletdata.area}}</p>
-                </div>
-              </div>
-              <div class="area-parent1">
-                <p class="detail-card-text1"><span>Outlet Id :</span> {{outletdata.outletId}}</p>
-                <p class="detail-card-text"><span>Phone : </span>{{outletdata.phone}}</p>
-              </div>
-              <div class="details-btn">
-                <button class="btn1" (click)="viewdetails(outletdata)">View Details</button>
-                <button [ngClass]="{'btn3': outletdata.isClosed, 'btn2': !outletdata.isClosed}"
-                  (click)="statusChange($event, content, outletdata)">{{
-                  outletdata.isClosed
-                  ? 'Close' : 'Open' }}</button>
-              </div>
-            </div>
-          </div>
-        </di00v> -->
-      </div>
-    </div>
-  </div>
-</div>
+
 <!-- outlet cards -->
 
 

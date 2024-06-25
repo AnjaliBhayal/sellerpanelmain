@@ -54,8 +54,18 @@ export class TicketComponent implements OnInit {
         type: '',
         links: [
           {
-            name: 'Ticket',
+            name: "Orders",
             isLink: true,
+            link: "/dashboard/orders",
+          },
+          {
+            name: "support",
+            isLink: true,
+            link: "dashboard/account",
+          },
+          {
+            name: 'Ticket',
+            isLink: false,
             link: '/dashboard/ticket'
           }
         ]

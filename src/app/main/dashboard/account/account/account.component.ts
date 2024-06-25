@@ -9,7 +9,7 @@ import { BlockUI, NgBlockUI } from "ng-block-ui";
 export class AccountComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
   sellerData:any
-  contentHeader: { headerTitle: string; actionButton: boolean; breadcrumb: { type: string; links: { name: string; isLink: boolean; link: string; }[]; }; };
+  public contentHeader: object;
   constructor(private outletService: OutletServiceService) { }
 
   ngOnInit(): void {
@@ -23,8 +23,13 @@ export class AccountComponent implements OnInit {
           {
             name: "Orders",
             isLink: true,
-            link: "dashboard/account",
+            link: "/dashboard/orders",
           },
+          {
+            name: "Accounts",
+            isLink: false,
+            link: "dashboard/account",
+          }
         ],
       },
     };

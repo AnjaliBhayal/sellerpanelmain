@@ -75,9 +75,13 @@ ticketDetails: any;
           {
             name: "Orders",
             isLink: true,
-            link: "dashboard/allOutlet",
+            link: "/dashboard/orders",
           },
-        ],
+          {
+            name: 'Outlet',
+            isLink: false
+          }
+        ]
       },
     };
 

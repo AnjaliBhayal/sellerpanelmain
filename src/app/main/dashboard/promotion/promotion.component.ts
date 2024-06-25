@@ -47,6 +47,8 @@ export class PromotionComponent implements OnInit {
       minAmount: new FormControl("", [Validators.required]),
       isFlatDiscount: new FormControl("", [Validators.required]),
     });
+
+    
     this.contentHeader = {
       headerTitle: "Promotion",
       actionButton: true,
@@ -56,8 +58,13 @@ export class PromotionComponent implements OnInit {
           {
             name: "Orders",
             isLink: true,
-            link: "dashboard/promotion",
+            link: "/dashboard/orders",
           },
+          {
+            name: "Promotion",
+            isLink: false,
+            link: "dashboard/promotion",
+          }
         ],
       },
     };

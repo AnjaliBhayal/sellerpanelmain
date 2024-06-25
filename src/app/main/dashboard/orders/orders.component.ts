@@ -68,21 +68,36 @@ value: any;
   public contentHeader: object;
   ngOnInit(): void {
     
-    // console.log(localStorage.getItem('token'))
+    console.log(localStorage.getItem('token'))
     this.contentHeader = {
-      headerTitle: "Orders",
+      headerTitle: 'Orders',
       actionButton: true,
       breadcrumb: {
-        type: "",
+        type: '',
         links: [
           {
-            name: "Orders",
+            name: 'Orders',
             isLink: true,
-            link: "dashboard/orders",
+            link: "/dashboard/orders",
           },
         ],
       },
     };
+
+    // this.contentHeader = {
+    //   headerTitle: 'Home',
+    //   actionButton: true,
+    //   breadcrumb: {
+    //     type: '',
+    //     links: [
+    //       {
+    //         name: 'Home',
+    //         isLink: true,
+    //         link: '/dashboard/home'
+    //       }
+    //     ]
+    //   }
+    // }
     this.allData();
     this.getOrder(this.status);
 

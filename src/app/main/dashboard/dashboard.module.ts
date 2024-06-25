@@ -24,6 +24,7 @@ import { CoreCommonModule } from "@core/common.module";
 import { SupportComponent } from './support/support.component';
 import { SettlementComponent } from './outlet/settlement/settlement.component';
 import { OutletOfferComponent } from './outlet/outlet-offer/outlet-offer.component';
+import { ContentHeaderModule } from "app/layout/components/content-header/content-header.module";
 
 const routes: Routes = [
   {
@@ -119,6 +120,7 @@ const routes: Routes = [
     FileUploadModule,
     CommonModule,
     ReactiveFormsModule,
+    ContentHeaderModule,
     FormsModule,
     NgbModule,
     Ng2FlatpickrModule,

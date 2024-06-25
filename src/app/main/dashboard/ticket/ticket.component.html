@@ -1,314 +1,143 @@
-<ng-container *ngIf="contentHeader">
-  <div class="content-header row">
-    <div class="content-header-left col-md-12 col-12 mb-2">
-      <div class="row breadcrumbs-top">
-        <div class="col-md-12">
-          <div class="breadcrumbs-top-heading">
-            <h2 class="content-header-title float-left mb-0">
-              {{ contentHeader.headerTitle }}
-            </h2>
-            <!-- <div class="switch-online">
-                              <div class="columns">
-                                  <div class="column is-12">
-                                      <div class="up-in-toggle" id="main-toggle">
-                                          <input type="radio" id="switch_left" name="switch_2" value="yes" />
-                                          <label for="switch_left" class="online" onclick="outletStatus()">Online</label>
-                                          <input type="radio" id="switch_right" name="switch_2" value="no" checked/>
-                                          <label for="switch_right" class="offline" onclick="outletStatus()">Offline</label>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div> -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</ng-container>
-
-<!-- <div class="content-wrapper container-fluid p-0">
+<div class="content-wrapper container-fluid p-0">
   <div class="content-body">
-    <section class="ticket-page">
-      <div class="d-flex align-items-baseline justify-content-between">
-        <div class="d-flex justify-content-evenly">
-          
-          <div class="form-group">
-            <select class="form-control" id="basicSelect" (change)="selcectStatus($event)">
-              <option value="All">All</option>
-              <option value="Open">Pending</option>
-              <option value="completed">Completed</option>
-            </select>
-          </div>
-        </div>
-    
-      </div>
-      <div class="row">
-        <div class="col-md-5">
-          <div class="card" *ngFor="let ticket of allTicket">
-            <div class="card-body">
-              <h4 class="card-title">{{ ticket.issue }}</h4>
-              <div class="card-subtitle text-muted mb-1">
-                <strong>Description:</strong>
-                <span> {{ ticket.description }} </span>
-              </div>
-              <hr />
-              <p class="card-text">
-                <strong>Ticket Id :</strong> <span> {{ ticket.ticketId }}</span>
-              </p>
-            
-              <button class="btn btn-outline-primary" (click)="modalProductView(productView, ticket.ticketId)">
-                View Details
-              </button>
-            </div>
-          </div>
-        </div>
+    <app-content-header [contentHeader]="contentHeader"></app-content-header>
 
-        
-        <ng-template #productView let-modal>
-          <div class="modal-header">
-            <h5 class="modal-title" id="myModalLabel6">Ticket Details</h5>
-            <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+    <div class="">
+      <div class="tab-switch">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-all-tab" data-bs-toggle="pill" data-bs-target="#pills-all"
+              type="button" role="tab" aria-controls="pills-all" aria-selected="true" (click)="selcectStatus('All')">
+              All
             </button>
-          </div>
-          <div class="modal-body" tabindex="0" ngbAutofocus>
-            <div class="row">
-              <div class="col-md-12">
-                <h3></h3>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="product-view-box">
-                      <div><strong>Product Name</strong></div>
-                      <div>
-                        <p>{{ ticketDetails?.productNameList }}</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-2">
-                    <div class="product-view-box">
-                      <div><strong>Customer Name</strong></div>
-                      <div>
-                        <p>
-                          {{ ticketDetails?.orderDetails?.client?.clientName }}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="product-view-box">
-                      <div><strong>Issue</strong></div>
-                      <div>
-                        <p>{{ ticketDetails?.issue }}</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-2">
-                    <div class="product-view-box">
-                      <div><strong>Description</strong></div>
-                      <div>
-                        <p>
-                          {{ ticketDetails?.description }}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-2">
-                    <div class="product-view-box">
-                      <div><strong>status</strong></div>
-                      <div>
-                        <p>
-                          {{ ticketDetails?.status }}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-2">
-                  
-                  </div>
-
-                
-                </div>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-    
-                    <div class="col-md-7">
-                        <div class="card view-details">
-                            <div class="Cross-btn mr-1">
-                                
-                                <button type="button" class="close" (click)="closeDetails()" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title d-flex">{{ticketDetails?.issue}}</h4>
-                                <hr>
-                                <div class="media">
-                                    <div class="avatar mr-1">
-                                        <img src="assets/images/portrait/small/avatar-s-7.jpg" alt="Avatar" width="42"
-                                            height="42" />
-                                    </div>
-                                    <div class="media-body">
-                                        <h5 class="mb-0">Shyama Thakur</h5>
-                                        <small class="text-muted">1 Order With Fablo Food</small>
-                                    </div>
-                                </div>
-                                <img class="ticket-wrong-image" src="assets/images/pages/wrong-item.jpg" />
-                                <div
-                                    class="d-flex align-items-baseline justify-content-between pb-1 pl-1 pl-md-0 pb-md-0 mt-2">
-                                    <h5><strong>Issue with:</strong> <span> 1X Chicken Roll</span> <strong>₹
-                                            210</strong>
-                                    </h5>
-                                    <button class="btn btn-outline-primary">Close</button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </ng-container>
-      </div>
-    </section>
-  </div>
-</div> -->
-
-<div class="">
-  <div class="tab-switch">
-    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="pills-all-tab" data-bs-toggle="pill" data-bs-target="#pills-all"
-          type="button" role="tab" aria-controls="pills-all" aria-selected="true" (click)="selcectStatus('All')">
-          All
-        </button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="pills-pending-tab" data-bs-toggle="pill" data-bs-target="#pills-pending"
-          type="button" role="tab" aria-controls="pills-pending" aria-selected="false" (click)="selcectStatus('Open')">
-          Pending
-        </button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="pills-completed-tab" data-bs-toggle="pill" data-bs-target="#pills-completed"
-          type="button" role="tab" aria-controls="pills-completed" aria-selected="false"
-          (click)="selcectStatus('completed')">
-          Completed
-        </button>
-      </li>
-    </ul>
-  </div>
-</div>
-
-<section id="users-page">
-  <div *ngIf="!allTicket || allTicket.length === 0">
-    <h5>No Data Found</h5>
-  </div>
-  <div class="row"  *ngIf="allTicket && allTicket.length > 0">
-    <!-- Dynamic data Card -->
-
-
-    <div class="col-6 col-md-6 col-lg-6" *ngFor="let ticket of allTicket">
-      <div class="card-body">
-        <div class="outlet-body">
-          <div class="card-transaction support">
-            <div class="" >
-              <div class="card-body hh">
-                <div class="row anjali">  
-                  <div class="col-md-3">
-                    <div class="avatar img">
-                      <img class="round" src="../../../../assets/images/myimages/cinema-tickets.svg">
-                      
-                    </div>
-                  </div>
-                 <div class="col-md-9">
-                  <div class="heading2">
-                    <h1 style="font-size: 20px;">issue{{ ticket?.issue }}</h1>
-                    <!-- <p>{{ticket?.description}}</p> -->
-                  </div>
-                 </div>
-                </div>
-                <!-- <div class="heading2">
-                  <h1>issue{{ ticketDetails?.issue }}</h1>
-                  <p>description {{ ticketDetails?.description }}</p>
-                </div> -->
-                <hr />
-                <div class="discription">
-                  <p><b>Description </b> : {{ticket?.description}}</p>
-                </div>
-                <!-- <hr> -->
-                <div class="row pt-2">
-                  <div class="col-md-6 he">
-                    <div class="transaction-item">
-                      <div class="media">
-                        <div class="media-body">
-                          <h6 class="transaction-title">AssignedTo:</h6>
-                        </div>
-                      </div>
-                      <div class="details">{{ticket?.assignedTo}}</div>
-                    </div>
-                    <div class="transaction-item ">
-                      <div class="media">
-                        <div class="media-body">
-                          <h6 class="transaction-title">User Id:</h6>
-                        </div>
-                      </div>
-                      <div class="details">{{ticket?.userId}}</div>
-                    </div>
-                    <div class="transaction-item">
-                      <div class="media">
-                        <div class="media-body">
-                          <h6 class="transaction-title">Role:</h6>
-                        </div>
-                      </div>
-                      <div class="details">{{ticket?.role}}</div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <!-- "assignedTo": null,
-                    "createdAt": "Today 3:25 PM" -->
-                    <div class="transaction-item">
-                      <div class="media">
-                        <div class="media-body">
-                          <h6 class="transaction-title">DateTime:</h6>
-                        </div>
-                      </div>
-                      <div class="details">{{ticket?.createdAt}}</div>
-                    </div>
-                    <div class="transaction-item">
-                      <div class="media">
-                        <div class="media-body">
-                          <h6 class="transaction-title">Priority:</h6>
-                        </div>
-                      </div>
-                      <div class="details">{{ticket?.priority}}</div>
-                    </div>
-                    <div class="transaction-item">
-                      <div class="media">
-                        <div class="media-body">
-                          <h6 class="transaction-title">Status:</h6>
-                        </div>
-                      </div>
-                      <div class="details">{{ticket?.status}}</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="details-parent d-flex justify-content-end">
-                  <button class="btn1" (click)="modalProductView(productView, ticket.ticketId)">
-                    View Details
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-pending-tab" data-bs-toggle="pill" data-bs-target="#pills-pending"
+              type="button" role="tab" aria-controls="pills-pending" aria-selected="false" (click)="selcectStatus('Open')">
+              Pending
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-completed-tab" data-bs-toggle="pill" data-bs-target="#pills-completed"
+              type="button" role="tab" aria-controls="pills-completed" aria-selected="false"
+              (click)="selcectStatus('completed')">
+              Completed
+            </button>
+          </li>
+        </ul>
       </div>
     </div>
-    <!--/ Dynamic data Card -->
-  </div> 
-</section>
-
-
-
-
+    
+    <section id="users-page">
+      <div *ngIf="!allTicket || allTicket.length === 0">
+        <h5>No Data Found</h5>
+      </div>
+      <div class="row"  *ngIf="allTicket && allTicket.length > 0">
+        <!-- Dynamic data Card -->
+    
+    
+        <div class="col-6 col-md-6 col-lg-6" *ngFor="let ticket of allTicket">
+          <div class="card-body">
+            <div class="outlet-body">
+              <div class="card-transaction support">
+                <div class="" >
+                  <div class="card-body hh">
+                    <div class="row anjali">  
+                      <div class="col-md-3">
+                        <div class="avatar img">
+                          <img class="round" src="../../../../assets/images/myimages/cinema-tickets.svg">
+                          
+                        </div>
+                      </div>
+                     <div class="col-md-9">
+                      <div class="heading2">
+                        <h1 style="font-size: 20px;">issue{{ ticket?.issue }}</h1>
+                        <!-- <p>{{ticket?.description}}</p> -->
+                      </div>
+                     </div>
+                    </div>
+                    <!-- <div class="heading2">
+                      <h1>issue{{ ticketDetails?.issue }}</h1>
+                      <p>description {{ ticketDetails?.description }}</p>
+                    </div> -->
+                    <hr />
+                    <div class="discription">
+                      <p><b>Description </b> : {{ticket?.description}}</p>
+                    </div>
+                    <!-- <hr> -->
+                    <div class="row pt-2">
+                      <div class="col-md-6 he">
+                        <div class="transaction-item">
+                          <div class="media">
+                            <div class="media-body">
+                              <h6 class="transaction-title">AssignedTo:</h6>
+                            </div>
+                          </div>
+                          <div class="details">{{ticket?.assignedTo}}</div>
+                        </div>
+                        <div class="transaction-item ">
+                          <div class="media">
+                            <div class="media-body">
+                              <h6 class="transaction-title">User Id:</h6>
+                            </div>
+                          </div>
+                          <div class="details">{{ticket?.userId}}</div>
+                        </div>
+                        <div class="transaction-item">
+                          <div class="media">
+                            <div class="media-body">
+                              <h6 class="transaction-title">Role:</h6>
+                            </div>
+                          </div>
+                          <div class="details">{{ticket?.role}}</div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <!-- "assignedTo": null,
+                        "createdAt": "Today 3:25 PM" -->
+                        <div class="transaction-item">
+                          <div class="media">
+                            <div class="media-body">
+                              <h6 class="transaction-title">DateTime:</h6>
+                            </div>
+                          </div>
+                          <div class="details">{{ticket?.createdAt}}</div>
+                        </div>
+                        <div class="transaction-item">
+                          <div class="media">
+                            <div class="media-body">
+                              <h6 class="transaction-title">Priority:</h6>
+                            </div>
+                          </div>
+                          <div class="details">{{ticket?.priority}}</div>
+                        </div>
+                        <div class="transaction-item">
+                          <div class="media">
+                            <div class="media-body">
+                              <h6 class="transaction-title">Status:</h6>
+                            </div>
+                          </div>
+                          <div class="details">{{ticket?.status}}</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="details-parent d-flex justify-content-end">
+                      <button class="btn1" (click)="modalProductView(productView, ticket.ticketId)">
+                        View Details
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/ Dynamic data Card -->
+      </div> 
+    </section>
+    
+    </div>
+    </div>
 
 
 <ng-template #productView let-modal>  

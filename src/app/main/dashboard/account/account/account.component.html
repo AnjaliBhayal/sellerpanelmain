@@ -1,434 +1,414 @@
-<ng-container *ngIf="contentHeader">
-  <div class="content-header row">
-    <div class="content-header-left col-md-12 col-12 mb-2">
-      <div class="row breadcrumbs-top">
-        <div class="col-md-12">
-          <div class="breadcrumbs-top-heading">
-            <h2 class="content-header-title float-left mb-0">
-              {{ contentHeader.headerTitle }}
-            </h2>
-            <!-- <div class="switch-online">
-                            <div class="columns">
-                                <div class="column is-12">
-                                    <div class="up-in-toggle" id="main-toggle">
-                                        <input type="radio" id="switch_left" name="switch_2" value="yes" />
-                                        <label for="switch_left" class="online" onclick="outletStatus()">Online</label>
-                                        <input type="radio" id="switch_right" name="switch_2" value="no" checked/>
-                                        <label for="switch_right" class="offline" onclick="outletStatus()">Offline</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</ng-container>
+<div class="content-wrapper container-fluid p-0">
+  <div class="content-body">
+    <app-content-header [contentHeader]="contentHeader"></app-content-header>
 
-
-
-<div class="ticket">
-    <div class="card card-congratulation-medal">
-        <div class="card-body">
-            <!-- <h1>Account</h1> -->
-            <div class="row match-height">
-                <div class="col-6 col-md-6 col-lg-6">
-                    <div class="card-body">
-                        <div class="outlet-body">
-                           <div class="account-parent d-flex justify-content-between">
-                            <div class="account-parent d-flex align-items-center">
-                              <div class="avatar img">
-                                <!-- <img class="round" src="../../../../assets/images/myimages/image (25).png"> -->
-                                {{sellerData?.basicDetails?.tradeName.charAt(0).toUpperCase()}}
-                              </div>
-                              
-                              <div class="avatar-parent">
-                                <span class="user-name font-weight-light">{{ sellerData?.basicDetails?.tradeName }}</span>
-                                <p>Vijay Nagar</p>
-                              </div>
-                           </div> 
-                           <!-- <div class="view-outlet">
-                            <div ngbDropdown container="body">
-                              <a ngbDropdownToggle href="javascript:void(0);" class="hide-arrow" id="dropdownBrowserState"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                              </a>
-                              <div ngbDropdownMenu class="dropdown-menu-right" aria-labelledby="dropdownBrowserState">
-                                <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center">View Outlet</a>
-                                <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center">Verification</a>
-                              </div>
-                            </div>
-                           </div> -->
-                           </div>
-                           
-                           <hr>
-                           <div class="details-parent">
-                              <div class="heading">
-                                <h1>Basic Details</h1>
-                              </div>
-                              <div class=" card-transaction">
-                                <div class="card-header">
-                                  <h4 class="card-title"></h4>
-                                  <!-- <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i> -->
-                                  
+    <div class="ticket">
+      <div class="card card-congratulation-medal">
+          <div class="card-body">
+              <!-- <h1>Account</h1> -->
+              <div class="row match-height">
+                  <div class="col-6 col-md-6 col-lg-6">
+                      <div class="card-body">
+                          <div class="outlet-body">
+                             <div class="account-parent d-flex justify-content-between">
+                              <div class="account-parent d-flex align-items-center">
+                                <div class="avatar img">
+                                  <!-- <img class="round" src="../../../../assets/images/myimages/image (25).png"> -->
+                                  {{sellerData?.basicDetails?.tradeName.charAt(0).toUpperCase()}}
                                 </div>
-                                <div class="card-body">
-                                  <div class="transaction-item">
-                                    <div class="media">
-                                      <div class="avatar bg-light-primary rounded">
-                                        <div class="avatar-content">
-                                          <i data-feather="user" class="avatar-icon font-medium-3"></i>
-                                        </div>
-                                      </div>
-                                      <div class="media-body">
-                                        <h6 class="transaction-title">Seller Name:</h6>
-                                        <!-- <small>Starbucks</small> -->
-                                      </div>
-                                    </div>
-                                    <div class="details">{{ sellerData?.basicDetails?.sellerName }}</div>
-                                  </div>
-                                  <div class="transaction-item">
-                                    <div class="media">
-                                      <div class="avatar bg-light-success rounded">
-                                        <div class="avatar-content">
-                                          <i data-feather="trending-up" class="avatar-icon font-medium-3"></i>
-                                        </div>
-                                      </div>
-                                      <div class="media-body">
-                                        <h6 class="transaction-title">TradeName:</h6>
-                                        
-                                      </div>
-                                    </div>
-                                    <div class="details">{{ sellerData?.basicDetails?.tradeName }}</div>
-                                  </div>
-                                  <div class="transaction-item">
-                                    <div class="media">
-                                      <div class="avatar bg-light-danger rounded">
-                                        <div class="avatar-content">
-                                          <i data-feather="type" class="avatar-icon font-medium-3"></i>
-                                        </div>
-                                      </div>
-                                      <div class="media-body">
-                                        <h6 class="transaction-title">Seller Type:</h6>
-                                       
-                                      </div>
-                                    </div>
-                                    <div class="details">{{ sellerData?.basicDetails?.sellerType }}</div>
-                                  </div>
-                                  <div class="transaction-item">
-                                    <div class="media">
-                                      <div class="avatar bg-light-warning rounded">
-                                        <div class="avatar-content">
-                                          <i data-feather="credit-card" class="avatar-icon font-medium-3"></i>
-                                        </div>
-                                      </div>
-                                      <div class="media-body">
-                                        <h6 class="transaction-title">GST No:</h6>
-                                       
-                                      </div>
-                                    </div>
-                                    <div class="details">{{ sellerData?.basicDetails?.gstNo }}</div>
-                                  </div>
-                                  <div class="transaction-item">
-                                    <div class="media">
-                                      <div class="avatar bg-light-info rounded">
-                                        <div class="avatar-content">
-                                          <i data-feather="credit-card" class="avatar-icon font-medium-3"></i>
-                                        </div>
-                                      </div>
-                                      <div class="media-body">
-                                        <h6 class="transaction-title">Pan Number:</h6>
-                                       
-                                      </div>
-                                    </div>
-                                    <div class="details">{{ sellerData?.basicDetails?.panNumber }}</div>
-                                  </div>
-                                  <div class="transaction-item">
-                                    <div class="media">
-                                      <div class="avatar bg-light-info rounded">
-                                        <div class="avatar-content">
-                                          <i data-feather="phone" class="avatar-icon font-medium-3"></i>
-                                        </div>
-                                      </div>
-                                      <div class="media-body">
-                                        <h6 class="transaction-title">Phone Number:</h6>
-                                        
-                                      </div>
-                                    </div>
-                                    <div class="details">{{ sellerData?.basicDetails?.phone }}</div>
-                                  </div>
-                                  <div class="transaction-item">
-                                    <div class="media">
-                                      <div class="avatar bg-light-info rounded">
-                                        <div class="avatar-content">
-                                          <i data-feather="check" class="avatar-icon font-medium-3"></i>
-                                        </div>
-                                      </div>
-                                      <div class="media-body">
-                                        <h6 class="transaction-title">Verification Status:</h6>                                  
-                                      </div>
-                                    </div>
-                                    <div class="details">{{sellerData?.verificationStatus}}</div>
-                                  </div>
-                                  <div class="transaction-item">
-                                    <div class="media">
-                                      <div class="avatar bg-light-info rounded">
-                                        <div class="avatar-content">
-                                          <i data-feather="info" class="avatar-icon font-medium-3"></i>
-                                        </div>
-                                      </div>
-                                      <div class="media-body">
-                                        <h6 class="transaction-title">Number Of Shop:</h6>
-                                        
-                                      </div>
-                                    </div>
-                                    <div class="details">{{sellerData?.numberOfShop}}</div>
-                                  </div>
-                                </div>
-                              </div>
-                           </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-6 col-lg-6">
-                  <div class="card-body">
-                      <div class="outlet-body">
-                        <div class="heading2">
-                          <h1>License Details</h1>
-                        </div>
-                        <div class=" card-transaction">
-                          <div class="card-header">
-                            <h4 class="card-title"></h4>
-                            <!-- <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i> -->                         
-                          </div>
-                          <div class="card-body">
-                            <div class="transaction-item">
-                              <div class="media">
-                                <div class="avatar bg-light-primary rounded">
-                                  <div class="avatar-content">
-                                    <i data-feather="check-square" class="avatar-icon font-medium-3"></i>
-                                  </div>
-                                </div>
-                                <div class="media-body">
-                                  <h6 class="transaction-title"> Licence Name: </h6>
                                 
+                                <div class="avatar-parent">
+                                  <span class="user-name font-weight-light">{{ sellerData?.basicDetails?.tradeName }}</span>
+                                  <p>Vijay Nagar</p>
+                                </div>
+                             </div> 
+                             <!-- <div class="view-outlet">
+                              <div ngbDropdown container="body">
+                                <a ngbDropdownToggle href="javascript:void(0);" class="hide-arrow" id="dropdownBrowserState"
+                                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </a>
+                                <div ngbDropdownMenu class="dropdown-menu-right" aria-labelledby="dropdownBrowserState">
+                                  <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center">View Outlet</a>
+                                  <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center">Verification</a>
                                 </div>
                               </div>
-                              <div class="details">{{ sellerData?.licenseDetails?.nameOnlicence }}</div>
-                            </div>
-                            <div class="transaction-item">
-                              <div class="media">
-                                <div class="avatar bg-light-success rounded">
-                                  <div class="avatar-content">
-                                    <i data-feather="tablet" class="avatar-icon font-medium-3"></i>
+                             </div> -->
+                             </div>
+                             
+                             <hr>
+                             <div class="details-parent">
+                                <div class="heading">
+                                  <h1>Basic Details</h1>
+                                </div>
+                                <div class=" card-transaction">
+                                  <div class="card-header">
+                                    <h4 class="card-title"></h4>
+                                    <!-- <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i> -->
+                                    
+                                  </div>
+                                  <div class="card-body">
+                                    <div class="transaction-item">
+                                      <div class="media">
+                                        <div class="avatar bg-light-primary rounded">
+                                          <div class="avatar-content">
+                                            <i data-feather="user" class="avatar-icon font-medium-3"></i>
+                                          </div>
+                                        </div>
+                                        <div class="media-body">
+                                          <h6 class="transaction-title">Seller Name:</h6>
+                                          <!-- <small>Starbucks</small> -->
+                                        </div>
+                                      </div>
+                                      <div class="details">{{ sellerData?.basicDetails?.sellerName }}</div>
+                                    </div>
+                                    <div class="transaction-item">
+                                      <div class="media">
+                                        <div class="avatar bg-light-success rounded">
+                                          <div class="avatar-content">
+                                            <i data-feather="trending-up" class="avatar-icon font-medium-3"></i>
+                                          </div>
+                                        </div>
+                                        <div class="media-body">
+                                          <h6 class="transaction-title">TradeName:</h6>
+                                          
+                                        </div>
+                                      </div>
+                                      <div class="details">{{ sellerData?.basicDetails?.tradeName }}</div>
+                                    </div>
+                                    <div class="transaction-item">
+                                      <div class="media">
+                                        <div class="avatar bg-light-danger rounded">
+                                          <div class="avatar-content">
+                                            <i data-feather="type" class="avatar-icon font-medium-3"></i>
+                                          </div>
+                                        </div>
+                                        <div class="media-body">
+                                          <h6 class="transaction-title">Seller Type:</h6>
+                                         
+                                        </div>
+                                      </div>
+                                      <div class="details">{{ sellerData?.basicDetails?.sellerType }}</div>
+                                    </div>
+                                    <div class="transaction-item">
+                                      <div class="media">
+                                        <div class="avatar bg-light-warning rounded">
+                                          <div class="avatar-content">
+                                            <i data-feather="credit-card" class="avatar-icon font-medium-3"></i>
+                                          </div>
+                                        </div>
+                                        <div class="media-body">
+                                          <h6 class="transaction-title">GST No:</h6>
+                                         
+                                        </div>
+                                      </div>
+                                      <div class="details">{{ sellerData?.basicDetails?.gstNo }}</div>
+                                    </div>
+                                    <div class="transaction-item">
+                                      <div class="media">
+                                        <div class="avatar bg-light-info rounded">
+                                          <div class="avatar-content">
+                                            <i data-feather="credit-card" class="avatar-icon font-medium-3"></i>
+                                          </div>
+                                        </div>
+                                        <div class="media-body">
+                                          <h6 class="transaction-title">Pan Number:</h6>
+                                         
+                                        </div>
+                                      </div>
+                                      <div class="details">{{ sellerData?.basicDetails?.panNumber }}</div>
+                                    </div>
+                                    <div class="transaction-item">
+                                      <div class="media">
+                                        <div class="avatar bg-light-info rounded">
+                                          <div class="avatar-content">
+                                            <i data-feather="phone" class="avatar-icon font-medium-3"></i>
+                                          </div>
+                                        </div>
+                                        <div class="media-body">
+                                          <h6 class="transaction-title">Phone Number:</h6>
+                                          
+                                        </div>
+                                      </div>
+                                      <div class="details">{{ sellerData?.basicDetails?.phone }}</div>
+                                    </div>
+                                    <div class="transaction-item">
+                                      <div class="media">
+                                        <div class="avatar bg-light-info rounded">
+                                          <div class="avatar-content">
+                                            <i data-feather="check" class="avatar-icon font-medium-3"></i>
+                                          </div>
+                                        </div>
+                                        <div class="media-body">
+                                          <h6 class="transaction-title">Verification Status:</h6>                                  
+                                        </div>
+                                      </div>
+                                      <div class="details">{{sellerData?.verificationStatus}}</div>
+                                    </div>
+                                    <div class="transaction-item">
+                                      <div class="media">
+                                        <div class="avatar bg-light-info rounded">
+                                          <div class="avatar-content">
+                                            <i data-feather="info" class="avatar-icon font-medium-3"></i>
+                                          </div>
+                                        </div>
+                                        <div class="media-body">
+                                          <h6 class="transaction-title">Number Of Shop:</h6>
+                                          
+                                        </div>
+                                      </div>
+                                      <div class="details">{{sellerData?.numberOfShop}}</div>
+                                    </div>
                                   </div>
                                 </div>
-                                <div class="media-body">
-                                  <h6 class="transaction-title">Licence Number:</h6>
-                                
-                                </div>
-                              </div>
-                              <div class="details">{{ sellerData?.licenseDetails?.licenceNumber }}</div>
-                            </div>
-                            <div class="transaction-item">
-                              <div class="media">
-                                <div class="avatar bg-light-danger rounded">
-                                  <div class="avatar-content">
-                                    <i data-feather="check" class="avatar-icon font-medium-3"></i>
-                                  </div>
-                                </div>
-                                <div class="media-body">
-                                  <h6 class="transaction-title">Issued On:</h6>
-                                  
-                                </div>
-                              </div>
-                              <div class="details">{{ sellerData?.licenseDetails?.issuedOn }}</div>
-                            </div>
-                            <div class="transaction-item">
-                              <div class="media">
-                                <div class="avatar bg-light-warning rounded">
-                                  <div class="avatar-content">
-                                    <i data-feather="calendar" class="avatar-icon font-medium-3"></i>
-                                  </div>
-                                </div>
-                                <div class="media-body">
-                                  <h6 class="transaction-title">Tenure:</h6>
-                                 
-                                </div>
-                              </div>
-                              <div class="details">{{ sellerData?.licenseDetails?.tenure }}</div>
-                            </div>
-                         
+                             </div>
                           </div>
-                        </div>
                       </div>
-  
                   </div>
-                 <div class="row  match-height">
-                  <div class="col-12 col-md-12 col-lg-12">
+                  <div class="col-6 col-md-6 col-lg-6">
                     <div class="card-body">
                         <div class="outlet-body">
-                          <div class="heading1">
-                            <h1>Authorised Person Details</h1>
+                          <div class="heading2">
+                            <h1>License Details</h1>
                           </div>
                           <div class=" card-transaction">
                             <div class="card-header">
                               <h4 class="card-title"></h4>
-                              <!-- <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i> -->
-                              
+                              <!-- <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i> -->                         
                             </div>
                             <div class="card-body">
                               <div class="transaction-item">
                                 <div class="media">
                                   <div class="avatar bg-light-primary rounded">
                                     <div class="avatar-content">
-                                      <i data-feather="user" class="avatar-icon font-medium-3"></i>
+                                      <i data-feather="check-square" class="avatar-icon font-medium-3"></i>
                                     </div>
                                   </div>
-                                  
                                   <div class="media-body">
-                                    <h6 class="transaction-title">Name:</h6>
-                                    
+                                    <h6 class="transaction-title"> Licence Name: </h6>
+                                  
                                   </div>
                                 </div>
-                                <div class="details">{{ sellerData?.authorizedPersonDetails?.name }}</div>
+                                <div class="details">{{ sellerData?.licenseDetails?.nameOnlicence }}</div>
                               </div>
                               <div class="transaction-item">
                                 <div class="media">
                                   <div class="avatar bg-light-success rounded">
                                     <div class="avatar-content">
-                                      <i data-feather="credit-card" class="avatar-icon font-medium-3"></i>
+                                      <i data-feather="tablet" class="avatar-icon font-medium-3"></i>
                                     </div>
                                   </div>
                                   <div class="media-body">
-                                    <h6 class="transaction-title">Pan No:</h6>
+                                    <h6 class="transaction-title">Licence Number:</h6>
+                                  
                                   </div>
                                 </div>
-                                <div class="details">{{ sellerData?.authorizedPersonDetails?.pan }}</div>
+                                <div class="details">{{ sellerData?.licenseDetails?.licenceNumber }}</div>
                               </div>
                               <div class="transaction-item">
                                 <div class="media">
                                   <div class="avatar bg-light-danger rounded">
                                     <div class="avatar-content">
-                                      <i data-feather="phone" class="avatar-icon font-medium-3"></i>
+                                      <i data-feather="check" class="avatar-icon font-medium-3"></i>
                                     </div>
                                   </div>
                                   <div class="media-body">
-                                    <h6 class="transaction-title">Phone No:</h6>
-                                   
+                                    <h6 class="transaction-title">Issued On:</h6>
+                                    
                                   </div>
                                 </div>
-                                <div class="details">{{ sellerData?.authorizedPersonDetails?.phone }}</div>
+                                <div class="details">{{ sellerData?.licenseDetails?.issuedOn }}</div>
                               </div>
                               <div class="transaction-item">
                                 <div class="media">
                                   <div class="avatar bg-light-warning rounded">
                                     <div class="avatar-content">
-                                      <i data-feather="mail" class="avatar-icon font-medium-3"></i>
+                                      <i data-feather="calendar" class="avatar-icon font-medium-3"></i>
                                     </div>
                                   </div>
                                   <div class="media-body">
-                                    <h6 class="transaction-title">Email:</h6>
+                                    <h6 class="transaction-title">Tenure:</h6>
                                    
                                   </div>
                                 </div>
-                                <div class="details">{{ sellerData?.authorizedPersonDetails?.email }}</div>
+                                <div class="details">{{ sellerData?.licenseDetails?.tenure }}</div>
                               </div>
-                             
+                           
                             </div>
                           </div>
                         </div>
+    
                     </div>
-                </div>
-                 </div>
-              </div>
-            </div>
-
-
-
-            <!-- bank details  section -->
-            <!-- <div class="col-12 col-md-12 col-lg-12">
-              <div class="card-body">
-                  <div class="outlet-body">
-                    <div class="heading2">
-                      <h1>Bank Details</h1>
-                    </div>
-                    <div class=" card-transaction">
-                      <div class="card-header">
-                        <h4 class="card-title"></h4>
-                                                
-                      </div>
+                   <div class="row  match-height">
+                    <div class="col-12 col-md-12 col-lg-12">
                       <div class="card-body">
-                        <div class="transaction-item">
-                          <div class="media">
-                            <div class="avatar bg-light-primary rounded">
-                              <div class="avatar-content">
-                                <i data-feather="check-square" class="avatar-icon font-medium-3"></i>
-                              </div>
+                          <div class="outlet-body">
+                            <div class="heading1">
+                              <h1>Authorised Person Details</h1>
                             </div>
-                            <div class="media-body">
-                              <h6 class="transaction-title"> Bank Name: </h6>
-                            
+                            <div class=" card-transaction">
+                              <div class="card-header">
+                                <h4 class="card-title"></h4>
+                                <!-- <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i> -->
+                                
+                              </div>
+                              <div class="card-body">
+                                <div class="transaction-item">
+                                  <div class="media">
+                                    <div class="avatar bg-light-primary rounded">
+                                      <div class="avatar-content">
+                                        <i data-feather="user" class="avatar-icon font-medium-3"></i>
+                                      </div>
+                                    </div>
+                                    
+                                    <div class="media-body">
+                                      <h6 class="transaction-title">Name:</h6>
+                                      
+                                    </div>
+                                  </div>
+                                  <div class="details">{{ sellerData?.authorizedPersonDetails?.name }}</div>
+                                </div>
+                                <div class="transaction-item">
+                                  <div class="media">
+                                    <div class="avatar bg-light-success rounded">
+                                      <div class="avatar-content">
+                                        <i data-feather="credit-card" class="avatar-icon font-medium-3"></i>
+                                      </div>
+                                    </div>
+                                    <div class="media-body">
+                                      <h6 class="transaction-title">Pan No:</h6>
+                                    </div>
+                                  </div>
+                                  <div class="details">{{ sellerData?.authorizedPersonDetails?.pan }}</div>
+                                </div>
+                                <div class="transaction-item">
+                                  <div class="media">
+                                    <div class="avatar bg-light-danger rounded">
+                                      <div class="avatar-content">
+                                        <i data-feather="phone" class="avatar-icon font-medium-3"></i>
+                                      </div>
+                                    </div>
+                                    <div class="media-body">
+                                      <h6 class="transaction-title">Phone No:</h6>
+                                     
+                                    </div>
+                                  </div>
+                                  <div class="details">{{ sellerData?.authorizedPersonDetails?.phone }}</div>
+                                </div>
+                                <div class="transaction-item">
+                                  <div class="media">
+                                    <div class="avatar bg-light-warning rounded">
+                                      <div class="avatar-content">
+                                        <i data-feather="mail" class="avatar-icon font-medium-3"></i>
+                                      </div>
+                                    </div>
+                                    <div class="media-body">
+                                      <h6 class="transaction-title">Email:</h6>
+                                     
+                                    </div>
+                                  </div>
+                                  <div class="details">{{ sellerData?.authorizedPersonDetails?.email }}</div>
+                                </div>
+                               
+                              </div>
                             </div>
                           </div>
-                          <div class="details">{{ sellerData?.licenseDetails?.nameOnlicence }}</div>
+                      </div>
+                  </div>
+                   </div>
+                </div>
+              </div>
+  
+  
+  
+              <!-- bank details  section -->
+              <!-- <div class="col-12 col-md-12 col-lg-12">
+                <div class="card-body">
+                    <div class="outlet-body">
+                      <div class="heading2">
+                        <h1>Bank Details</h1>
+                      </div>
+                      <div class=" card-transaction">
+                        <div class="card-header">
+                          <h4 class="card-title"></h4>
+                                                  
                         </div>
-                        <div class="transaction-item">
-                          <div class="media">
-                            <div class="avatar bg-light-success rounded">
-                              <div class="avatar-content">
-                                <i data-feather="tablet" class="avatar-icon font-medium-3"></i>
+                        <div class="card-body">
+                          <div class="transaction-item">
+                            <div class="media">
+                              <div class="avatar bg-light-primary rounded">
+                                <div class="avatar-content">
+                                  <i data-feather="check-square" class="avatar-icon font-medium-3"></i>
+                                </div>
                               </div>
-                            </div>
-                            <div class="media-body">
-                              <h6 class="transaction-title">IFSC Code:</h6>
-                            
-                            </div>
-                          </div>
-                          <div class="details">{{ sellerData?.licenseDetails?.licenceNumber }}</div>
-                        </div>
-                        <div class="transaction-item">
-                          <div class="media">
-                            <div class="avatar bg-light-danger rounded">
-                              <div class="avatar-content">
-                                <i data-feather="check" class="avatar-icon font-medium-3"></i>
-                              </div>
-                            </div>
-                            <div class="media-body">
-                              <h6 class="transaction-title">Account Number:</h6>
+                              <div class="media-body">
+                                <h6 class="transaction-title"> Bank Name: </h6>
                               
-                            </div>
-                          </div>
-                          <div class="details">{{ sellerData?.licenseDetails?.issuedOn }}</div>
-                        </div>
-                        <div class="transaction-item">
-                          <div class="media">
-                            <div class="avatar bg-light-warning rounded">
-                              <div class="avatar-content">
-                                <i data-feather="calendar" class="avatar-icon font-medium-3"></i>
                               </div>
                             </div>
-                            <div class="media-body">
-                              <h6 class="transaction-title">Tenure:</h6>
-                             
-                            </div>
+                            <div class="details">{{ sellerData?.licenseDetails?.nameOnlicence }}</div>
                           </div>
-                          <div class="details">{{ sellerData?.licenseDetails?.tenure }}</div>
+                          <div class="transaction-item">
+                            <div class="media">
+                              <div class="avatar bg-light-success rounded">
+                                <div class="avatar-content">
+                                  <i data-feather="tablet" class="avatar-icon font-medium-3"></i>
+                                </div>
+                              </div>
+                              <div class="media-body">
+                                <h6 class="transaction-title">IFSC Code:</h6>
+                              
+                              </div>
+                            </div>
+                            <div class="details">{{ sellerData?.licenseDetails?.licenceNumber }}</div>
+                          </div>
+                          <div class="transaction-item">
+                            <div class="media">
+                              <div class="avatar bg-light-danger rounded">
+                                <div class="avatar-content">
+                                  <i data-feather="check" class="avatar-icon font-medium-3"></i>
+                                </div>
+                              </div>
+                              <div class="media-body">
+                                <h6 class="transaction-title">Account Number:</h6>
+                                
+                              </div>
+                            </div>
+                            <div class="details">{{ sellerData?.licenseDetails?.issuedOn }}</div>
+                          </div>
+                          <div class="transaction-item">
+                            <div class="media">
+                              <div class="avatar bg-light-warning rounded">
+                                <div class="avatar-content">
+                                  <i data-feather="calendar" class="avatar-icon font-medium-3"></i>
+                                </div>
+                              </div>
+                              <div class="media-body">
+                                <h6 class="transaction-title">Tenure:</h6>
+                               
+                              </div>
+                            </div>
+                            <div class="details">{{ sellerData?.licenseDetails?.tenure }}</div>
+                          </div>
+                       
                         </div>
-                     
                       </div>
                     </div>
-                  </div>
-
-              </div>
-             <div class="row  match-height">
-             
-             </div>
-          </div> -->
-        </div>
+  
+                </div>
+               <div class="row  match-height">
+               
+               </div>
+            </div> -->
+          </div>
+      </div>
     </div>
-  </div>
+    </div>
+    </div>
+
+
+
+
 
 
 
