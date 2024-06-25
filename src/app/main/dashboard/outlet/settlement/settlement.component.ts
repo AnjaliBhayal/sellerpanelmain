@@ -3,6 +3,7 @@ import { Navigation, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { OutletServiceService } from 'app/services/outlet-service.service';
 import { ToastrserviceService } from 'app/services/toastrservice.service';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
@@ -11,7 +12,7 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./settlement.component.scss']
 })
 export class SettlementComponent implements OnInit {
-
+  @BlockUI() blockUI: NgBlockUI;
   rows: any;
   tempData: any;
 
@@ -76,7 +77,9 @@ export class SettlementComponent implements OnInit {
   }
 
   getSettlementData() {
+    this.blockUI.start();
     this.outletService.getsettlementAmount(this.outletData.outletId).subscribe((data: any) => {
+      this.blockUI.stop();
       if(data.status){
         this.toastr.showSuccess(data.message,"Success!");
         this.SettlementAmountData = data.items;
