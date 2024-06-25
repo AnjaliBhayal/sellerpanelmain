@@ -121,6 +121,8 @@ export class MenuComponent implements OnInit {
   Variant: any;
   variation: any;
   hasCustomization: Boolean;
+  public contentHeader: object;
+
   constructor(
     private modalService: NgbModal,
     private toastr: ToastrserviceService,
@@ -137,6 +139,30 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.contentHeader = {
+      headerTitle: "Menu",
+      actionButton: true,
+      breadcrumb: {
+        type: "",
+        links: [
+          {
+            name: "outlets",
+            isLink: true,
+            link: "/dashboard/allOutlet",
+          },
+          {
+            name: "outletDeatils",
+            isLink: false,
+            link: "/dashboard/outletDetails",
+          },
+          {
+            name: "menu",
+            isLink: false,
+            link: "/dashboard/menu",
+          }
+        ],
+      },
+    };
     this.allCategory();
 
     // add category form

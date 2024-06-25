@@ -17,6 +17,7 @@ export class SettlementComponent implements OnInit {
   ColumnMode: any;
   SettlementAmountData: any;
   data: any;
+  public contentHeader: object;
   onSelect($event: any) {
     throw new Error('Method not implemented.');
   }
@@ -34,6 +35,30 @@ export class SettlementComponent implements OnInit {
   constructor(private outletService: OutletServiceService) { }
 
   ngOnInit(): void {
+    this.contentHeader = {
+      headerTitle: "Settlement Amount",
+      actionButton: true,
+      breadcrumb: {
+        type: "",
+        links: [
+          {
+            name: "outlets",
+            isLink: true,
+            link: "/dashboard/allOutlet",
+          },
+          {
+            name: "outletDeatils",
+            isLink: false,
+            link: "/dashboard/outletDetails",
+          },
+          {
+            name: "settlement amount",
+            isLink: false,
+            link: "/dashboard/settlement",
+          }
+        ],
+      },
+    };
     this.getSettlementData();
   }
 

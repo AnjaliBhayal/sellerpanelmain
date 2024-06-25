@@ -81,7 +81,7 @@ content5: any;
   noDataFound: any;
   outletId: any;
   blockUI: any;
-
+  public contentHeader: object;
   constructor(private router: Router, private toastr: ToastrserviceService, private modalService: NgbModal, private outletService: OutletServiceService) {
     let nav: Navigation = this.router.getCurrentNavigation();
     if (nav.extras && nav.extras.state && nav.extras.state.outletDetails) {
@@ -92,6 +92,26 @@ content5: any;
   }
 
   ngOnInit(): void {
+
+    this.contentHeader = {
+      headerTitle: "Outlet Deatils",
+      actionButton: true,
+      breadcrumb: {
+        type: "",
+        links: [
+          {
+            name: "outlets",
+            isLink: true,
+            link: "/dashboard/allOutlet",
+          },
+          {
+            name: "outletDeatils",
+            isLink: false,
+            link: "dashboard/promotion",
+          }
+        ],
+      },
+    };
     var from = new Date();
     from.setDate(from.getDate() - 5);
     this.start = moment(from).format("MM-DD-YYYY");

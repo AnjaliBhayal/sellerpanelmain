@@ -28,8 +28,7 @@ export class PromotionComponent implements OnInit {
   submitted: Boolean = false;
   isFlat: Boolean = false;
   offerDetail: any;
-  contentHeader: { headerTitle: string; actionButton: boolean; breadcrumb: { type: string; links: { name: string; isLink: boolean; link: string; }[]; }; };
-
+  public contentHeader: object;
   constructor(
     private toastr: ToastrserviceService,
     private fb: FormBuilder,

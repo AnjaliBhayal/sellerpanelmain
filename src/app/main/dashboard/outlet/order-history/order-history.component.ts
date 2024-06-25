@@ -42,6 +42,7 @@ export class OrderHistoryComponent implements OnInit {
   Date: any;
   allOrder: any;
   orderDetails: any;
+  public contentHeader: object;
   constructor(private outletService: OutletServiceService, private toastr:ToastrserviceService , private fb:FormBuilder ,private modalService: NgbModal , private router: Router) {
     let nav: Navigation = this.router.getCurrentNavigation();
     if (nav.extras && nav.extras.state && nav.extras.state.outletData) {
@@ -52,6 +53,30 @@ export class OrderHistoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.contentHeader = {
+      headerTitle: "Outlet Order-History",
+      actionButton: true,
+      breadcrumb: {
+        type: "",
+        links: [
+          {
+            name: "outlets",
+            isLink: true,
+            link: "/dashboard/allOutlet",
+          },
+          {
+            name: "outletDeatils",
+            isLink: false,
+            link: "/dashboard/outletDetails",
+          },
+          {
+            name: "Outlet Order-History",
+            isLink: false,
+            link: "/dashboard/offers",
+          }
+        ],
+      },
+    };
     var from = new Date();
     from.setDate(from.getDate() - 5);
     this.start = moment(from).format("MM-DD-YYYY");
