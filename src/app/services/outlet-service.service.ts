@@ -298,8 +298,8 @@ deletData(body:any){
 }
 //getsettlementAmount
 
-getsettlementAmount(){
-  return this.http.get(this.paymentUrl + 'v1/settlements/outlet/56c9bac6e2b2'  , this.Header()).pipe(map((res:any)=>{
+getsettlementAmount(outletId:any){
+  return this.http.get(this.paymentUrl + 'v1/settlements/outlet/'+ outletId  , this.Header()).pipe(map((res:any)=>{
     return res;
   }))
 }

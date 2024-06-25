@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Navigation, Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { OutletServiceService } from 'app/services/outlet-service.service';
+import { ToastrserviceService } from 'app/services/toastrservice.service';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
@@ -17,6 +20,7 @@ export class SettlementComponent implements OnInit {
   ColumnMode: any;
   SettlementAmountData: any;
   data: any;
+  outletData:any
   public contentHeader: object;
   onSelect($event: any) {
     throw new Error('Method not implemented.');
@@ -32,7 +36,16 @@ export class SettlementComponent implements OnInit {
     { prop: 'customerName', name: 'Customer Name' }
   ];
 
-  constructor(private outletService: OutletServiceService) { }
+  constructor(private outletService: OutletServiceService,private toastr:ToastrserviceService,private modalService: NgbModal , private router: Router) {
+    let nav: Navigation = this.router.getCurrentNavigation();
+    if (nav.extras && nav.extras.state && nav.extras.state.outletData) {
+      this.outletData = nav.extras.state.outletData;
+    console.log(this.outletData.outletId);
+    
+    } else {
+      this.router.navigate(["/dashboard/allOutlet"]);
+    }
+   }
 
   ngOnInit(): void {
     this.contentHeader = {
@@ -63,13 +76,21 @@ export class SettlementComponent implements OnInit {
   }
 
   getSettlementData() {
-    this.outletService.getsettlementAmount().subscribe((data: any) => {
-      this.SettlementAmountData = data.items;
-      console.log(this.SettlementAmountData)
-      this.rows = data.items;
-      this.tempData = this.rows;
-      this.kitchenSinkRows = this.rows;
-      this.data = this.SettlementAmountData;
+    this.outletService.getsettlementAmount(this.outletData.outletId).subscribe((data: any) => {
+      if(data.status){
+        this.toastr.showSuccess(data.message,"Success!");
+        this.SettlementAmountData = data.items;
+        console.log(this.SettlementAmountData)
+        this.rows = data.items;
+        this.tempData = this.rows;
+        this.kitchenSinkRows = this.rows;
+        this.data = this.SettlementAmountData;
+      }
+      else{
+        this.toastr.showError(data.message,"error!");
+
+      }
+      
 
     });
   }

@@ -10,7 +10,7 @@
       </div>
       <div class="row">
         <!-- Dynamic data Card -->
-        <div class="col-12 col-md-12 col-lg-12">
+   <!--      <div class="col-12 col-md-12 col-lg-12">
           <div class="">
             <div class="outlet-body">
               <div class="">
@@ -27,10 +27,7 @@
                             <div class="card-transaction support1">
                               <div class="">
                                 <div class="">
-                                  <!-- <div class="heading2"> -->
-                                  <!-- <h1>Customer Support</h1> -->
-                                  <!-- </div> -->
-                                  <!-- <hr> -->
+                                 
                                   <div class="transaction-item pt-1">
                                     <div class="media">
                                       <div
@@ -110,10 +107,7 @@
                             <div class="card-transaction support1">
                               <div class="">
                                 <div class="">
-                                  <!-- <div class="heading2"> -->
-                                  <!-- <h1>Customer Support</h1> -->
-                                  <!-- </div> -->
-                                  <!-- <hr> -->
+                                
                                   <div class="transaction-item pt-1">
                                     <div class="media">
                                       <div
@@ -193,7 +187,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <!--/ Dynamic data Card -->
       </div>
@@ -209,6 +203,9 @@
               <ng-template ngbPanelTitle>
                 <span>Settlement Orders </span>
               </ng-template>
+             <!--  <div *ngIf="!SettlementAmountData || SettlementAmountData.length === 0">
+                <h5> NO Data Found</h5>
+              </div> -->
               <ng-template ngbPanelContent>
                 <div *ngFor="let item of SettlementAmountData">
                   <ngx-datatable
