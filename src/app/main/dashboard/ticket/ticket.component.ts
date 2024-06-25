@@ -61,7 +61,7 @@ export class TicketComponent implements OnInit {
           {
             name: "support",
             isLink: true,
-            link: "dashboard/account",
+            link: "/dashboard/account",
           },
           {
             name: 'Ticket',
