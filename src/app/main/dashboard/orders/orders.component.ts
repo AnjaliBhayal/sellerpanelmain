@@ -9,6 +9,7 @@ import {
   Validators,
 } from "@angular/forms";
 import { OutletServiceService } from "app/services/outlet-service.service";
+import { BlockUI, NgBlockUI } from "ng-block-ui";
 
 @Component({
   selector: "app-orders",
@@ -16,6 +17,7 @@ import { OutletServiceService } from "app/services/outlet-service.service";
   styleUrls: ["./orders.component.scss"],
 })
 export class OrdersComponent implements OnInit {
+  @BlockUI() blockUI: NgBlockUI;
 updateImage() {
 throw new Error('Method not implemented.');
 }
@@ -116,8 +118,10 @@ value: any;
   // get all order
 
   getOrder(status: any) {
+    this.blockUI.start();
     this.status = status;
     this.AuthService.getAllOrderofSeller(this.status).subscribe((data: any) => {
+      this.blockUI.stop();
       this.orderList = data.items.orderList;
       this.orderCount=data.items
       console.log(this.orderList.length);
@@ -180,14 +184,13 @@ value: any;
   }
 
   allData(){
+    this.blockUI.start();
     this.AuthService.allDataHomePage().subscribe((data:any)=>{
+      this.blockUI.stop();
       console.log(data);
-      
       if (!data.status) {
-        
         this.AllData = [];
       }
-
       this.AllData = data.items;
     });
     

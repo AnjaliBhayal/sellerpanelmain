@@ -12,6 +12,7 @@ import {
 import { OutletServiceService } from "app/services/outlet-service.service";
 import { ToastrserviceService } from "app/services/toastrservice.service";
 import { log } from "console";
+import { BlockUI, NgBlockUI } from "ng-block-ui";
 
 @Component({
   selector: "app-promotion",
@@ -19,6 +20,7 @@ import { log } from "console";
   styleUrls: ["./promotion.component.scss"],
 })
 export class PromotionComponent implements OnInit {
+  @BlockUI() blockUI: NgBlockUI;
   promotionList: any;
   discountId: any;
   editDiscountForm: FormGroup;
@@ -110,7 +112,9 @@ export class PromotionComponent implements OnInit {
 
   // get all promotion
   getAllPromotion() {
+    this.blockUI.start();
     this.outletService.getAllOffer().subscribe((data: any) => {
+      this.blockUI.stop();
       this.promotionList = data.items;
      // console.log(this.promotionList)
     });

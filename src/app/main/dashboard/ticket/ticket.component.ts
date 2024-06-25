@@ -4,6 +4,7 @@ import { ngxCsv } from 'ngx-csv/ngx-csv';
 import { ColumnMode, DatatableComponent, SelectionType } from '@swimlane/ngx-datatable';
 import { AuthService } from 'app/services/auth.service';
 import { ToastrserviceService } from 'app/services/toastrservice.service';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 
 @Component({
   selector: 'app-ticket',
@@ -11,6 +12,7 @@ import { ToastrserviceService } from 'app/services/toastrservice.service';
   styleUrls: ['./ticket.component.scss']
 })
 export class TicketComponent implements OnInit {
+  @BlockUI() blockUI: NgBlockUI;
   ticket: any;
   getOrder(arg0: string) {
     throw new Error('Method not implemented.');
@@ -76,7 +78,9 @@ export class TicketComponent implements OnInit {
 
   // get all ticket
   allTicketList() {
+    this.blockUI.start();
     this.AuthService.getAllTicket(this.status).subscribe((data: any) => {
+      this.blockUI.stop();
       if (data.status) {
         console.log(data.status)
         this.allTicket = data.items;
