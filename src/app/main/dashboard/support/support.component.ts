@@ -25,7 +25,7 @@ public contentHeader: object;
           {
             name: "support",
             isLink: false,
-            link: "dashboard/account",
+            link: "dashboard/support",
           }
         ],
       },
