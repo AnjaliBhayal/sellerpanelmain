@@ -22,5 +22,6 @@ export interface CoreMenuItem {
 }
 
 export interface CoreMenu extends CoreMenuItem {
+  activeIcon: string;
   children?: CoreMenuItem[];
 }

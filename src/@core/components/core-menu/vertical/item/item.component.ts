@@ -1,6 +1,9 @@
 import { Component, Input } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 import { CoreMenuItem } from '@core/types';
+import { CoreMenu } from '@core1/types/core-menu';
+import { menu } from 'app/menu/menu';
 
 @Component({
   selector: '[core-menu-vertical-item]',
@@ -9,14 +12,20 @@ import { CoreMenuItem } from '@core/types';
 export class CoreMenuVerticalItemComponent {
   @Input()
   item: CoreMenuItem;
+  // menuItems: CoreMenu[] = menu;
+  activeUrl: string = '';
   
   activeItem = '';
 
-  setActiveItem(itemId: string) {
-    this.activeItem = itemId;
+  constructor(private router: Router) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.activeUrl = event.urlAfterRedirects;
+      }
+    });
   }
 
-  getIcon(itemId: string, icon: string, activeIcon: string) {
-    return this.activeItem === itemId ? activeIcon : icon;
+  getIconSrc(item: CoreMenu): string {
+    return this.activeUrl === '/' + item.url ? item.activeIcon : item.icon;
   }
 }

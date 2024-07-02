@@ -12,7 +12,7 @@ export class AuthService {
   private menuUrl = environment.menuUrl;
   private adminUrl = environment.adminUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {}n              
 
   Header = () => {
     // console.log(localStorage.getItem('token'));
