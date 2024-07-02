@@ -47,6 +47,7 @@ export class AllOutletComponent implements OnInit {
   imageURL = [];
   public contentHeader: object;
 ticketDetails: any;
+outletData: any;
 
   constructor(
     private router: Router,
@@ -67,7 +68,7 @@ ticketDetails: any;
       phone: new FormControl("", [Validators.required]),
     });
     this.contentHeader = {
-      headerTitle: "All Outlets",
+      headerTitle: "Outlets",
       actionButton: true,
       breadcrumb: {
         type: "",
@@ -110,6 +111,7 @@ ticketDetails: any;
     return this.addOutletForm.controls;
   }
 
+  
   selectImage(event: any) {
     this.selectedImage = event.target.files[0];
     var reader = new FileReader();
@@ -288,6 +290,30 @@ ticketDetails: any;
       phone: outletDetails.phone,
     });
   }
+
+
+  isSidebarOpen = false;
+  selectedOutlet: any;
+
+  openSidebar(outletdata: any) {
+    this.selectedOutlet = outletdata;
+    this.isSidebarOpen = true;
+  }
+
+  closeSidebar() {
+    this.isSidebarOpen = false;
+  }
+
+  offerClick() {
+    // Handle offer button click
+    console.log('Offer clicked for outlet:', this.selectedOutlet);
+  }
+
+  salesClick() {
+    // Handle sales button click
+    console.log('Sales clicked for outlet:', this.selectedOutlet);
+  }
+
 
   editOutletFormSubmit() {
     this.Submitted = true;

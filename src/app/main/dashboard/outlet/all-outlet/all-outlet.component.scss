@@ -188,3 +188,100 @@ p.detail-card-text span {
   width: 100%;
   max-width: 35px;
 }
+
+
+
+
+
+// new outlet css
+.dropdown-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+button.btn.btn-link.ng-star-inserted {
+  width: 400px;
+}
+button.btn.btn-link.collapsed.ng-star-inserted {
+  width: 400px;
+}
+
+.form-check-input {
+  position: relative;
+  margin-top: 0.3rem;
+  margin-left: -1.25rem;
+}
+.form-switch {
+  padding-left: 1.5em;
+}
+.inner-parent {
+  display: flex;
+  align-items: center;
+}
+.inner-outlet {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.inner-ctn {
+  margin-bottom: 7px;
+}
+.inner-image img {
+  height: 100%;
+  width: 100%;
+  max-width: 90px;
+}
+.btn4{
+  background-color: #EC0A37;
+  color: #fff !important;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 12px;
+  display: flex;
+  padding: 5px 16px;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+.btn5 {
+  background-color: #0FAB64;
+  color: #fff !important;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 12px;
+  display: flex;
+  padding: 5px 16px;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+.dropdown-item {
+  display: block;
+  width: 398px;
+  padding: 0.65rem 1.28rem;
+  clear: both;
+  font-weight: 400;
+  color: #6e6b7b;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+#sidebar {
+  position: fixed;
+  right:  0;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background: #f8f9fa;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+#sidebar.open {
+  transform: translateX(0);
+}
+#sidebar button {
+  display: block;
+  margin: 20px;
+}

@@ -1989,8 +1989,24 @@ ul.nav.navbar-nav.flex-row {
 .order-body {
     height: 100%;
 }
-h5.centerdata {
+// h5.centerdata {
+//     display: grid;
+//     justify-content: center;
+//     align-items: center;
+// }
+img.centerdata1 {
+    height: 100%;
+    width: 100%;
+    max-width: 74px;
+}
+.top.ng-star-inserted {
     display: grid;
+    gap: 9px;
     justify-content: center;
-    align-items: center;
+    align-content: center;
+    justify-items: center;
+}
+h5.centerdata {
+    color: #a5a5a5;
+    font-weight: 100;
 }
