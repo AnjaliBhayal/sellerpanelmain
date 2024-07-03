@@ -19,7 +19,7 @@
                         <div class="inner-image">
                           <img src="../../../../../assets/images/myimages/images (1).png" alt="">
                         </div>
-                      </div>
+                      </div> 
                       <div class="switch1-btn">
                         <div class="inner-ctn">
                           <h5>{{outletdata.outletName}}</h5>
@@ -42,8 +42,6 @@
       </div>
     </div>
 
- 
-
     <div class="order">
       <div class="card card-congratulation-medal">
         <div class="card-body">
@@ -52,7 +50,7 @@
             <div class="col-12 col-md-6 col-lg-6" *ngFor="let outletdata of allOutletList">
               <div class="card-body">
                 <div class="order-body">
-                  <div class="inner-outlet">
+                  <!-- <div class="inner-outlet">
                     <div class="inner-parent">
                       <div class="inner-image">
                         <img src="../../../../../assets/images/myimages/images (1).png" alt="">
@@ -63,19 +61,17 @@
                       <div class="inner-ctn">
                         <h5>{{outletdata.outletName}}</h5>
                       </div>
-                      <!-- <div class="form-switch">
-                      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-                      </div> -->
+                      
                       <div class="details-btn p-0">
-                        <!-- <button class="btn1"  (click)="viewdetails(outletdata)">View Details</button> -->
+                        
                         <button [ngClass]="{'btn4': outletdata.isClosed, 'btn5': !outletdata.isClosed}"
                           (click)="statusChange($event, content, outletdata)">{{
                           outletdata.isClosed
                           ? 'Close' : 'Open' }}</button>
                       </div>
                     </div>
-                  </div>
-                  <!-- <div class="parent">
+                  </div> -->
+                  <div class="parent">
                     <div class="area-parent">
                       <h5>{{outletdata.outletName}}</h5>
                       <p class="card-details-text font-small-3">{{outletdata.area}}</p>
@@ -91,7 +87,7 @@
                       (click)="statusChange($event, content, outletdata)">{{
                       outletdata.isClosed
                       ? 'Close' : 'Open' }}</button>
-                  </div> -->
+                  </div>
                 </div>
               </div>
             </div>
